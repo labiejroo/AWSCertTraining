@@ -1,0 +1,44 @@
+<!doctype html>
+  <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Additional Compute Services</title><style>:root{--bg:#fbfaf7;--fg:#1d1d1b;--muted:#77736a;--line:#e6e1d6;--accent:#d97a00;--card:#fff;--soft:#f3efe6}
+  @media (prefers-color-scheme:dark){:root{--bg:#161614;--fg:#ecebe6;--muted:#9b978d;--line:#2f2e2a;--accent:#ffa733;--card:#1e1e1b;--soft:#24231f}}
+  *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:18px/1.7 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  main{max-width:760px;margin:0 auto;padding:28px 16px 80px}a{color:var(--accent)}
+  .crumbs{font-size:13px;color:var(--muted)}h1{font-size:32px;line-height:1.2;margin:.3em 0 .6em}
+  h2{font-size:25px;margin:1.6em 0 .4em}h3{font-size:21px;margin:1.4em 0 .3em}h4,h5{font-size:18px;margin:1em 0 .2em}
+  p{margin:.5em 0}ul,ol{padding-left:1.3em}li{margin:.2em 0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:6px 20px 14px;margin:18px 0}
+  .item+.item{border-top:1px dashed var(--line)}.item{padding-top:10px}
+  .tag{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:700}
+  .item h4{margin-top:2px}
+  details{margin:18px 0;background:var(--soft);border-radius:12px;padding:10px 20px}summary{cursor:pointer;font-weight:600}
+  details p{font-size:16px}
+  table{border-collapse:collapse;width:100%;font-size:16px}td,th{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+  .warn{background:var(--soft);border-left:3px solid var(--accent);padding:8px 12px;font-size:14px;border-radius:6px}
+  .qnote{margin-top:40px;font-size:14px;color:var(--muted)}</style>
+  <script type="application/json" id="lesson-meta">{"slug":"m03-04-additional-compute-services","module":"Module 3: Exploring Compute Services","module_no":3,"section":"AWS Serverless, Containers, and Solutions Overview","lesson":"Additional Compute Services","lesson_no":4,"questions":2,"captured":"2026-10-24T19:15:29.042Z","v":"5.4"}</script></head>
+  <body><main>
+  <div class="crumbs"><a href="index.html">← Spis lekcji</a> · Module 3: Exploring Compute Services › AWS Serverless, Containers, and Solutions Overview</div>
+  <h1>Additional Compute Services</h1>
+  <h4>In this lesson, you will learn how to do the following:</h4>
+<ul><li>Describe how Elastic Beanstalk streamlines environment provisioning and management.</li><li>Explain how AWS Batch manages large-scale computing tasks and automatically adjusts resources based on demand.</li><li>Identify how Amazon Lightsail streamlines web application setup and management without the need for complex infrastructure.</li><li>Describe how AWS Outposts extends AWS services to on-premises environments, supporting hybrid cloud architectures.</li></ul>
+<p>AWS offers a range of purpose-built services designed to streamline specific use cases—from application deployment and data processing to web hosting and hybrid cloud setups. Let’s take a quick tour of some of these powerful solutions.</p>
+<details><summary>🎬 Video transcript</summary><p>So far, we've covered compute options like EC2, Lambda, and container services like ECS. But wait…there's more! There are many purpose-built services you can use for specific use cases that can help you achieve your goals. Let’s take a quick look at some of them!</p><p>First up is AWS Elastic Beanstalk. This is a service that makes it easier to deploy and manage applications in EC2. Instead of building out the needed infrastructure, like the network, EC2 instances, scaling, and elastic load balancers by yourself, you can provide your application code and desired configurations to the Elastic Beanstalk service. Elastic Beanstalk then takes that information and builds out your environment for you.</p><p>Elastic Beanstalk also makes it easy to save environment configurations, so they can be deployed again. You won’t need to provision and manage all of these pieces separately, and you’ll still have visibility and control of the underlying resources. Next up, let's talk about AWS Batch, a compute service designed for heavy-duty tasks like processing massive datasets, running simulations, or performing complex calculations. AWS Batch takes care of the infrastructure management for you.</p><p>You won’t need to worry about provisioning servers, scaling resources, or managing infrastructure. AWS Batch handles all of that, allowing you to focus on the important tasks like building your application or running your analysis. The service also scales automatically, distributing tasks across a fleet of compute resources like EC2 instances. Then there's Amazon Lightsail, which simplifies web application hosting by giving you a relatively easy, cost-effective solution for running specific types of applications and websites.</p><p>It takes care of a lot of the complexity that comes with traditional web application hosting, and it's a great option if you want something quick and easy to manage! Finally, let’s talk about one more unique, purpose-built AWS service called AWS Outposts. This one is designed for organizations that need a hybrid-cloud solution. If you want to leverage the power of AWS while keeping some of your infrastructure on premises, Outposts is the answer.</p><p>Outposts extends AWS services to your on-premises data center, giving you a consistent experience across both environments. You get to run AWS services locally, while still benefiting from cloud computing. This is perfect for meeting specific needs, like low latency, data residency, or integration for hybrid deployments. And there you have it!</p><p>From Elastic Beanstalk to Outposts. Each service is designed to handle specific tasks, so remember that as you learn about other services and their use cases.</p></details>
+<h3>Additional compute services</h3>
+<p>AWS offers purpose-built services for specific needs, such as streamlining web application deployment, managing batch workloads, providing virtual servers, and extending cloud infrastructure to on-premises data centers.</p>
+<p>Elastic Beanstalk</p>
+<p>— Elastic Beanstalk is a fully managed service that streamlines the deployment, management, and scaling of web applications. Developers can upload their code, and Elastic Beanstalk automatically handles the provisioning of infrastructure, scaling, load balancing, and application health monitoring. It supports various programming languages and frameworks, such as Java, .NET, Python, Node.js, Docker, and more. It provides full control over the underlying AWS resources while automating many operational tasks.</p>
+<p>Good for: Deploying and managing web applications, RESTful APIs, mobile backend services, and microservices architectures, with automated scaling and simplified infrastructure management</p>
+<p>AWS Batch</p>
+<p>— AWS Batch is a fully managed service that you can use to run batch computing workloads on AWS. It automatically schedules, manages, and scales compute resources for batch jobs, optimizing resource allocation based on job requirements.</p>
+<p>Good for: Processing large-scale, parallel workloads in areas like scientific computing, financial risk analysis, media transcoding, big data processing, machine learning training, and genomics research</p>
+<p>Lightsail</p>
+<p>— Amazon Lightsail is a cloud service offering virtual private servers (VPSs), storage, databases, and networking at a predictable monthly price. It’s ideal for small businesses, basic workloads, and developers seeking a straightforward AWS experience without the complexity of the full AWS Management Console.</p>
+<p>Good for: Basic web applications, low-traffic websites, development and testing environments, small business websites, blogs, and learning cloud services</p>
+<p>Outposts</p>
+<p>— AWS Outposts is a fully managed hybrid cloud solution that extends AWS infrastructure and services to on-premises data centers. It provides a consistent experience between on premises and the AWS Cloud, offering compute, storage, and networking components.</p>
+<p>Good for: Low-latency applications, data processing in remote locations, migrating and modernizing legacy applications, and meeting regulatory compliance or data residency requirements</p>
+<h4>When to use what?</h4>
+<p>AWS Elastic Beanstalk is a managed service for deploying and scaling web applications. AWS Batch runs large-scale batch computing workloads. Amazon Lightsail offers simplified VPS, storage, and networking. AWS Outposts extends AWS services to on-premises environments.</p>
+  <p class="qnote">Pytania kontrolne (2): <code>pytania\m03-04-additional-compute-services.md</code> · <a href="../pytania/testownik.html">testownik</a></p>
+  </main><script src="../narzedzia/tlumaczenia.js"></script><script src="dwujezyczny.js"></script></body></html>

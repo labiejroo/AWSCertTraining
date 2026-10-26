@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Testownik AWS CLF-C02</title>
+<style>
+:root{--bg:#fbfaf7;--fg:#1d1d1b;--muted:#77736a;--line:#e6e1d6;--accent:#d97a00;--card:#fff;--ok:#1f8a4c;--bad:#c0392b;--okbg:#e7f5ec;--badbg:#fbeaea}
+@media (prefers-color-scheme:dark){:root{--bg:#161614;--fg:#ecebe6;--muted:#9b978d;--line:#2f2e2a;--accent:#ffa733;--card:#1e1e1b;--okbg:#16301f;--badbg:#3a1b18}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:760px;margin:0 auto;padding:28px 16px 80px}a{color:var(--accent)}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}h1{font-size:24px;margin:0}
+.bar{height:6px;background:var(--line);border-radius:3px;margin:16px 0 6px;overflow:hidden}.bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .3s}
+.meta{font-size:13px;color:var(--muted);display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin-top:18px}
+.src{font-size:12px;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+.q{font-size:19px;font-weight:600;margin:6px 0 12px}.hint{font-size:13px;color:var(--muted);margin-bottom:8px}
+label.a{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-radius:10px;margin:8px 0;cursor:pointer}
+label.a:hover{border-color:var(--accent)}label.a input{margin-top:5px;accent-color:var(--accent)}
+label.a.ok{border-color:var(--ok);background:var(--okbg)}label.a.bad{border-color:var(--bad);background:var(--badbg)}
+.actions{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+button,.btn{font:inherit;font-size:15px;border:1px solid var(--line);background:var(--card);color:var(--fg);padding:8px 14px;border-radius:9px;cursor:pointer}
+button.primary{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}button:disabled{opacity:.5;cursor:default}
+.verdict{margin-top:12px;font-weight:600}.verdict.ok{color:var(--ok)}.verdict.bad{color:var(--bad)}
+.note{background:var(--card);border-left:3px solid var(--accent);padding:10px 14px;border-radius:8px;font-size:14px;margin-top:14px}
+.big{font-size:42px;font-weight:700;margin:4px 0}
+.settings{display:flex;gap:10px;align-items:center;font-size:14px;color:var(--muted);flex-wrap:wrap;margin-top:12px}
+select{font:inherit;padding:4px 8px;border-radius:7px;border:1px solid var(--line);background:var(--card);color:var(--fg)}
+input[type=file]{display:none}
+.auto{height:4px;background:var(--line);border-radius:2px;overflow:hidden;margin-top:12px}
+.auto i{display:block;height:100%;width:0;background:var(--ok);animation:autoNext 3s linear forwards}
+@keyframes autoNext{to{width:100%}}
+.range{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:12px;font-size:14px;color:var(--muted)}
+.range .lbl{margin-right:4px}
+.chip{font:inherit;font-size:14px;border:1px solid var(--line);background:var(--card);color:var(--fg);padding:6px 12px;border-radius:99px;cursor:pointer}
+.chip small{color:var(--muted);margin-left:4px}
+.chip.on{background:var(--accent);border-color:var(--accent);color:#fff}.chip.on small{color:#fff;opacity:.85}
+</style>
+<script src="pytania-dane.js"></script>
+</head>
+<body><main>
+<header><h1>Testownik CLF-C02</h1><a href="../materialy/index.html">Materiały →</a></header>
+<div class="settings">Powtórzeń na start: <select id="reps"><option>1</option><option selected>2</option><option>3</option></select>
+Za błąd: +<select id="pen"><option>1</option><option selected>2</option><option>3</option></select>
+<button id="restart">Zacznij od nowa</button>
+<label class="btn" title="Wskaż folder AWS-CLF\pytania, żeby wczytać świeżo zaznaczone [x]">↻ Wczytaj folder pytania<input type="file" id="dir" webkitdirectory multiple></label></div>
+<div class="range" id="range"></div>
+<div id="info"></div>
+<div class="bar"><i id="prog"></i></div>
+<div class="meta"><span id="m1"></span><span id="m2"></span></div>
+<div id="app"></div>
+</main>
+<script>
+// Pytania pochodzą z plików pytania\*.md: poprawne odpowiedzi to linie "- [x] B. ..."
+function parseMd(text) {
+  const lines = text.split(/\r?\n/);
+  const head = (lines.find(function (l) { return l.indexOf('# ') === 0; }) || '').slice(2);
+  const title = (head.split(' › ').pop() || '').trim();
+  const modName = (head.split(' › ')[0] || '').trim();
+  const out = []; let q = null;
+  lines.forEach(function (line) {
+    let m = line.match(/^<!-- id: (\S+) -->/);
+    if (m) { q = { id: m[1], src: title, mod: +((m[1].match(/^m(\d+)-/) || [])[1] || 0), modName: modName, text: '', choose: 1, answers: [], correct: [], expl: '' }; out.push(q); return; }
+    if (!q || /^## /.test(line) || !line.trim()) return;
+    m = line.match(/^_Choose (\d+)_/);
+    if (m) { q.choose = +m[1]; return; }
+    m = line.match(/^\s*- \[([ xX])\] ([A-H])\.\s*(.*)$/);
+    if (m) { q.answers.push({ letter: m[2], text: m[3] }); if (m[1].toLowerCase() === 'x') q.correct.push(m[2]); return; }
+    m = line.match(/^>\s?(.*)$/);
+    if (m) { q.expl += (q.expl ? ' ' : '') + m[1]; return; }
+    if (/^<!--/.test(line)) return;
+    if (!q.answers.length) q.text += (q.text ? ' ' : '') + line.trim();
+  });
+  return out;
+}
+const store = {
+  get: function (k, d) { try { const v = localStorage.getItem('clf_' + k); return v ? JSON.parse(v) : d; } catch (e) { return d; } },
+  set: function (k, v) { try { localStorage.setItem('clf_' + k, JSON.stringify(v)); } catch (e) {} }
+};
+let ALL = [], DATA = [], st = null, SOURCE = '';
+// Zakres: null = wszystkie moduły, inaczej lista numerów modułów, np. [2,3]
+let MODS = store.get('mods', null);
+const rangeKey = function () { return MODS ? MODS.slice().sort(function (a, b) { return a - b; }).join(',') : 'all'; };
+function modules() {
+  const m = {};
+  ALL.forEach(function (q) { if (!m[q.mod]) m[q.mod] = { no: q.mod, name: q.modName, all: 0, keyed: 0 }; m[q.mod].all++; if (q.correct.length) m[q.mod].keyed++; });
+  return Object.keys(m).map(function (k) { return m[k]; }).sort(function (a, b) { return a.no - b.no; });
+}
+function renderRange() {
+  const box = document.getElementById('range');
+  const mods = modules();
+  const total = mods.reduce(function (s, m) { return s + m.keyed; }, 0);
+  box.innerHTML = '<span class="lbl">Zakres:</span>' +
+    '<button class="chip' + (MODS ? '' : ' on') + '" data-m="all">Wszystkie<small>' + total + '</small></button>' +
+    mods.map(function (m) {
+      return '<button class="chip' + (MODS && MODS.indexOf(m.no) >= 0 ? ' on' : '') + '" data-m="' + m.no + '" title="' + esc(m.name) + '">Moduł ' + m.no + '<small>' + m.keyed + '</small></button>';
+    }).join('');
+  Array.prototype.forEach.call(box.querySelectorAll('.chip'), function (b) {
+    b.onclick = function () {
+      const v = b.dataset.m;
+      if (v === 'all') MODS = null;
+      else {
+        const n = +v; MODS = MODS ? MODS.slice() : [];
+        const i = MODS.indexOf(n);
+        if (i >= 0) MODS.splice(i, 1); else MODS.push(n);
+        if (!MODS.length || MODS.length === mods.length) MODS = null;
+      }
+      store.set('mods', MODS);
+      applyRange();
+    };
+  });
+}
+function applyRange() {
+  DATA = ALL.filter(function (q) { return q.correct.length && (!MODS || MODS.indexOf(q.mod) >= 0); });
+  const inRange = ALL.filter(function (q) { return !MODS || MODS.indexOf(q.mod) >= 0; }).length;
+  renderRange();
+  // osobny postęp dla każdego zakresu
+  st = store.get('state:' + rangeKey(), null);
+  if (!st || !st.left) fresh(); else { sync(); if (st.cur && DATA.some(function (q) { return q.id === st.cur; })) render(); else next(); }
+  document.getElementById('info').innerHTML =
+    '<div class="note">Źródło: ' + SOURCE + ' · w zakresie: ' + inRange + ' pytań, z kluczem: ' + DATA.length +
+    (inRange - DATA.length ? '. <b>' + (inRange - DATA.length) + '</b> czeka na zaznaczenie <code>[x]</code> w plikach <code>.md</code>.' : '.') + '</div>';
+}
+function load(mdMap, source) {
+  ALL = []; SOURCE = source;
+  Object.keys(mdMap).sort().forEach(function (k) { ALL = ALL.concat(parseMd(mdMap[k])); });
+  if (MODS) { const have = modules().map(function (m) { return m.no; }); MODS = MODS.filter(function (n) { return have.indexOf(n) >= 0; }); if (!MODS.length) MODS = null; }
+  applyRange();
+}
+const shuffle = function (a) { for (let i = a.length - 1; i > 0; i--) { const j = Math.random() * (i + 1) | 0; const t = a[i]; a[i] = a[j]; a[j] = t; } return a; };
+const reps = function () { return +document.getElementById('reps').value; };
+function save() { store.set('state:' + rangeKey(), st); }
+function fresh() {
+  st = { left: {}, good: 0, bad: 0, cur: null, start: Date.now() };
+  DATA.forEach(function (q) { st.left[q.id] = reps(); });
+  save(); next();
+}
+function sync() {
+  const ids = {}; DATA.forEach(function (q) { ids[q.id] = 1; if (!(q.id in st.left)) st.left[q.id] = reps(); });
+  Object.keys(st.left).forEach(function (id) { if (!ids[id]) delete st.left[id]; });
+}
+function pending() { return Object.keys(st.left).filter(function (id) { return st.left[id] > 0; }); }
+function byId(id) { return DATA.find(function (q) { return q.id === id; }); }
+function next() {
+  const p = pending();
+  if (!p.length) { st.cur = null; save(); return render(); }
+  const pool = p.length > 1 ? p.filter(function (id) { return id !== st.cur; }) : p;
+  st.cur = pool[Math.random() * pool.length | 0];
+  st.order = shuffle(byId(st.cur).answers.map(function (_, i) { return i; }));
+  st.answered = null; save(); render();
+}
+const esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+const same = function (a, b) { return a.length === b.length && a.every(function (x) { return b.indexOf(x) >= 0; }); };
+function render() {
+  clearTimeout(autoTimer);
+  const p = pending(); const done = DATA.length - p.length;
+  const total = Object.keys(st.left).reduce(function (s, k) { return s + st.left[k]; }, 0);
+  document.getElementById('prog').style.width = (DATA.length ? done / DATA.length * 100 : 0) + '%';
+  document.getElementById('m1').textContent = 'Opanowane: ' + done + '/' + DATA.length + ' · do powtórzenia: ' + total;
+  const acc = st.good + st.bad ? Math.round(st.good / (st.good + st.bad) * 100) : 0;
+  document.getElementById('m2').textContent = 'Dobrze ' + st.good + ' · źle ' + st.bad + ' · skuteczność ' + acc + '%';
+  const app = document.getElementById('app');
+  if (!DATA.length) { app.innerHTML = '<div class="card"><b>Brak pytań z kluczem odpowiedzi.</b><p>Klucz bierze się sam: na stronie kursu odpowiedz na pytania (Submit), a potem kliknij w panelu <b>Zapisz tę lekcję</b>. Możesz też ręcznie zmienić <code>[ ]</code> na <code>[x]</code> w plikach w folderze <b>pytania</b> i kliknąć „Wczytaj folder pytania”.</p></div>'; return; }
+  if (!st.cur) {
+    app.innerHTML = '<div class="card"><div class="src">Koniec</div><div class="big">' + acc + '%</div><p>Wszystkie ' + DATA.length + ' pytania opanowane w ' +
+      Math.round((Date.now() - st.start) / 60000) + ' min. Dobrze: ' + st.good + ', źle: ' + st.bad + '.</p><div class="actions"><button class="primary" id="again">Jeszcze raz</button></div></div>';
+    document.getElementById('again').onclick = fresh; return;
+  }
+  const q = byId(st.cur); const need = Math.max(q.choose, q.correct.length); const multi = need > 1; const ans = st.answered;
+  const opts = st.order.map(function (i, n) {
+    const a = q.answers[i]; let cls = '';
+    if (ans) { if (q.correct.indexOf(a.letter) >= 0) cls = 'ok'; else if (ans.indexOf(a.letter) >= 0) cls = 'bad'; }
+    return '<label class="a ' + cls + '"><input type="' + (multi ? 'checkbox' : 'radio') + '" name="a" value="' + a.letter + '"' +
+      (ans && ans.indexOf(a.letter) >= 0 ? ' checked' : '') + (ans ? ' disabled' : '') + '><span>' + esc(a.text) + '</span></label>';
+  }).join('');
+  const ok = ans && same(ans, q.correct);
+  app.innerHTML = '<div class="card"><div class="src">' + (q.mod ? 'Moduł ' + q.mod + ' · ' : '') + esc(q.src) + ' · powtórzeń: ' + st.left[q.id] + '</div><div class="q">' + esc(q.text) + '</div>' +
+    '<div class="hint">' + (multi ? 'Choose ' + need + ' — sprawdzi się po zaznaczeniu ' + need + ' odpowiedzi' : 'Choose 1') + '</div><form id="f">' + opts + '</form>' +
+    (ans ? '<div class="verdict ' + (ok ? 'ok">✔ Dobrze — za chwilę następne pytanie' : 'bad">✘ Źle — poprawna odpowiedź jest na zielono') + '</div>' +
+      (ok ? '<div class="auto"><i></i></div>' : '') +
+      (q.expl ? '<div class="note">' + esc(q.expl) + '</div>' : '') +
+      '<div class="actions"><button class="primary" id="nx">Dalej →</button></div>' : '') + '</div>';
+  const f = document.getElementById('f');
+  if (!ans) {
+    // pierwsze kliknięcie = odpowiedź (przy "Choose 2" – po zaznaczeniu wymaganej liczby)
+    f.onchange = function () {
+      const picked = Array.from(f.querySelectorAll('input:checked')).map(function (i) { return i.value; });
+      if (picked.length >= need) check(q, picked);
+    };
+  } else {
+    document.getElementById('nx').onclick = next;
+    if (ok) autoTimer = setTimeout(next, 3000);
+  }
+}
+let autoTimer = null;
+function check(q, picked) {
+  if (st.answered) return;
+  st.answered = picked;
+  if (same(picked, q.correct)) { st.good++; st.left[q.id] = Math.max(0, st.left[q.id] - 1); }
+  else { st.bad++; st.left[q.id] = Math.min(st.left[q.id] + +document.getElementById('pen').value, 6); }
+  save(); render();
+}
+document.addEventListener('keydown', function (e) {
+  if (e.target.tagName === 'SELECT') return;
+  const n = parseInt(e.key, 10); const inputs = document.querySelectorAll('#f input');
+  if (n >= 1 && n <= inputs.length && !inputs[n - 1].disabled) inputs[n - 1].click();
+  if (e.key === 'Enter' || e.key === ' ') { const b = document.getElementById('nx'); if (b) { e.preventDefault(); b.click(); } }
+});
+document.getElementById('restart').onclick = fresh;
+document.getElementById('dir').onchange = function (e) {
+  const files = Array.from(e.target.files).filter(function (f) { return /\.md$/i.test(f.name); });
+  Promise.all(files.map(function (f) { return f.text().then(function (t) { return [f.name, t]; }); })).then(function (pairs) {
+    const map = {}; pairs.forEach(function (p) { map[p[0]] = p[1]; });
+    store.set('md', map); store.set('mdAt', Date.now()); load(map, 'folder wczytany ' + new Date().toLocaleTimeString('pl-PL'));
+  });
+};
+// Bierzemy nowsze źródło: pytania-dane.js (zapisuje capture.js) albo ręcznie wczytany folder
+const cached = store.get('md', null), cachedAt = store.get('mdAt', 0);
+if (cached && (!window.CLF_MD || cachedAt > (window.CLF_MD_TIME || 0))) load(cached, 'folder wczytany ręcznie');
+else if (window.CLF_MD) load(window.CLF_MD, 'pytania-dane.js (' + new Date(window.CLF_MD_TIME || 0).toLocaleString('pl-PL') + ')');
+else load({}, 'brak danych — przechwyć lekcję albo wczytaj folder pytania');
+</script></body></html>

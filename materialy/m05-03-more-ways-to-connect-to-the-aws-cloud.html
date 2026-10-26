@@ -1,0 +1,75 @@
+<!doctype html>
+  <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>More Ways to Connect to the AWS Cloud</title><style>:root{--bg:#fbfaf7;--fg:#1d1d1b;--muted:#77736a;--line:#e6e1d6;--accent:#d97a00;--card:#fff;--soft:#f3efe6}
+  @media (prefers-color-scheme:dark){:root{--bg:#161614;--fg:#ecebe6;--muted:#9b978d;--line:#2f2e2a;--accent:#ffa733;--card:#1e1e1b;--soft:#24231f}}
+  *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:18px/1.7 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  main{max-width:760px;margin:0 auto;padding:28px 16px 80px}a{color:var(--accent)}
+  .crumbs{font-size:13px;color:var(--muted)}h1{font-size:32px;line-height:1.2;margin:.3em 0 .6em}
+  h2{font-size:25px;margin:1.6em 0 .4em}h3{font-size:21px;margin:1.4em 0 .3em}h4,h5{font-size:18px;margin:1em 0 .2em}
+  p{margin:.5em 0}ul,ol{padding-left:1.3em}li{margin:.2em 0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:6px 20px 14px;margin:18px 0}
+  .item+.item{border-top:1px dashed var(--line)}.item{padding-top:10px}
+  .tag{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:700}
+  .item h4{margin-top:2px}
+  details{margin:18px 0;background:var(--soft);border-radius:12px;padding:10px 20px}summary{cursor:pointer;font-weight:600}
+  details p{font-size:16px}
+  table{border-collapse:collapse;width:100%;font-size:16px}td,th{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+  .warn{background:var(--soft);border-left:3px solid var(--accent);padding:8px 12px;font-size:14px;border-radius:6px}
+  .qnote{margin-top:40px;font-size:14px;color:var(--muted)}</style>
+  <script type="application/json" id="lesson-meta">{"slug":"m05-03-more-ways-to-connect-to-the-aws-cloud","module":"Module 5: Networking","module_no":5,"section":"Network Components in the AWS Cloud","lesson":"More Ways to Connect to the AWS Cloud","lesson_no":3,"questions":2,"captured":"2026-10-25T13:54:25.115Z","v":"5.4"}</script></head>
+  <body><main>
+  <div class="crumbs"><a href="index.html">← Spis lekcji</a> · Module 5: Networking › Network Components in the AWS Cloud</div>
+  <h1>More Ways to Connect to the AWS Cloud</h1>
+  <h4>In this lesson, you will learn how to do the following:</h4>
+<ul><li>Describe AWS Client VPN and when to use it.</li><li>Describe AWS Site-to-Site VPN and when to use it.</li><li>Describe AWS PrivateLink and when to use it.</li><li>Describe AWS Direct Connect and when to use it.</li></ul>
+<p>In this lesson, you will explore more hybrid cloud connections with the AWS Cloud. Specifically, you'll learn more ways to connect your clients, datacenters, and sites to the AWS Cloud.</p>
+<h3>Connecting to the AWS Cloud</h3>
+<p>With so many different types of networks, on-premises datacenters, and remote workers, companies need a wide range of ways to connect to the AWS Cloud. In the following section, you will learn four ways to connect to the AWS Cloud:</p>
+<ul><li>AWS Client VPN</li><li>AWS Site-to-Site VPN</li><li>AWS PrivateLink</li><li>AWS Direct Connect</li></ul>
+<h3>Securely connect a remote workforce to AWS Cloud resources</h3>
+<p>Imagine a company with a recent acquisition needing to securely connect their new remote workforce to their AWS Cloud resources. Even the largest companies with worldwide remote workers can quickly scale up and connect to the AWS Cloud. That's where AWS Client VPN can help.</p>
+<p>AWS Client VPN</p>
+<p>— AWS Client VPN is a networking service you can use to connect your remote workers and on-premises networks to the cloud. It is a fully managed, elastic VPN service that automatically scales up or down based on user demand. Because it is a cloud VPN solution, you don’t need to install and manage hardware or try to estimate how many remote users to support at one time.</p>
+<p>Benefits: AWS Client VPN provides advanced authentication, remote access. It is elastic and fully managed.</p>
+<p>Use case: It can be used to quickly scale remote-worker access.</p>
+<p>Client VPN, a managed VPN service, provides secure access to AWS resources and on-premises networks from anywhere. It uses an OpenVPN-based client, and it works with global Regions by using the AWS global network.</p>
+<h3>Securely connect sites to other sites</h3>
+<p>Some companies might want to establish secure, encrypted connections between their on-premises networks like data centers or branch offices and their resources in their Amazon VPC. That's where Site-to-Site VPN can help.</p>
+<p>AWS Site-to-Site VPN</p>
+<p>— Site-to-Site VPN creates a secure connection between your data center or branch offices and your AWS Cloud resources.</p>
+<p>Benefits: Site-to-Site VPN provides high availability, secure and private sessions, and accelerates applications.</p>
+<p>Use cases: It can be used for application migration and secure communication between remote locations.</p>
+<h3>Securely connect resources, even in other VPCs</h3>
+<p>Other companies sometimes need the flexibility to privately connect to resources in other cloud providers as though they were in their own VPC. They need a way to communicate with these resources and don't want the hassle of setting up gateways or site-to-site VPNs. That's where AWS PrivateLink can help.</p>
+<p>AWS PrivateLink</p>
+<p>— AWS PrivateLink is a highly available, scalable technology that you can use to privately connect your VPC to services and resources as if they were in your VPC. You do not need to use an internet gateway, NAT device, public IP address, Direct Connect connection, or AWS Site-to-Site VPN connection to allow communication with AWS services or resources from your private subnets. Instead, you control the specific API endpoints, sites, services, and resources that are reachable from your VPC.</p>
+<p>Benefits: AWS PrivateLink helps you secure your traffic and connect with simplified management rules.</p>
+<p>Use case: It is used for connecting your clients in your VPC to resources, other VPCs, and endpoints.</p>
+<p>Even though the preceding connections are highly available and scalable, traffic jams are possible because you’re using the same connection as other clients. That's why for some use cases, you might need a dedicated private connection with a lot of bandwidth.</p>
+<h3>Dedicated private connections for increased bandwidth</h3>
+<p>AWS Direct Connect</p>
+<p>— Direct Connect is a service that makes it possible for you to establish a dedicated private connection between your network and VPC in the AWS Cloud.</p>
+<p>Benefits: AWS Direct Connect reduces network costs and increases amount of bandwidth.</p>
+<p>To learn more about Direct Connect, expand each of the following three categories.</p>
+<h4>Latency-sensitive applications</h4>
+<p>Direct Connect bypasses the internet and provides a consistent, low-latency network experience. This makes it ideal for applications like video streaming and other real-time applications that require high performance.</p>
+<h4>Large-scale data migration or transfer</h4>
+<p>Direct Connect helps ensure smooth and reliable data transfers at massive scale for real-time analysis, rapid data backup, or broadcast media processing.</p>
+<h4>Hybrid cloud architectures</h4>
+<p>You can use Direct Connect to link your AWS and on-premises networks to build applications that span environments without compromising performance.</p>
+<h3>Additional gateway services</h3>
+<p>There are several different types of gateways you can use to connect your AWS resources. Depending on your needs, you might want to learn more about what they are used for and where to go to learn more. To learn more about these additional gateway types, expand each of the following three categories.</p>
+<h4>AWS Transit Gateway</h4>
+<p>AWS Transit Gateway is used to connect your Amazon VPCs and on-premises networks through a central hub. As your cloud infrastructure expands globally, inter-Region peering connects transit gateways together using the AWS Global Infrastructure. To learn more, refer to AWS Transit Gateways.</p>
+<h4>Network Address Translation (NAT) Gateway</h4>
+<p>A NAT gateway is a NAT service. You can use a NAT gateway so that instances in a private subnet can connect to services outside your VPC but external services can't initiate a connection with those instances. To learn more, refer to NAT gateway.</p>
+<h4>Amazon API Gateway</h4>
+<p>You learned about Application Programming Interface (API)s earlier. Quick refresher, an API defines how different software systems can interact and communicate with each other. The Amazon API Gateway is an AWS service for creating, publishing, maintaining, monitoring, and securing APIs at any scale. To learn more, refer to Amazon API Gateway.</p>
+<p>In this lesson, you identified services that help you connect your AWS Cloud to your clients, datacenters, and sites. To review the four types of connectivity options, choose each of the following flashcards.</p>
+<div class="card"><div class="item"><div class="tag">Card 1/4</div><h4>AWS Direct Connect label and logo</h4><p>AWS Direct Connect</p>
+<p>AWS Direct Connect is a private, dedicated AWS connection to your data center or office.</p></div><div class="item"><div class="tag">Card 2/4</div><h4>AWS PrivateLink label and logo</h4><p>AWS Client VPN</p>
+<p>AWS Client VPN connects your remote workforce to AWS or on-premises with a VPN.</p></div><div class="item"><div class="tag">Card 3/4</div><h4>AWS Site to Site VPN label and logo</h4><p>AWS Site-to-Site VPN</p>
+<p>AWS Site-to-Site VPN is an encrypted network connection to your Amazon VPCs.</p></div><div class="item"><div class="tag">Card 4/4</div><h4>AWS Private Link</h4><p>AWS PrivateLink</p>
+<p>AWS PrivateLink connects your VPC privately to services and resources as though they were in your VPC.</p></div></div>
+  <p class="qnote">Pytania kontrolne (2): <code>pytania\m05-03-more-ways-to-connect-to-the-aws-cloud.md</code> · <a href="../pytania/testownik.html">testownik</a></p>
+  </main><script src="../narzedzia/tlumaczenia.js"></script><script src="dwujezyczny.js"></script></body></html>

@@ -1,0 +1,45 @@
+<!doctype html>
+  <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Infrastructure and Automation</title><style>:root{--bg:#fbfaf7;--fg:#1d1d1b;--muted:#77736a;--line:#e6e1d6;--accent:#d97a00;--card:#fff;--soft:#f3efe6}
+  @media (prefers-color-scheme:dark){:root{--bg:#161614;--fg:#ecebe6;--muted:#9b978d;--line:#2f2e2a;--accent:#ffa733;--card:#1e1e1b;--soft:#24231f}}
+  *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:18px/1.7 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  main{max-width:760px;margin:0 auto;padding:28px 16px 80px}a{color:var(--accent)}
+  .crumbs{font-size:13px;color:var(--muted)}h1{font-size:32px;line-height:1.2;margin:.3em 0 .6em}
+  h2{font-size:25px;margin:1.6em 0 .4em}h3{font-size:21px;margin:1.4em 0 .3em}h4,h5{font-size:18px;margin:1em 0 .2em}
+  p{margin:.5em 0}ul,ol{padding-left:1.3em}li{margin:.2em 0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:6px 20px 14px;margin:18px 0}
+  .item+.item{border-top:1px dashed var(--line)}.item{padding-top:10px}
+  .tag{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:700}
+  .item h4{margin-top:2px}
+  details{margin:18px 0;background:var(--soft);border-radius:12px;padding:10px 20px}summary{cursor:pointer;font-weight:600}
+  details p{font-size:16px}
+  table{border-collapse:collapse;width:100%;font-size:16px}td,th{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+  .warn{background:var(--soft);border-left:3px solid var(--accent);padding:8px 12px;font-size:14px;border-radius:6px}
+  .qnote{margin-top:40px;font-size:14px;color:var(--muted)}</style>
+  <script type="application/json" id="lesson-meta">{"slug":"m04-04-infrastructure-and-automation","module":"Module 4: Going Global","module_no":4,"section":"AWS Global Infrastructure","lesson":"Infrastructure and Automation","lesson_no":4,"questions":1,"captured":"2026-10-25T13:06:19.397Z","v":"5.4"}</script></head>
+  <body><main>
+  <div class="crumbs"><a href="index.html">← Spis lekcji</a> · Module 4: Going Global › AWS Global Infrastructure</div>
+  <h1>Infrastructure and Automation</h1>
+  <h4>In this lesson, you will learn how to do the following:</h4>
+<ul><li>Describe the key features and benefits of CloudFormation.</li><li>Identify use cases for programmatic access, the AWS Management Console, and infrastructure as code.</li></ul>
+<p>At this point, you have a solid understanding of the basics of AWS infrastructure. You know the difference between Regions, Availability Zones, and edge locations. You also recognize the benefits of deploying resources to multiple Regions, Availability Zones, or both, and you can start to make some decisions on which Region or Regions your business would select. In this lesson, you will consider methods for automating these types of deployments. Infrastructure as code (IaC) tools such as CloudFormation can help you scale your resources from one location to another with minimal effort.</p>
+<details><summary>🎬 Video transcript</summary><p>By now, you know that in order to manage AWS resources, you have to interact with AWS APIs. You've learned how to do this using the Management Console, the CLI, and SDKs. But what happens when you need to create and manage multiple resources, possibly across multiple AWS Regions or multiple accounts, and you want to make sure everything is consistent and repeatable? Say you have resources in Region A, and you want to launch them in Region B for high availability.</p><p>You could set everything up manually by clicking through the console or running commands, remembering all of your configurations as you go along, but that's slow, error-prone, and hard to reproduce. Or you can use automation and this is where the concept of infrastructure as code, or IaC, comes in. You can use IaC to define your infrastructure in a file, almost like a blueprint for your AWS architecture. You can then use tools or services to automatically build and configure your resources based on your blueprint specifications.</p><p>You can deploy the same setup multiple times without variation, and you can track changes to your infrastructure more effectively using source control. AWS CloudFormation is an IaC service that you can use to define a wide variety of AWS resources in a declarative way by creating text-based documents called CloudFormation templates. You can define what resources you want to build without specifying the details of exactly how to build it. CloudFormation parses the template and then provisions all of the resources you defined, calling the needed AWS APIs in the background to make it all happen.</p><p>When you deploy the same template in multiple accounts or multiple Regions, identical environments are created across them. There’s less room for human error, because it's a totally automated process. So now, instead of manually setting up resources in Region B to match Region A, you can create a CloudFormation template that defines everything your infrastructure needs. With a single command, AWS provisions those resources exactly as defined.</p><p>And, hey, look at that, you've saved time, reduced the margin for error, and made your architecture more resilient. Nice work. You're really starting to catch on to all of this cloud practitioner stuff.</p></details>
+<h3>CloudFormation</h3>
+<p>CloudFormation is a service that helps you model and set up your AWS resources so that you can spend less time managing those resources and more time focusing on your applications that run in AWS. With CloudFormation, you can define your infrastructure as code. You create a template that describes all the AWS resources that you want (like Amazon Elastic Compute Cloud (Amazon EC2) instances), and CloudFormation takes care of provisioning and configuring those resources for you.</p>
+<p>To learn more, refer to AWS CloudFormation.</p>
+<h3>Interacting with AWS resources</h3>
+<p>As you've learned, there are a number of ways you can operate in the AWS Cloud. To interact with AWS resources, you must invoke AWS APIs. To interact with these APIs, you can use the AWS SDKs, the AWS Command Line Interface (AWS CLI), the AWS Management Console, or IaC tools such as CloudFormation. To review functions and use cases for using these approaches, choose each of the numbered markers.</p>
+<div class="card"><div class="item"><div class="tag">Marker 1/3</div><p>1: Programmatic access</p>
+<p>Programmatic access includes options like the AWS CLI and AWS SDKs. These options are best suited for developers and those familiar with coding languages.</p>
+<p>With the AWS CLI, you manage multiple AWS services directly from the command line. You can automate tasks through scripts.</p>
+<p>AWS SDKs can help integrate AWS services into your applications by providing APIs for various programming languages. AWS provides documentation and sample code to help you get started with using SDKs.</p>
+<p>Use cases for AWS CLI actions and SDKs include the following:</p>
+<ul><li>AWS CLI: Automate routine tasks. For example, you might write a script to provide routine backups for a service such as Amazon Elastic Block Store (Amazon EBS).</li><li>SDKs: Invoke APIs for one part of an application process. For example, you might use an SDK to store user data in an AWS storage service such as Amazon Simple Storage Service (Amazon S3).</li></ul></div><div class="item"><div class="tag">Marker 2/3</div><p>2: AWS Management Console</p>
+<p>The AWS Management Console is a web interface that you use for managing AWS services, offering quick access to services, search functionality, and simplified workflows. The console is a great option for those new to the cloud or users with minimal or no development experience.</p>
+<p>Use cases for using the console include the following:</p>
+<ul><li>Billing and cost optimization dashboards and visualizations</li><li>Services focused on graphical representations, like Amazon QuickSight and Amazon Neptune</li></ul></div><div class="item"><div class="tag">Marker 3/3</div><p>3: Infrastructure as Code</p>
+<p>With IaC tools such as CloudFormation, you can automate resource management across your organization with AWS service integrations offering efficient and repeatable resource creation and management.</p>
+<p>Use cases for CloudFormation include the following:</p>
+<ul><li>Managing infrastructure with DevOps such as continuous integration and delivery (CI/CD) pipelines</li><li>Scaling resources such as Amazon EC2 instances to multi-Region applications in a consistent, repeatable way</li></ul></div></div>
+  <p class="qnote">Pytania kontrolne (1): <code>pytania\m04-04-infrastructure-and-automation.md</code> · <a href="../pytania/testownik.html">testownik</a></p>
+  </main><script src="../narzedzia/tlumaczenia.js"></script><script src="dwujezyczny.js"></script></body></html>

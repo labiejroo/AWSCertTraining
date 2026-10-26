@@ -1,0 +1,74 @@
+<!doctype html>
+  <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Global Networking</title><style>:root{--bg:#fbfaf7;--fg:#1d1d1b;--muted:#77736a;--line:#e6e1d6;--accent:#d97a00;--card:#fff;--soft:#f3efe6}
+  @media (prefers-color-scheme:dark){:root{--bg:#161614;--fg:#ecebe6;--muted:#9b978d;--line:#2f2e2a;--accent:#ffa733;--card:#1e1e1b;--soft:#24231f}}
+  *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:18px/1.7 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  main{max-width:760px;margin:0 auto;padding:28px 16px 80px}a{color:var(--accent)}
+  .crumbs{font-size:13px;color:var(--muted)}h1{font-size:32px;line-height:1.2;margin:.3em 0 .6em}
+  h2{font-size:25px;margin:1.6em 0 .4em}h3{font-size:21px;margin:1.4em 0 .3em}h4,h5{font-size:18px;margin:1em 0 .2em}
+  p{margin:.5em 0}ul,ol{padding-left:1.3em}li{margin:.2em 0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:6px 20px 14px;margin:18px 0}
+  .item+.item{border-top:1px dashed var(--line)}.item{padding-top:10px}
+  .tag{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:700}
+  .item h4{margin-top:2px}
+  details{margin:18px 0;background:var(--soft);border-radius:12px;padding:10px 20px}summary{cursor:pointer;font-weight:600}
+  details p{font-size:16px}
+  table{border-collapse:collapse;width:100%;font-size:16px}td,th{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+  .warn{background:var(--soft);border-left:3px solid var(--accent);padding:8px 12px;font-size:14px;border-radius:6px}
+  .qnote{margin-top:40px;font-size:14px;color:var(--muted)}</style>
+  <script type="application/json" id="lesson-meta">{"slug":"m05-06-global-networking","module":"Module 5: Networking","module_no":5,"section":"Network Components in the AWS Cloud","lesson":"Global Networking","lesson_no":6,"questions":2,"captured":"2026-10-25T13:58:48.409Z","v":"5.4"}</script></head>
+  <body><main>
+  <div class="crumbs"><a href="index.html">← Spis lekcji</a> · Module 5: Networking › Network Components in the AWS Cloud</div>
+  <h1>Global Networking</h1>
+  <h4>In this lesson, you will learn how to do the following:</h4>
+<ul><li>Define what Domain Name System (DNS) is and what it does.</li><li>Describe benefits and use cases of Amazon Route 53.</li><li>Describe benefits and use cases of Amazon CloudFront.</li></ul>
+<p>Global networking</p>
+<p>You touched on Edge Locations briefly in an earlier lesson. Now you will explore three Edge networking services in more detail. You will identify what edge networking is, why it's important, and learn three AWS Edge services. You will cover what they do, the benefits, and how some of them work together.</p>
+<details><summary>🎬 Video transcript</summary><p>Folks, we've been talking a lot about how you interact with your AWS account, the services you deploy, and the applications you build. But how do your customers interact with your apps? Say you are hosting a website. Your customers would typically type that website’s address into their browser, press the Enter key, and before you know it, some magic happens—and the site lights up!</p><p>If you’re wondering where the magic comes in, it’s like this coin that I have here right. I take a bite, ptooie! And it's back. Well, not quite like that, but I'm going to take you through two services, which will help the website example make cents.</p><p>Get it. The first is Amazon Route 53. Route 53 is a domain name service, or DNS. DNS acts as a translation service.</p><p>However, instead of translating between languages, DNS translates website names into Internet Protocol, or IP, addresses. Humans can read website names and computers can read IP addresses. This acts as the bridge between the two. As an example of how it works, we type a website address into our browser and press the Enter key.</p><p>The browser contacts Route 53 and asks it for the corresponding IP address of the site. Let’s say, 192.2.0.2. The browser then knows where to go and gets routed to the website using that IP address. Additionally, Route 53 can route traffic to different endpoints using several different routing policies.</p><p>These include latency-based routing, geolocation, geoproximity, and weighted round robin. If we take geolocation, for example, this policy directs traffic based on where the customer is located. So, if a customer is located in North America, they are routed to one of the North American Regions. Likewise, if they are located in Ireland, they are routed to the Dublin Region.</p><p>You can even use Route 53 to register domain names. Pick a domain name, check if it’s available, and buy it using Route 53. The other service that comes to the rescue is Amazon CloudFront. If you remember, we talked about edge locations earlier in the course.</p><p>These locations serve content as close to customers as possible, and one part of that is a content delivery network, or CDN. Let’s go back to our Regions example. Say we have a user in Seattle, and they want to access a website. To speed this up, we host the site in Oregon and deploy our static web assets, like images and GIFs (or GIFs) in CloudFront's Seattle location.</p><p>Shorter distance equals quicker delivery times. I hope you are content after learning about these two services. So, thanks for following along, and I'm going to disappear just like this red cloth. So let's do this.</p><p>Just pack it in. Abracadabra! Wow. Magic!</p></details>
+<h3>Edge networking services</h3>
+<h4>Secure and speedy networking for user-facing application data</h4>
+<p>Edge networking is the process of bringing information storage and computing abilities closer to the devices that produce that information and the users who consume it. Edge computing is important because organizations often need lower latency access to their data and content. By performing tasks or caching data locally or closer to users, organizations can deliver faster, more responsive experiences while maintaining better control over their infrastructure. There are also many different services that are hosted on the edge, like the DNS service, Amazon Route 53.</p>
+<h4>Translating domain names to IP addresses with DNS</h4>
+<p>Suppose that AnyCompany has a website hosted in the AWS Cloud. Customers enter the web address into their browser and they are able to access the website. This happens because of DNS resolution. DNS resolution involves a customer DNS resolver communicating with a company DNS server.</p>
+<p>You can think of DNS as being the phone book of the internet. DNS resolution is the process of translating a domain name to an IP address.</p>
+<p>To learn more about how DNS works, choose each of the three numbered markers.</p>
+<div class="card"><div class="item"><div class="tag">Marker 1/3</div><p>1: Customer and laptop</p>
+<p>When you enter the domain name into your browser, this request is sent to a customer DNS resolver.</p></div><div class="item"><div class="tag">Marker 2/3</div><p>2: Customer DNS resolver</p>
+<p>The customer DNS resolver asks the company DNS server for the IP address that corresponds to AnyCompany’s website.</p></div><div class="item"><div class="tag">Marker 3/3</div><p>3: AnyCompany's DNS server</p>
+<p>The AnyCompany DNS server responds by providing the IP address for AnyCompany’s website, 192.0.2.0.</p></div></div>
+<p>Amazon Route 53</p>
+<p>— Route 53 is a DNS that provides a reliable and cost-effective way to route end users to internet applications.</p>
+<p>Route 53 directs end users to your resources with globally dispersed DNS servers and automatic scaling. It gives developers and businesses a reliable way to route end users to internet applications hosted in AWS. It connects user requests to infrastructure running in AWS, such as Amazon EC2 instances and load balancers. It also routes users to infrastructure outside of AWS.</p>
+<p>Another feature of Route 53 is the ability to manage the DNS records for domain names. You can register new domain names directly in Route 53. You can also transfer DNS records for existing domain names managed by other domain registrars. This makes it possible for you to manage all of your domain names within a single location.</p>
+<p>Route 53 also works with the next AWS edge networking service, Amazon CloudFront.</p>
+<p>Amazon CloudFront</p>
+<p>— CloudFront is a content delivery network (CDN) service that delivers your content with faster loading times, cost savings, and reliability.</p>
+<p>CloudFront is like a global network of delivery trucks that quickly brings web content to users around the world. Instead of all requests traveling back to one central warehouse (your original server), CloudFront stores copies of your content at locations closer to your users. This means websites, videos, images, and applications load much faster, no matter where your customers are located.</p>
+<p>To learn more, expand each of the following three categories.</p>
+<h4>Streaming video service</h4>
+<p>A company that offers online workout videos uses CloudFront to make sure videos play smoothly without buffering, even during peak exercise times when thousands of users log in simultaneously.</p>
+<h4>Ecommerce website</h4>
+<p>An online store uses CloudFront to deliver product images and web pages quickly during busy shopping seasons. This faster experience keeps customers engaged and reduces abandoned shopping carts.</p>
+<h4>Mobile app</h4>
+<p>A travel app uses CloudFront to deliver map data and images to users' phones quickly to help travelers navigate new cities without frustrating delays.</p>
+<p>Now that you know a little more about CloudFront, here is an example of how it can work for customer requests. The following example describes how Route 53 and CloudFront work together to deliver content to customers. To learn more, choose each of the following numbered markers.</p>
+<div class="card"><div class="item"><div class="tag">Marker 1/4</div><p>1: Customer request</p>
+<p>A customer requests data from the application by going to AnyCompany’s website.</p></div><div class="item"><div class="tag">Marker 2/4</div><p>2: Amazon Route 53</p>
+<p>Amazon Route 53 uses DNS resolution to identify AnyCompany.com’s corresponding IP address, 192.0.2.0. This information is sent back to the customer.</p></div><div class="item"><div class="tag">Marker 3/4</div><p>3: CloudFront</p>
+<p>The customer’s request is sent to the nearest edge location through CloudFront.</p></div><div class="item"><div class="tag">Marker 4/4</div><p>4: Application Load Balancer</p>
+<p>Amazon CloudFront connects to the Application Load Balancer, which sends the incoming packet to an Amazon EC2 instance.</p></div></div>
+<p>AWS Global Accelerator</p>
+<p>— Global Accelerator is a service that uses the AWS global network to improve application availability, performance, and security. It uses intelligent traffic routing and fast failover if something goes wrong in one of your application locations.</p>
+<p>Global Accelerator is a networking service that helps your applications run faster and more reliably across the globe. Think of it like creating express lanes on the internet highway specifically for your application's traffic. Instead of your users' requests taking the regular, sometimes congested internet routes, Global Accelerator directs traffic through the AWS private global network—getting your users to your application faster and more reliably.</p>
+<p>To learn more on AWS Global Accelerator, expand each of the two example use cases.</p>
+<h4>Global gaming company</h4>
+<p>A gaming company uses Global Accelerator to reduce lag and provide smoother gameplay for players around the world. Players in Tokyo, New York, and London all experience similar, responsive gameplay because their connections are optimized.</p>
+<h4>Financial services application</h4>
+<p>A banking app uses Global Accelerator to ensure their customers always have fast, reliable access to their accounts. Even during peak times or when network conditions in one area are poor, customers can check balances and make transactions without frustrating delays.</p>
+<p>Several AWS edge services are similar and are used in global networking solutions. To review these AWS edge services, choose each of the following flashcards.</p>
+<div class="card"><div class="item"><div class="tag">Card 1/3</div><h4>Amazon Route 53</h4><p>Amazon Route 53</p>
+<p>Route 53 is a highly available and scalable cloud DNS service.</p></div><div class="item"><div class="tag">Card 2/3</div><h4>Amazon CloudFront</h4><p>Amazon CloudFront</p>
+<p>CloudFront is a CDN service that delivers your content with low latency and high speeds.</p></div><div class="item"><div class="tag">Card 3/3</div><h4>AWS Global Accelerator</h4><p>AWS Global Accelerator</p>
+<p>Global Accelerator is a service that uses the AWS global network to improve application availability, performance, and security.</p></div></div>
+  <p class="qnote">Pytania kontrolne (2): <code>pytania\m05-06-global-networking.md</code> · <a href="../pytania/testownik.html">testownik</a></p>
+  </main><script src="../narzedzia/tlumaczenia.js"></script><script src="dwujezyczny.js"></script></body></html>
