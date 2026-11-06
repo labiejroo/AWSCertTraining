@@ -1,0 +1,68 @@
+<!doctype html>
+  <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>EC2 Instance Store and Amazon Elastic Block Store (Amazon EBS)</title><style>:root{--bg:#fbfaf7;--fg:#1d1d1b;--muted:#77736a;--line:#e6e1d6;--accent:#d97a00;--card:#fff;--soft:#f3efe6}
+  @media (prefers-color-scheme:dark){:root{--bg:#161614;--fg:#ecebe6;--muted:#9b978d;--line:#2f2e2a;--accent:#ffa733;--card:#1e1e1b;--soft:#24231f}}
+  *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:18px/1.7 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  main{max-width:760px;margin:0 auto;padding:28px 16px 80px}a{color:var(--accent)}
+  .crumbs{font-size:13px;color:var(--muted)}h1{font-size:32px;line-height:1.2;margin:.3em 0 .6em}
+  h2{font-size:25px;margin:1.6em 0 .4em}h3{font-size:21px;margin:1.4em 0 .3em}h4,h5{font-size:18px;margin:1em 0 .2em}
+  p{margin:.5em 0}ul,ol{padding-left:1.3em}li{margin:.2em 0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:6px 20px 14px;margin:18px 0}
+  .item+.item{border-top:1px dashed var(--line)}.item{padding-top:10px}
+  .tag{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:700}
+  .item h4{margin-top:2px}
+  details{margin:18px 0;background:var(--soft);border-radius:12px;padding:10px 20px}summary{cursor:pointer;font-weight:600}
+  details p{font-size:16px}
+  table{border-collapse:collapse;width:100%;font-size:16px}td,th{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+  .warn{background:var(--soft);border-left:3px solid var(--accent);padding:8px 12px;font-size:14px;border-radius:6px}
+  .qnote{margin-top:40px;font-size:14px;color:var(--muted)}</style>
+  <script type="application/json" id="lesson-meta">{"slug":"m06-02-ec2-instance-store-and-amazon-elastic-block-store-amazon-ebs","module":"Module 6: Storage","module_no":6,"section":"Block Storage","lesson":"EC2 Instance Store and Amazon Elastic Block Store (Amazon EBS)","lesson_no":2,"questions":3,"captured":"2026-10-29T18:35:24.864Z","v":"5.4"}</script></head>
+  <body><main>
+  <div class="crumbs"><a href="index.html">← Spis lekcji</a> · Module 6: Storage › Block Storage</div>
+  <h1>EC2 Instance Store and Amazon Elastic Block Store (Amazon EBS)</h1>
+  <h4>In this lesson, you will learn how to do the following:</h4>
+<ul><li>Describe Amazon EC2 instance store, including its benefits and use cases.</li><li>Describe Amazon EBS, including its benefits and use cases.</li></ul>
+<p>AWS offers two types of block storage: Amazon EC2 instance store and Amazon Elastic Block Store, or Amazon EBS. In this lesson, you will learn about the different use cases and benefits for Amazon EC2 instance store and Amazon EBS.</p>
+<details><summary>🎬 Video transcript</summary><p>When you're using Amazon EC2 to run your business applications, those applications need access to CPU, memory, network, and storage. EC2 instances give you access to all of those components but for right now let's focus on the storage access. As applications run, they will oftentimes need access to block level storage. You can think of block level storage as a place to store files.</p><p>A file being a series of bytes that are stored in blocks on disk. When a file is updated, the whole series of blocks aren't all overwritten. Instead, it updates just the pieces that need changed. This makes it an efficient storage type when working with applications like databases, enterprise software, or file systems.</p><p>When you use your laptop, you are accessing block level storage. In this case, I'm talking about the hard drive for your laptop. EC2 instances have hard drives too, and there are a few different types. Depending on the type of the EC2 instance you launch, it can provide you with physically attached local storage called instance store volumes.</p><p>The catch here is that because this volume is attached to the underlying physical host, if you stop or terminate your EC2 instance, all of the data written to the instance store volume will be deleted. The reason for this is that if you start your instance from a stopped state, it's likely that that EC2 instance will start up on another host, a host where that volume does not exist. Because of the ephemeral or temporary nature of instance store volumes, they are useful in situations where you can afford to lose the data being written to the drive. Like, if you need scratch space for heavy calculations, or data processing.</p><p>However, there are many use cases where you need persistent data volumes. You don't want your entire database getting deleted every time you stop an EC2 instance. Don't worry, this is where a service called Amazon Elastic Block Store, or Amazon EBS, comes into play. With Amazon EBS you can create virtual hard drives, which we call EBS volumes, that you can attach to your EC2 instances.</p><p>These are separate drives from the local instance store volumes, and they aren't tied directly to the host that your EC2 instance is running on. This means that the data that you write to an EBS volume can persist between stops and starts of an EC2 instance. EBS volumes come in all different sizes and types. How this works is you define the size, type, and configurations of the volume you need.</p><p>Provision the volume, and then attach it to your EC2 instance. From there, you can configure your application to write to the volume, and you're good to go. If you stop and then start the EC2 instance, the data in the volume remains. Now that we've covered the main features of block storage, it's also good to know that EBS offers different volume types that give you different levels of performance, and offer different pricing.</p><p>Performance for EBS volumes is measured in IOPs, or input output per second. All right, we're not done with EBS just yet. Stay tuned to learn more about EBS snapshots.</p></details>
+<h3>Amazon EC2 instance store</h3>
+<p>Amazon EC2 instance store isn't a stand-alone AWS block storage service. Rather, it refers to the block-level storage that is physically attached to the EC2 instance host computer. Depending on the type of instance, EC2 instance store might come attached as the default storage. Since its data is lost when an instance is stopped or terminated, EC2 instance store is best for temporary memory-based storage needs like buffers, caches, and scratch data. It is not recommended for applications that require data retention.</p>
+<h3>Key takeaway: no data persistence</h3>
+<p>An Amazon EC2 instance store provides temporary block-level storage for an Amazon EC2 instance. This means that if you stop or terminate an Amazon EC2 instance, all the data written to the attached instance store is deleted.</p>
+<p>To learn how Amazon EC2 instance store manages data when an EC2 instance is stopped, choose each of the following three numbered markers.</p>
+<div class="card"><div class="item"><div class="tag">Marker 1/3</div><p>1: Step 1</p>
+<p>An EC2 instance is running with data being stored in an EC2 instance store.</p></div><div class="item"><div class="tag">Marker 2/3</div><p>2: Step 2</p>
+<p>The EC2 instance is stopped.</p></div><div class="item"><div class="tag">Marker 3/3</div><p>3: Step 3</p>
+<p>After the EC2 instance is stopped or terminated, all data within the EC2 instance store for that instance is lost.</p></div></div>
+<p>Benefits</p>
+<h4>Automatically available storage</h4>
+<p>Instance store volumes come automatically attached to many EC2 instance types, providing temporary block-level storage at no additional cost. It's physically connected to the host computer, offering high I/O performance for data that disappears when the instance stops.</p>
+<h4>Cost effective</h4>
+<p>Because EC2 instance store is included in the EC2 instance price, you don't have to pay any additional fees for storage. It's ideal for temporary storage needs like buffers, caches, or scratch data, potentially reducing expenses for applications that don't require persistent storage.</p>
+<h4>High performance</h4>
+<p>EC2 instance store offers extremely low-latency storage directly attached to the host server of your EC2 instance. This proximity means exceptionally high I/O performance, making it ideal for temporary storage of data requiring fast processing.</p>
+<h3>Amazon Elastic Block Store (EBS)</h3>
+<p>Amazon EBS provides persistent block-level storage volumes for use with Amazon EC2 instances. EBS volumes act like external hard drives, offering consistent and low-latency performance for workloads like databases and file systems.</p>
+<p>EBS volumes can be conveniently backed up, resized, and attached to different EC2 instances. To create an EBS volume, you define the configuration for things like volume size and type. After the volume has been created, it can be attached to an Amazon EC2 instance. Because EBS volumes are for data that needs to persist, it’s important to back up the data. It's recommended that you take incremental backups of EBS volumes by creating Amazon EBS snapshots.</p>
+<h3>Key takeaway: data persistence</h3>
+<p>Amazon EBS provides block-level storage volumes that you can use with Amazon EC2 instances. If you stop or terminate an Amazon EC2 instance, all the data on the attached EBS volume remains available.</p>
+<p>To learn how Amazon EBS manages data when an EC2 instance is stopped, choose each of the following three numbered markers.</p>
+<div class="card"><div class="item"><div class="tag">Marker 1/3</div><p>1: Step 1</p>
+<p>An EC2 instance is running with data being stored in an attached EBS volume.</p></div><div class="item"><div class="tag">Marker 2/3</div><p>2: Step 2</p>
+<p>The EC2 instance is stopped.</p></div><div class="item"><div class="tag">Marker 3/3</div><p>3: Step 3</p>
+<p>After the EC2 instance is stopped or terminated, all data stored within the EBS volume is retained.</p></div></div>
+<h3>Use cases</h3>
+<p>Some practical use cases of Amazon EBS include database hosting, backup storage for applications, and rapid deployment of development environments using volume snapshots.</p>
+<h3>Benefits</h3>
+<p>EBS volumes support data portability through their ability to detach and reattach to instances as needed. There are many practical reasons you might choose to do this.</p>
+<h4>Data migration</h4>
+<p>EBS volumes can be easily migrated between Availability Zones using snapshots. The snapshots provide a simple way to move data across regions or create copies.</p>
+<h4>Instance type changes</h4>
+<p>Since EBS volumes remain independent of EC2 instances, it's not complicated to attach them to different instance types. This flexibility lets you upgrade or downgrade instances without losing data.</p>
+<h4>Disaster recovery</h4>
+<p>EBS snapshots provide reliable backup solutions that can be restored in different regions during emergencies. Regular automated snapshots ensure your data remains protected and quickly recoverable.</p>
+<h4>Cost optimization</h4>
+<p>EBS volumes can be modified to different types and sizes to match actual usage patterns. You can switch between storage types or adjust capacity without downtime.</p>
+<h4>Performance tuning</h4>
+<p>Amazon EBS offers various volume types to match different workload requirements and IOPS needs. You can adjust volume performance characteristics on the fly to meet changing application demands.</p>
+  <p class="qnote">Pytania kontrolne (3): <code>pytania\m06-02-ec2-instance-store-and-amazon-elastic-block-store-amazon-ebs.md</code> · <a href="../pytania/testownik.html">testownik</a></p>
+  </main><script src="../narzedzia/tlumaczenia.js"></script><script src="dwujezyczny.js"></script></body></html>

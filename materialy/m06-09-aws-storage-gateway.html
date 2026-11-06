@@ -1,0 +1,47 @@
+<!doctype html>
+  <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AWS Storage Gateway</title><style>:root{--bg:#fbfaf7;--fg:#1d1d1b;--muted:#77736a;--line:#e6e1d6;--accent:#d97a00;--card:#fff;--soft:#f3efe6}
+  @media (prefers-color-scheme:dark){:root{--bg:#161614;--fg:#ecebe6;--muted:#9b978d;--line:#2f2e2a;--accent:#ffa733;--card:#1e1e1b;--soft:#24231f}}
+  *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:18px/1.7 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  main{max-width:760px;margin:0 auto;padding:28px 16px 80px}a{color:var(--accent)}
+  .crumbs{font-size:13px;color:var(--muted)}h1{font-size:32px;line-height:1.2;margin:.3em 0 .6em}
+  h2{font-size:25px;margin:1.6em 0 .4em}h3{font-size:21px;margin:1.4em 0 .3em}h4,h5{font-size:18px;margin:1em 0 .2em}
+  p{margin:.5em 0}ul,ol{padding-left:1.3em}li{margin:.2em 0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:6px 20px 14px;margin:18px 0}
+  .item+.item{border-top:1px dashed var(--line)}.item{padding-top:10px}
+  .tag{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:700}
+  .item h4{margin-top:2px}
+  details{margin:18px 0;background:var(--soft);border-radius:12px;padding:10px 20px}summary{cursor:pointer;font-weight:600}
+  details p{font-size:16px}
+  table{border-collapse:collapse;width:100%;font-size:16px}td,th{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+  .warn{background:var(--soft);border-left:3px solid var(--accent);padding:8px 12px;font-size:14px;border-radius:6px}
+  .qnote{margin-top:40px;font-size:14px;color:var(--muted)}</style>
+  <script type="application/json" id="lesson-meta">{"slug":"m06-09-aws-storage-gateway","module":"Module 6: Storage","module_no":6,"section":"Additional Storage Solutions","lesson":"AWS Storage Gateway","lesson_no":9,"questions":2,"captured":"2026-10-30T16:03:27.441Z","v":"5.4"}</script></head>
+  <body><main>
+  <div class="crumbs"><a href="index.html">← Spis lekcji</a> · Module 6: Storage › Additional Storage Solutions</div>
+  <h1>AWS Storage Gateway</h1>
+  <h4>In this lesson, you will learn how to do the following:</h4>
+<ul><li>Describe AWS Storage Gateway, including its benefits and use cases.</li><li>Describe the three available gateway types in Storage Gateway.</li></ul>
+<p>AWS Storage Gateway bridges the gap between your traditional infrastructure and the cloud. It's a hybrid cloud storage service that gives you on-premises access to virtually unlimited cloud storage. In this lesson, you will learn about implementing a hybrid storage environment using Storage Gateway.</p>
+<details><summary>🎬 Video transcript</summary><p>Although the cloud offers lots of options, some organizations still run much of their business using an on-premises environment. Look, if it works, don't break it! But, if those organizations still want to take advantage of the cloud to say, perform backups, that's a very valid use case. This is where AWS Storage Gateway comes in handy.</p><p>It's a hybrid cloud storage service that is like the bridge giving you access to virtually unlimited cloud storage. There's minimal or no rework needed, and everything is seamlessly backed up to AWS. Storage Gateway comes in three types: S3 File Gateway, Volume Gateway, and Tape Gateway. S3 File Gateway is ideal for storing files directly in Amazon S3.</p><p>Even better, you can access these files from any AWS application or service. Volume Gateway is a bit different in that it creates block storage volumes locally. On-premises applications can then use these volumes. The key benefit is that files are automatically backed up to AWS as Amazon EBS snapshots.</p><p>The final type, Tape Gateway, is super useful for businesses still using physical tape backups. It provides that seamless migration of tape data into the cloud. As for some example use cases along with benefits, Storage Gateway is a lifesaver for disaster recovery. Why?</p><p>Because you can keep a backup of your critical data in the cloud without changing your existing backup workflows. It's like a safety net for your current safety net. Like a safety-safety net, It's also ideal for data archiving. You can move your infrequently accessed data to the cloud for long-term storage.</p><p>Whether you want to back up, archive, or just start your cloud journey, AWS Storage Gateway has you covered. And if you like it, cool! You don't? That's cool too!</p><p>We want the best solution for our customers, even if it means using the existing one. So don't stress, just keep learning!</p></details>
+<h3>AWS Storage Gateway</h3>
+<p>Storage Gateway is a hybrid cloud storage service that makes it possible to seamlessly integrate on-premises environments with AWS Cloud storage. You can use it to extend your local storage to the cloud while maintaining low-latency access to frequently used data.</p>
+<p>You can use Storage Gateway to streamline storage management and reduce costs for practical hybrid cloud storage use cases. These include moving backups to the cloud, using on-premises file shares backed by cloud storage, and providing low-latency access to data in AWS for on-premises applications.</p>
+<h3>Benefits</h3>
+<h4>Seamless integration</h4>
+<p>Storage Gateway enables smooth connectivity between on-premises applications and AWS Cloud storage, preserving existing workflows and minimizing disruption.</p>
+<h4>Improved data management</h4>
+<p>Storage Gateway provides centralized management of hybrid storage environments, enhancing accessibility, security, and compliance.</p>
+<h4>Local caching</h4>
+<p>Storage Gateway locally keeps frequently accessed data for quick access while managing less-used data in the cloud.</p>
+<h4>Cost optimization</h4>
+<p>Storage Gateway reduces on-premises storage costs by using cloud storage for data archiving, backup, and disaster recovery purposes.</p>
+<h3>Gateway types</h3>
+<p>Storage Gateway offers three distinct types of gateways to meet different hybrid storage needs. Each gateway type is designed to address specific use cases and workload requirements.</p>
+<div class="card"><div class="item"><div class="tag">Slide 1/3</div><h4>Amazon S3 File Gateway</h4><p>Amazon S3 File Gateway bridges your local environment with Amazon S3. It provides on-premises applications with access to virtually unlimited cloud storage through familiar file protocols. S3 File Gateway makes it possible to store and retrieve cloud objects using familiar file operations.</p>
+<p>When you deploy an S3 File Gateway, it appears to your local systems as a standard file server. Files written to this server are automatically uploaded to Amazon S3 while maintaining local access to recently used data through intelligent caching. This means your applications can continue working with files as they always have while the actual data is securely stored in the AWS Cloud.</p></div><div class="item"><div class="tag">Slide 2/3</div><h4>Volume Gateway</h4><p>With Volume Gateway, you create virtual storage volumes while maintaining local access to your data. It essentially functions as a bridge between your on-premises infrastructure and AWS Cloud storage by presenting your cloud data as iSCSI volumes that can be mounted by your existing applications.</p>
+<p>Volume Gateway operates in two main configurations:</p>
+<ul><li>Cached volume mode stores primary data in the cloud while frequently accessed data is cached locally for low-latency access.</li><li>Stored volume mode locally keeps your complete dataset while asynchronously backing it up to the cloud as EBS snapshots.</li></ul></div><div class="item"><div class="tag">Slide 3/3</div><h4>Tape Gateway</h4><p>Tape Gateway makes it possible to replace physical tape infrastructure with virtual tape capabilities while benefitting from the durability and scalability of AWS Cloud storage. Tape Gateway provides an interface that works with existing tape backup software, making the transition from physical tapes to cloud storage seamless.</p>
+<p>When you deploy a Tape Gateway, it presents itself to your backup applications as standard tape hardware. Your backup software writes data to these virtual tapes just as it would to physical tapes and stored in Amazon S3. You can also configure Tape Gateway to automatically transition less frequently accessed data to a more cost-effective storage class for long-term retention.</p></div></div>
+  <p class="qnote">Pytania kontrolne (2): <code>pytania\m06-09-aws-storage-gateway.md</code> · <a href="../pytania/testownik.html">testownik</a></p>
+  </main><script src="../narzedzia/tlumaczenia.js"></script><script src="dwujezyczny.js"></script></body></html>

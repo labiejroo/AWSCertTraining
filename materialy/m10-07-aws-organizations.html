@@ -1,0 +1,44 @@
+<!doctype html>
+  <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AWS Organizations</title><style>:root{--bg:#fbfaf7;--fg:#1d1d1b;--muted:#77736a;--line:#e6e1d6;--accent:#d97a00;--card:#fff;--soft:#f3efe6}
+  @media (prefers-color-scheme:dark){:root{--bg:#161614;--fg:#ecebe6;--muted:#9b978d;--line:#2f2e2a;--accent:#ffa733;--card:#1e1e1b;--soft:#24231f}}
+  *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:18px/1.7 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  main{max-width:760px;margin:0 auto;padding:28px 16px 80px}a{color:var(--accent)}
+  .crumbs{font-size:13px;color:var(--muted)}h1{font-size:32px;line-height:1.2;margin:.3em 0 .6em}
+  h2{font-size:25px;margin:1.6em 0 .4em}h3{font-size:21px;margin:1.4em 0 .3em}h4,h5{font-size:18px;margin:1em 0 .2em}
+  p{margin:.5em 0}ul,ol{padding-left:1.3em}li{margin:.2em 0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:6px 20px 14px;margin:18px 0}
+  .item+.item{border-top:1px dashed var(--line)}.item{padding-top:10px}
+  .tag{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:700}
+  .item h4{margin-top:2px}
+  details{margin:18px 0;background:var(--soft);border-radius:12px;padding:10px 20px}summary{cursor:pointer;font-weight:600}
+  details p{font-size:16px}
+  table{border-collapse:collapse;width:100%;font-size:16px}td,th{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+  .warn{background:var(--soft);border-left:3px solid var(--accent);padding:8px 12px;font-size:14px;border-radius:6px}
+  .qnote{margin-top:40px;font-size:14px;color:var(--muted)}</style>
+  <script type="application/json" id="lesson-meta">{"slug":"m10-07-aws-organizations","module":"Module 10: Monitoring, Compliance, and Governance in the AWS Cloud","module_no":10,"section":"Monitoring and Compliance Services","lesson":"AWS Organizations","lesson_no":7,"questions":1,"captured":"2026-11-06T14:51:05.306Z","v":"5.4"}</script></head>
+  <body><main>
+  <div class="crumbs"><a href="index.html">← Spis lekcji</a> · Module 10: Monitoring, Compliance, and Governance in the AWS Cloud › Monitoring and Compliance Services</div>
+  <h1>AWS Organizations</h1>
+  <h4>In this lesson, you will learn how to do the following:</h4>
+<ul><li>Define the benefits and use cases of AWS Organizations.</li><li>Describe key concepts of how AWS Organizations works.</li></ul>
+<p>In the previous lesson, you learned about compliance and governance. Now you will explore an AWS service that helps consolidate and manage multiple AWS accounts.</p>
+<details><summary>🎬 Video transcript</summary><p>With your first foray into the AWS Cloud, you will most likely start with a single AWS account. This is great if you are experimenting with AWS and moving test workloads. However, as your company’s AWS footprint matures, you will start to create more and more separate AWS Accounts. These accounts will all have specialized purposes like production and non-production, or an account just for your developers, and another just for your infrastructure team.</p><p>These accounts could also limit access to certain AWS Services and have other customizations that are not shared across all accounts. Moreover, you need a way to manage your accounts since doing it manually is not ideal. This is where AWS Organizations can help. Organizations is an account management service that allows for the consolidation and central management of multiple AWS accounts within an organization.</p><p>It allows you to manage billing, access, compliance, and security as well as share resources across accounts. You designate a main, or parent account, and all other accounts are secondary, or children, to that main account. Billing is consolidated into the primary account. So, all the bills for the children accounts roll up to the parent account.</p><p>Then, discounts are applied at the top level. Another feature is hierarchical account groupings to meet security, compliance, or budgetary needs. For example, you can group all the accounts into organizational units or OUs. So, if you have accounts that must access only the services that meet certain regulatory requirements, you can put those accounts into one, single OU.</p><p>Or if, say, you have accounts that fall under the developer OU, you can group them accordingly. As an admin of the primary account of an organization, you even have control over the AWS services and API actions that each account can access. You can even use service control policies, or SCPs, to specify the maximum permissions for member accounts in the organization. In essence, with SCPs you can control which services, resources, and individual API actions, the users and roles in each member account can access.</p><p>So, consider using Organizations, sooner rather than later, so you don’t end up with ghost AWS accounts. After all, nobody wants ghosts running around. That’s spooky.</p></details>
+<p>As companies grow and scale, the management and governance of disparate AWS accounts can be a challenge. That's where AWS Organizations can help.</p>
+<h3>AWS Organizations</h3>
+<p>— Organizations helps you centrally manage and govern your environment as you grow and scale your AWS resources. It helps you manage policies for groups of accounts and automate account creation.</p>
+<p>Benefits: Organizations provides several benefits like quickly scaling your environment by programmatically creating new AWS accounts for resources and teams. It also helps by simplifying permission management through SCPs and managing and optimizing costs across your AWS accounts and resources.</p>
+<p>Use cases: It can be used for automating AWS account creation, providing tools and access for your security teams, controlling user access to designated services, and sharing common resources across accounts.</p>
+<h3>Key concepts of Organizations</h3>
+<p>An organization is a collection of AWS accounts that you can manage centrally and organize into a hierarchical, tree-like structure with a root at the top and organizational units (OUs) nested under the root. Each account can be located directly in the root or placed in one of the OUs in the hierarchy.</p>
+<p>To learn more about how AWS Organizations works, choose each of the following four numbered markers.</p>
+<div class="card"><div class="item"><div class="tag">Marker 1/5</div><p>1: AWS Organizations</p>
+<p>AWS Organizations is used to consolidate and manage multiple AWS accounts within a central location. When you create an organization, it automatically creates a root, which is the parent container for all the accounts in your organization.</p></div><div class="item"><div class="tag">Marker 2/5</div><p>2: Management account</p>
+<p>The management account is the central AWS account that creates and manages the organization. It's responsible for overall control and governance.</p></div><div class="item"><div class="tag">Marker 3/5</div><p>3: Organizational unit (OU)</p>
+<p>An organizational unit (OU) is a logical grouping of accounts in an AWS Organization. OUs can contain member accounts or nested OUs.</p></div><div class="item"><div class="tag">Marker 4/5</div><p>4: Service control policies (SCP)</p>
+<p>An SCP is a policy that lets you place restrictions on the AWS services, resources, and individual API actions that users and roles in each account can access. SCPs can be applied to either OUs or individual member accounts.</p></div><div class="item"><div class="tag">Marker 5/5</div><p>5: Member account not in an OU</p>
+<p>If you have a member account that has unique requirements that do not overlap with those of an organizational unit, you can add them to the organization. They do not have to be placed under an OU. This account can still take advantage of benefits such as consolidated billing.</p></div></div>
+<p>In designing your organization, you should consider the business, security, and regulatory needs of each department. You use this information to decide which departments group together in OUs.</p>
+<p>To learn more about centrally managing your environment as you scale your AWS resources, refer to the AWS Organizations User Guide.</p>
+  <p class="qnote">Pytania kontrolne (1): <code>pytania\m10-07-aws-organizations.md</code> · <a href="../pytania/testownik.html">testownik</a></p>
+  </main><script src="../narzedzia/tlumaczenia.js"></script><script src="dwujezyczny.js"></script></body></html>

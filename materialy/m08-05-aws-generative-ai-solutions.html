@@ -1,0 +1,52 @@
+<!doctype html>
+  <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AWS Generative AI Solutions</title><style>:root{--bg:#fbfaf7;--fg:#1d1d1b;--muted:#77736a;--line:#e6e1d6;--accent:#d97a00;--card:#fff;--soft:#f3efe6}
+  @media (prefers-color-scheme:dark){:root{--bg:#161614;--fg:#ecebe6;--muted:#9b978d;--line:#2f2e2a;--accent:#ffa733;--card:#1e1e1b;--soft:#24231f}}
+  *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:18px/1.7 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  main{max-width:760px;margin:0 auto;padding:28px 16px 80px}a{color:var(--accent)}
+  .crumbs{font-size:13px;color:var(--muted)}h1{font-size:32px;line-height:1.2;margin:.3em 0 .6em}
+  h2{font-size:25px;margin:1.6em 0 .4em}h3{font-size:21px;margin:1.4em 0 .3em}h4,h5{font-size:18px;margin:1em 0 .2em}
+  p{margin:.5em 0}ul,ol{padding-left:1.3em}li{margin:.2em 0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:6px 20px 14px;margin:18px 0}
+  .item+.item{border-top:1px dashed var(--line)}.item{padding-top:10px}
+  .tag{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:700}
+  .item h4{margin-top:2px}
+  details{margin:18px 0;background:var(--soft);border-radius:12px;padding:10px 20px}summary{cursor:pointer;font-weight:600}
+  details p{font-size:16px}
+  table{border-collapse:collapse;width:100%;font-size:16px}td,th{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+  .warn{background:var(--soft);border-left:3px solid var(--accent);padding:8px 12px;font-size:14px;border-radius:6px}
+  .qnote{margin-top:40px;font-size:14px;color:var(--muted)}</style>
+  <script type="application/json" id="lesson-meta">{"slug":"m08-05-aws-generative-ai-solutions","module":"Module 8: AI/ML and Data Analytics","module_no":8,"section":"AI/ML on AWS","lesson":"AWS Generative AI Solutions","lesson_no":5,"questions":2,"captured":"2026-11-02T17:20:27.027Z","v":"5.4"}</script></head>
+  <body><main>
+  <div class="crumbs"><a href="index.html">← Spis lekcji</a> · Module 8: AI/ML and Data Analytics › AI/ML on AWS</div>
+  <h1>AWS Generative AI Solutions</h1>
+  <h4>In this lesson, you will learn how to do the following:</h4>
+<ul><li>Describe the benefits and purpose of the generative AI services offered by AWS.</li></ul>
+<p>Let's examine a few AWS generative AI solutions in more detail. This includes Amazon SageMaker JumpStart for accelerating model development and Amazon Bedrock for deploying high-performing FMs through a single API. Amazon Q integrates with your existing information repositories to answer questions and helps generate insights and new content.</p>
+<h3>Amazon SageMaker JumpStart</h3>
+<p>SageMaker JumpStart is a machine learning hub within SageMaker AI that accelerates the process of building, training, and deploying ML models. SageMaker JumpStart offers a library of pre-built ML solutions across various domains such as computer vision, NLP, and tabular data. These pre-trained models can be fine-tuned to suit your specific needs and deployed with just a few clicks.</p>
+<h3>Common use cases for SageMaker JumpStart</h3>
+<p>To learn more about some common SageMaker JumpStart use cases, choose each of the following flashcards.</p>
+<div class="card"><div class="item"><div class="tag">Card 1/3</div><h4>Rapid ML model deployments</h4><p>Rapid ML model deployments</p>
+<p>Quickly deploy pre-trained models without extensive ML expertise.</p></div><div class="item"><div class="tag">Card 2/3</div><h4>Custom fine-tuned solutions</h4><p>Custom fine-tuned solutions</p>
+<p>Fine-tune pre-trained FMs with your domain-specific data.</p></div><div class="item"><div class="tag">Card 3/3</div><h4>ML experiments and prototypes</h4><p>ML experiments and prototypes</p>
+<p>Compare performance for different models before committing to a specific approach.</p></div></div>
+<h3>Amazon Bedrock</h3>
+<p>Amazon Bedrock is a fully managed service that was specifically designed for working with large foundation models and building generative AI applications. It provides access to FMs from Amazon and leading AI startups, such as Claude and Stable Diffusion, all through a single unified API. With Amazon Bedrock, you can quickly experiment with FMs, fine-tune them with your own data, and seamlessly integrate them into your AWS applications.</p>
+<h3>Common use cases for Amazon Bedrock</h3>
+<p>To learn about some common Amazon Bedrock use cases, choose each of the following flashcards.</p>
+<div class="card"><div class="item"><div class="tag">Card 1/3</div><h4>Enterprise-grade generative AI</h4><p>Enterprise-grade generative AI</p>
+<p>Build production-ready generative AI applications with enterprise-level security, privacy, and scalability.</p></div><div class="item"><div class="tag">Card 2/3</div><h4>Multimodal content generation</h4><p>Multimodal content generation</p>
+<p>Create applications that can generate multiple content types, such as text and images.</p></div><div class="item"><div class="tag">Card 3/3</div><h4>Advanced conversational AI</h4><p>Advanced conversational AI</p>
+<p>Develop advanced conversational agents that connect to your enterprise data to provide accurate responses.</p></div></div>
+<h3>Amazon Q products</h3>
+<p>Amazon Q is a generative AI assistant that can help companies streamline processes, get to decisions faster, and improve employee productivity. It can help every employee gain insights into their data and accelerate their tasks.</p>
+<p>Amazon Q consists of the following two products.</p>
+<p>Amazon Q Business</p>
+<p>— Amazon Q Business can answer pressing questions, help solve problems, and take actions using the data and expertise found in your company's information repositories. Amazon Q Business provides this tailored assistance with a secure connection to commonly used systems.</p>
+<p>Use cases: Information requests, automated workflows, and insight extraction</p>
+<p>Amazon Q Developer</p>
+<p>— Amazon Q Developer provides code recommendations to accelerate development for coding languages including C#, Java, JavaScript, Python, and TypeScript applications. It integrates with multiple IDEs and helps developers write code faster by generating entire functions and logical blocks of code.</p>
+<p>Use cases: Faster code generation, improved reliability and security, and automated code reviews</p>
+  <p class="qnote">Pytania kontrolne (2): <code>pytania\m08-05-aws-generative-ai-solutions.md</code> · <a href="../pytania/testownik.html">testownik</a></p>
+  </main><script src="../narzedzia/tlumaczenia.js"></script><script src="dwujezyczny.js"></script></body></html>

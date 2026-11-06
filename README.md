@@ -6,7 +6,7 @@ Materiały z kursu AWS Skill Builder (Cloud Practitioner) w wersji dwujęzycznej
 
 | Folder | Zawartość |
 |---|---|
-| `materialy/` | lekcje (EN) + `dwujezyczny.js`, który układa je w dwie kolumny PL / EN; start: `materialy/index.html` |
+| `materialy/` | lekcje (EN) + `dwujezyczny.js`, który układa je w dwie kolumny PL / EN; start: `materialy/index.html`; ściąga przed egzaminem: `materialy/sciaga.html` (dane w `sciaga-dane.js`) |
 | `pytania/` | pytania kontrolne z każdej lekcji (`*.md`, poprawne odpowiedzi oznaczone `[x]`), `pytania-dane.js` i `testownik.html` |
 | `narzedzia/` | `capture.js` (snippet do konsoli przeglądarki) i `tlumaczenia.js` (polskie tłumaczenia, klucz = tekst EN) |
 | `surowe/` | kopie stron lekcji z chwili zapisu (do diagnozy i ponownego przetworzenia) |

@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ściąga CLF-C02</title>
+<style>
+:root{--bg:#fbfaf7;--fg:#1d1d1b;--muted:#77736a;--line:#e6e1d6;--accent:#d97a00;--card:#fff;--soft:#f3efe6;--hl:#ffe9a8}
+@media (prefers-color-scheme:dark){:root{--bg:#161614;--fg:#ecebe6;--muted:#9b978d;--line:#2f2e2a;--accent:#ffa733;--card:#1e1e1b;--soft:#24231f;--hl:#5a4510}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:1280px;margin:0 auto;padding:24px 16px 80px}
+a{color:var(--accent)}
+.crumbs{font-size:13px;color:var(--muted)}
+h1{font-size:30px;line-height:1.2;margin:.3em 0 .2em}
+.lead{color:var(--muted);margin:0 0 18px;max-width:760px}
+.bar{position:sticky;top:0;z-index:5;background:var(--bg);padding:10px 0 12px;border-bottom:1px solid var(--line);margin-bottom:8px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.row+.row{margin-top:8px}
+input[type=search]{flex:1 1 260px;min-width:0;font:inherit;padding:8px 12px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--fg)}
+input[type=search]:focus{outline:2px solid var(--accent);outline-offset:-1px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--card)}
+.seg button{border:0;background:none;color:var(--fg);padding:7px 11px;cursor:pointer;font:600 13px system-ui,sans-serif}
+.seg button.on{background:var(--accent);color:#fff}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:999px;padding:3px 10px;font:13px system-ui,sans-serif;cursor:pointer}
+.chip.on{border-color:var(--accent);background:var(--accent);color:#fff}
+.chip small{opacity:.7;margin-left:4px}
+.count{font-size:13px;color:var(--muted);margin-left:auto}
+h2{font-size:20px;margin:28px 0 8px;display:flex;align-items:baseline;gap:8px}
+h2 small{font-size:13px;color:var(--muted);font-weight:400}
+table{border-collapse:collapse;width:100%;table-layout:fixed;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+th,td{border-bottom:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);background:var(--soft)}
+tr:last-child td{border-bottom:0}
+col.c-name{width:22%}
+td.name{font-weight:600}
+td.name .meta{display:block;font-weight:400;font-size:12px;color:var(--muted);margin-top:2px}
+td.en{color:var(--muted);font-size:.94em}
+mark{background:var(--hl);color:inherit;border-radius:2px}
+body.only-pl .en,body.only-en .pl{display:none}
+body.only-pl col.c-name,body.only-en col.c-name{width:26%}
+.empty{color:var(--muted);padding:30px 0;text-align:center}
+@media (max-width:820px){
+  table,thead,tbody,tr,td{display:block;width:100%}
+  thead,colgroup{display:none}
+  table{border-radius:10px}
+  tr{border-bottom:1px solid var(--line);padding:6px 0}
+  tr:last-child{border-bottom:0}
+  td{border:0;padding:4px 12px}
+  td.en{border-top:1px dashed var(--line);padding-top:6px;margin-top:2px}
+  .count{margin-left:0;width:100%}
+  .bar{position:static}
+  .chips{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px;-webkit-overflow-scrolling:touch}
+  .chip{flex:0 0 auto}
+}
+@media print{
+  .bar,.crumbs,.lead{display:none}
+  body{background:#fff;color:#000;font-size:11px}
+  main{max-width:none;padding:0}
+  table{border-radius:0}
+  tr{break-inside:avoid}
+  h2{break-after:avoid;margin-top:14px}
+}
+</style></head>
+<body><main>
+<div class="crumbs"><a href="index.html">← Spis lekcji</a> · <a href="../pytania/testownik.html">testownik</a></div>
+<h1>Ściąga CLF-C02</h1>
+<p class="lead">Wszystkie usługi i pojęcia z kursu w jednym miejscu: krótki opis po polsku i po angielsku. Szukaj po nazwie lub treści (polskie znaki nie są wymagane), filtruj po kategorii i typie.</p>
+<div class="bar">
+  <div class="row">
+    <input type="search" id="q" placeholder="Szukaj, np. „stanowa”, „S3”, „backup”, „least privilege”…" autocomplete="off">
+    <div class="seg" id="kind"><button data-v="">Wszystko</button><button data-v="usługa">Usługi</button><button data-v="pojęcie">Pojęcia</button></div>
+    <div class="seg" id="lang"><button data-v="both">PL | EN</button><button data-v="pl">PL</button><button data-v="en">EN</button></div>
+  </div>
+  <div class="row"><div class="chips" id="cats"></div><span class="count" id="count"></span></div>
+</div>
+<div id="out"></div>
+</main>
+<script src="sciaga-dane.js"></script>
+<script>
+(function () {
+  var DATA = window.CLF_SCIAGA || [];
+  var ORDER = ['Koncepcje chmury', 'Infrastruktura globalna', 'Moc obliczeniowa', 'Kontenery i serverless', 'Integracja aplikacji',
+    'Zarządzanie i wdrażanie', 'Sieci i dostarczanie treści', 'Pamięć masowa', 'Bazy danych', 'AI/ML i generatywna AI', 'Analiza danych',
+    'Bezpieczeństwo, tożsamość i zgodność', 'Monitorowanie i nadzór', 'Ceny, rozliczenia i wsparcie', 'Migracja i transfer danych',
+    'Architektura (Well-Architected)', 'Usługi specjalistyczne'];
+  var fold = function (s) { return (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/ł/g, 'l'); };
+  DATA.forEach(function (d) { d._s = fold(d.name + ' ' + d.pl + ' ' + d.en); });
+  var cats = ORDER.filter(function (c) { return DATA.some(function (d) { return d.category === c; }); });
+  DATA.forEach(function (d) { if (cats.indexOf(d.category) < 0) cats.push(d.category); });
+
+  var store = {
+    get: function (k, def) { try { return localStorage.getItem(k) || def; } catch (e) { return def; } },
+    set: function (k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+  };
+  var initQ = '';
+  try { initQ = new URLSearchParams(location.search).get('q') || ''; } catch (e) {}
+  var state = { q: initQ, cat: '', kind: '', lang: store.get('clf_sciaga_lang', 'both') };
+
+  var $ = function (id) { return document.getElementById(id); };
+  var el = function (tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; };
+
+  // podświetlanie trafień bez innerHTML
+  function hl(node, text, terms) {
+    if (!terms.length) { node.textContent = text; return; }
+    var f = fold(text), marks = [];
+    terms.forEach(function (t) { var i = 0; while ((i = f.indexOf(t, i)) > -1) { marks.push([i, i + t.length]); i += t.length; } });
+    if (!marks.length) { node.textContent = text; return; }
+    marks.sort(function (a, b) { return a[0] - b[0]; });
+    var pos = 0;
+    marks.forEach(function (m) {
+      if (m[0] < pos) return;
+      node.appendChild(document.createTextNode(text.slice(pos, m[0])));
+      node.appendChild(el('mark', null, text.slice(m[0], m[1])));
+      pos = m[1];
+    });
+    node.appendChild(document.createTextNode(text.slice(pos)));
+  }
+
+  function chips() {
+    var box = $('cats'); box.textContent = '';
+    var mk = function (label, val, n) {
+      var b = el('button', 'chip' + (state.cat === val ? ' on' : ''), label);
+      b.appendChild(el('small', null, String(n)));
+      b.onclick = function () { state.cat = state.cat === val && val ? '' : val; render(); };
+      box.appendChild(b);
+    };
+    mk('Wszystkie', '', DATA.length);
+    cats.forEach(function (c) { mk(c, c, DATA.filter(function (d) { return d.category === c; }).length); });
+  }
+
+  function render() {
+    var terms = fold(state.q).split(/\s+/).filter(Boolean);
+    var rows = DATA.filter(function (d) {
+      return (!state.cat || d.category === state.cat) && (!state.kind || d.kind === state.kind) &&
+        terms.every(function (t) { return d._s.indexOf(t) > -1; });
+    });
+    chips();
+    $('count').textContent = 'Pokazano ' + rows.length + ' z ' + DATA.length;
+    var out = $('out'); out.textContent = '';
+    if (!rows.length) { out.appendChild(el('p', 'empty', DATA.length ? 'Brak wyników.' : 'Brak danych – nie wczytano pliku sciaga-dane.js.')); return; }
+    cats.forEach(function (c) {
+      var list = rows.filter(function (d) { return d.category === c; })
+        .sort(function (a, b) { return a.name.localeCompare(b.name, 'pl'); });
+      if (!list.length) return;
+      var h = el('h2', null, c); h.appendChild(el('small', null, list.length + '')); out.appendChild(h);
+      var t = el('table'), cg = el('colgroup');
+      cg.appendChild(el('col', 'c-name')); cg.appendChild(el('col', 'pl')); cg.appendChild(el('col', 'en')); t.appendChild(cg);
+      var th = el('thead'), tr = el('tr');
+      tr.appendChild(el('th', null, 'Nazwa')); tr.appendChild(el('th', 'pl', 'Opis (PL)')); tr.appendChild(el('th', 'en', 'Description (EN)'));
+      th.appendChild(tr); t.appendChild(th);
+      var tb = el('tbody');
+      list.forEach(function (d) {
+        var r = el('tr');
+        var n = el('td', 'name'); hl(n, d.name, terms);
+        n.appendChild(el('span', 'meta', (d.kind === 'pojęcie' ? 'pojęcie' : 'usługa') + ' · moduł ' + d.module));
+        var p = el('td', 'pl'); hl(p, d.pl, terms);
+        var e = el('td', 'en'); e.lang = 'en'; hl(e, d.en, terms);
+        r.appendChild(n); r.appendChild(p); r.appendChild(e); tb.appendChild(r);
+      });
+      t.appendChild(tb); out.appendChild(t);
+    });
+  }
+
+  function seg(id, key, onSet) {
+    var box = $(id);
+    var sync = function () { Array.prototype.forEach.call(box.children, function (b) { b.classList.toggle('on', b.dataset.v === state[key]); }); };
+    Array.prototype.forEach.call(box.children, function (b) {
+      b.onclick = function () { state[key] = b.dataset.v; sync(); onSet(); };
+    });
+    sync();
+  }
+  function applyLang() {
+    document.body.classList.toggle('only-pl', state.lang === 'pl');
+    document.body.classList.toggle('only-en', state.lang === 'en');
+    store.set('clf_sciaga_lang', state.lang);
+  }
+  seg('kind', 'kind', render);
+  seg('lang', 'lang', applyLang);
+  applyLang();
+  var timer;
+  $('q').value = state.q;
+  $('q').addEventListener('input', function () { clearTimeout(timer); var v = this.value; timer = setTimeout(function () { state.q = v; render(); }, 120); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === '/' && document.activeElement !== $('q')) { e.preventDefault(); $('q').focus(); }
+    if (e.key === 'Escape' && document.activeElement === $('q')) { $('q').value = ''; state.q = ''; render(); }
+  });
+  render();
+})();
+</script>
+</body></html>

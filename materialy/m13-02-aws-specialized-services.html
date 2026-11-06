@@ -1,0 +1,65 @@
+<!doctype html>
+  <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AWS Specialized Services</title><style>:root{--bg:#fbfaf7;--fg:#1d1d1b;--muted:#77736a;--line:#e6e1d6;--accent:#d97a00;--card:#fff;--soft:#f3efe6}
+  @media (prefers-color-scheme:dark){:root{--bg:#161614;--fg:#ecebe6;--muted:#9b978d;--line:#2f2e2a;--accent:#ffa733;--card:#1e1e1b;--soft:#24231f}}
+  *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:18px/1.7 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  main{max-width:760px;margin:0 auto;padding:28px 16px 80px}a{color:var(--accent)}
+  .crumbs{font-size:13px;color:var(--muted)}h1{font-size:32px;line-height:1.2;margin:.3em 0 .6em}
+  h2{font-size:25px;margin:1.6em 0 .4em}h3{font-size:21px;margin:1.4em 0 .3em}h4,h5{font-size:18px;margin:1em 0 .2em}
+  p{margin:.5em 0}ul,ol{padding-left:1.3em}li{margin:.2em 0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:6px 20px 14px;margin:18px 0}
+  .item+.item{border-top:1px dashed var(--line)}.item{padding-top:10px}
+  .tag{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:700}
+  .item h4{margin-top:2px}
+  details{margin:18px 0;background:var(--soft);border-radius:12px;padding:10px 20px}summary{cursor:pointer;font-weight:600}
+  details p{font-size:16px}
+  table{border-collapse:collapse;width:100%;font-size:16px}td,th{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+  .warn{background:var(--soft);border-left:3px solid var(--accent);padding:8px 12px;font-size:14px;border-radius:6px}
+  .qnote{margin-top:40px;font-size:14px;color:var(--muted)}</style>
+  <script type="application/json" id="lesson-meta">{"slug":"m13-02-aws-specialized-services","module":"Module 13: Well-Architected Solutions","module_no":13,"section":"AWS Specialized Services and Solutions","lesson":"AWS Specialized Services","lesson_no":2,"questions":4,"captured":"2026-11-06T15:24:21.597Z","v":"5.4"}</script></head>
+  <body><main>
+  <div class="crumbs"><a href="index.html">← Spis lekcji</a> · Module 13: Well-Architected Solutions › AWS Specialized Services and Solutions</div>
+  <h1>AWS Specialized Services</h1>
+  <h4>In this lesson, you will learn how to do the following:</h4>
+<ul><li>Identify key AWS services used to develop, deploy, and troubleshoot applications.</li><li>Identify key AWS services used to meet business application needs.</li><li>Identify key AWS services used for end-user computing.</li><li>Identify key AWS services used for IoT device management.</li></ul>
+<details><summary>🎬 Video transcript</summary><p>As you know, each AWS service is purpose-built for specific use cases, often times based on feedback or requests from customers. Let's look at a small sample size by considering some services for development, business applications, and end-user computing. Starting with services for development, let's think about one that's purpose built for continuous integration and continuous delivery, or CI/CD, pipelines. CI/CD pipelines help developers continuously release code automatically as changes are committed to a source code repository.</p><p>AWS CodePipeline is a service that automates your release pipeline. It can monitor your repository for changes, and then it can kick off a series of steps, like building, testing, and deploying the code. Essentially, it helps developers set up a workflow that takes their code from development to production smoothly. Another service to be aware of for developers is AWS X-Ray.</p><p>This service helps you monitor and debug your applications, giving you insights into how they’re performing. When an application isn't behaving as expected, X-Ray helps you visually pinpoint the issue by tracking requests as they move through your system, so you can fix problems faster. Then there's AWS AppSync, which is a service that streamlines building GraphQL APIs. GraphQL is a specific type of API that has gained popularity in web and mobile development in recent years.</p><p>AppSync helps you more easily connect front end apps with backend data. Next up; AWS Amplify, which makes it more convenient to develop, deploy, and manage applications on AWS. Whether you're adding authentication, data storage, or hosting, Amplify handles a lot of the complexity for you, so you can focus on creating a great user experience. Now, let's look at some business application services.</p><p>One service in this category is Amazon Connect. It's an AI-powered, cloud-based contact center service that makes it more efficient to set up and manage customer service operations. Whether you're answering calls, handling chats, or running a support center, by using Amazon Connect, you can design solutions that ensure smooth communication with customers. Another helpful tool is Amazon Simple Email Service, or SES.</p><p>If your business needs to send large volumes of emails—whether it's newsletters, promotional messages, or transactional emails— SES is a great choice. So, those were a few specialized services for business use cases. But let's shift gears a bit and talk about end-user computing. One of the functions of IT in modern businesses is setting up and configuring services that make it easier to provide remote access to resources like virtual desktops and applications.</p><p>Amazon AppStream 2.0 makes it possible for you to stream desktop applications to users on any device. Instead of installing software locally, users can simply access the applications they need over the web. Then, there's Amazon WorkSpaces, a fully managed virtual desktop infrastructure service that users can access from anywhere. For a more lightweight solution, there's Amazon WorkSpaces Web, which is designed for people who only need web-based applications.</p><p>Okay, wow! That's a lot of different perspectives and services, and it's not even the whole list. But as you can see, of the hundreds of services and tools from AWS, each one is purpose-built and tailored to specific use cases.</p></details>
+<h3>Types of services</h3>
+<p>AWS services are purpose-built for specific use cases. In the following section, you will learn more about the following four types of specialized AWS services:</p>
+<ul><li>Development services</li><li>Business application services</li><li>End-user computing services</li><li>IoT services</li></ul>
+<h4>Development services</h4>
+<p>AWS offers several services to help developers automate CI/CD pipelines, monitor and debug applications, build GraphQL APIs, and deploy web and mobile applications on AWS. Let's examine these services in a bit more detail.</p>
+<p>AWS CodeBuild</p>
+<p>— CodeBuild is a fully managed continuous integration service that compiles source code, runs tests, and produces software packages for deployment. It automatically scales to meet demand, and you only pay for the build time that you use.</p>
+<p>AWS CodePipeline</p>
+<p>— CodePipeline is a fully managed CI/CD service that automates the build, test, and deploy phases of your release process. This helps developers streamline software release workflows and reliably deliver new features and fixes without needing to provision servers.</p>
+<p>CI/CD pipelines automate the integration, testing, and deployment of code changes to help provide quick and reliable software delivery.</p>
+<p>AWS X-Ray</p>
+<p>— X-Ray is a powerful tracing, debugging, and performance analysis tool that helps developers visualize application behavior. With X-Ray, developers can quickly identify performance bottlenecks, troubleshoot issues, and optimize applications for better efficiency and reliability.</p>
+<p>AWS AppSync</p>
+<p>— AWS AppSync is a fully managed GraphQL service. With AWS AppSync, developers can create a single GraphQL API that can securely access, manipulate, and combine data from multiple data sources. This helps developers connect frontend applications with backend data.</p>
+<p>With GraphQL, a query language for APIs, clients request only the specific data they need.</p>
+<p>AWS Amplify</p>
+<p>— Amplify helps you streamline the process of developing, deploying, and managing secure and scalable full-stack applications on AWS. With Amplify, developers can quickly add features, like authentication, APIs, storage, and hosting, with minimal infrastructure management.</p>
+<p>Full-stack applications are software systems that involve both frontend (user interface) and backend (server-side) development.</p>
+<h4>Business application services</h4>
+<p>These services are ideal for managing business application needs such as customer service operations and email promotions. Let's review a couple of examples.</p>
+<p>Amazon Connect</p>
+<p>— Businesses can use this AI-powered contact center service to efficiently set up and operate a scalable customer service call center. Amazon Connect provides capabilities for call routing, recording, and analytics while integrating seamlessly with other AWS services.</p>
+<p>Amazon Simple Email Service (Amazon SES)</p>
+<p>— Amazon SES is a scalable and cost-effective email service provider that can be integrated into any application for reliable, high-volume email automation. It helps businesses optimize the delivery of transactional and marketing emails, resulting in enhanced customer engagement.</p>
+<h4>End-user computing services</h4>
+<p>In modern businesses, IT departments often need to provide remote access to resources like virtual desktops and applications. Let's explore some AWS services that can be used to set up these environments for employees.</p>
+<p>Amazon AppStream 2.0</p>
+<p>— AppStream 2.0 is a fully managed service that streams applications from the cloud directly to any compatible device. This includes software-as-a-service (SaaS) applications and applications converted from desktop to SaaS without code revisions. This provides instant access to powerful software without the need for high-end local hardware.</p>
+<p>In SaaS, applications are hosted on the cloud and accessed through the internet, without the need for local installation or maintenance.</p>
+<p>Amazon WorkSpaces</p>
+<p>— WorkSpaces is a fully managed cloud-based desktop computing service. With WorkSpaces, employees can securely access their work environment from any device with an internet connection. Employees can perform the same tasks as if they were on a physical office computer, while companies can benefit from cost-efficiency and easy administration.</p>
+<p>Amazon WorkSpaces Secure Browser (formerly Amazon WorkSpaces Web)</p>
+<p>— WorkSpaces Secure Browser is a fully managed remote enterprise browser. It provides a protected environment for employees to access private websites, SaaS applications, and the public internet. With WorkSpaces Secure Browser, IT departments don't need to manage specialized client software, infrastructure, or VPN connections.</p>
+<h4>IoT services</h4>
+<p>Internet of Things (IoT) is a network of connected physical devices embedded with sensors and software that collect and exchange data over the internet. These devices can be monitored and controlled remotely to improve efficiency, provide new services, and enhance quality of life.</p>
+<p>Let's explore an AWS service specifically designed for IoT management.</p>
+<p>AWS IoT Core</p>
+<p>— AWS IoT Core is a managed cloud service used to securely connect physical devices with cloud applications. It helps you create efficient IoT solutions by streamlining the complex process of ingesting, processing, and acting on device data. Device connections and data are secured with mutual authentication and end-to-end encryption, and you can choose from several communication protocols.Some IoT solutions include the following:Smart security cameras – Home monitoring that sends alerts to your phoneSmart pet feeders – A pet feeder that you can control remotelySmart irrigation systems – A rain machine that adjusts watering based on weather and soil conditions</p>
+  <p class="qnote">Pytania kontrolne (4): <code>pytania\m13-02-aws-specialized-services.md</code> · <a href="../pytania/testownik.html">testownik</a></p>
+  </main><script src="../narzedzia/tlumaczenia.js"></script><script src="dwujezyczny.js"></script></body></html>

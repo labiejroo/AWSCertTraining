@@ -1,0 +1,50 @@
+<!doctype html>
+  <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Introduction to Storage</title><style>:root{--bg:#fbfaf7;--fg:#1d1d1b;--muted:#77736a;--line:#e6e1d6;--accent:#d97a00;--card:#fff;--soft:#f3efe6}
+  @media (prefers-color-scheme:dark){:root{--bg:#161614;--fg:#ecebe6;--muted:#9b978d;--line:#2f2e2a;--accent:#ffa733;--card:#1e1e1b;--soft:#24231f}}
+  *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:18px/1.7 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  main{max-width:760px;margin:0 auto;padding:28px 16px 80px}a{color:var(--accent)}
+  .crumbs{font-size:13px;color:var(--muted)}h1{font-size:32px;line-height:1.2;margin:.3em 0 .6em}
+  h2{font-size:25px;margin:1.6em 0 .4em}h3{font-size:21px;margin:1.4em 0 .3em}h4,h5{font-size:18px;margin:1em 0 .2em}
+  p{margin:.5em 0}ul,ol{padding-left:1.3em}li{margin:.2em 0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:6px 20px 14px;margin:18px 0}
+  .item+.item{border-top:1px dashed var(--line)}.item{padding-top:10px}
+  .tag{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:700}
+  .item h4{margin-top:2px}
+  details{margin:18px 0;background:var(--soft);border-radius:12px;padding:10px 20px}summary{cursor:pointer;font-weight:600}
+  details p{font-size:16px}
+  table{border-collapse:collapse;width:100%;font-size:16px}td,th{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+  .warn{background:var(--soft);border-left:3px solid var(--accent);padding:8px 12px;font-size:14px;border-radius:6px}
+  .qnote{margin-top:40px;font-size:14px;color:var(--muted)}</style>
+  <script type="application/json" id="lesson-meta">{"slug":"m06-01-introduction-to-storage","module":"Module 6: Storage","module_no":6,"section":"Module 6 Introduction","lesson":"Introduction to Storage","lesson_no":1,"questions":0,"captured":"2026-10-29T18:30:05.023Z","v":"5.4"}</script></head>
+  <body><main>
+  <div class="crumbs"><a href="index.html">← Spis lekcji</a> · Module 6: Storage › Module 6 Introduction</div>
+  <h1>Introduction to Storage</h1>
+  <p>AWS provides many solutions for storing, accessing, managing, and backing up your data in the cloud. These virtual storage systems eliminate the need for physical hardware in your data center while offering the flexibility to scale as your needs change. AWS offers three distinct types of cloud storage to meet diverse requirements and application needs: block storage, object storage, and file storage.</p>
+<h4>In this lesson, you will learn how to do the following:</h4>
+<ul><li>Describe and differentiate between block, object, and file storage.</li><li>Identify the primary AWS services for block, object, and file storage.</li><li>Identify how the AWS shared responsibility model applies to AWS storage services.</li></ul>
+<h3>Block storage</h3>
+<p>Block storage provides persistent, low-latency block-level storage volumes that attach to EC2 instances like physical hard drives. Block storage volumes can be encrypted, backed up via snapshots, and modified while in use without disrupting the instance. AWS offers two primary block storage services:</p>
+<ul><li>Amazon EC2 instance storeAn unmanaged non-persistent, high-performance block storage directly attached to EC2 instances for temporary data.</li><li>Amazon Elastic Block Store (EBS)A managed service that provides persistent block storage volumes for EC2 instances, offering various types for different workloads</li></ul>
+<h3>Object storage</h3>
+<p>Object storage is a data storage architecture that manages data as objects in a flat address space. It offers unlimited scalability so you can store vast amounts of unstructured data without worrying about capacity constraints. Object storage provides enhanced metadata capabilities to provide more efficient data management, search, and analytics across massive datasets.</p>
+<p>The following is the primary AWS object storage service:</p>
+<ul><li>Amazon Simple Storage Service (S3)A fully managed scalable object storage service for storing and retrieving any amount of data from anywhere.</li></ul>
+<h3>File storage</h3>
+<p>AWS file storage services provide shared file systems accessible over networks, so multiple users and applications can access the same data simultaneously. They offer scalability and flexibility so you can expand storage capacity as needs grow without managing physical infrastructure. AWS offers two primary file storage services:</p>
+<ul><li>Amazon Elastic File System (EFS)A fully managed, scalable NFS file system for use with AWS Cloud services and on-premises resources.</li><li>Amazon FSxA fully managed file storage services for popular file systems like Windows, Lustre, and NetApp ONTAP.</li></ul>
+<h3>Additional storage services</h3>
+<p>These services don't fit cleanly into the categories we've defined so far, but they're important AWS storage offerings that you should be familiar with.</p>
+<ul><li>AWS Storage GatewayA fully managed, hybrid-cloud storage service that provides on-premises access to virtually unlimited cloud storage.</li><li>AWS Elastic Disaster RecoveryA fully managed service that streamlines the recovery of your physical, virtual, and cloud-based servers into AWS.</li></ul>
+<h3>AWS shared responsibility</h3>
+<h4>AWS storage services</h4>
+<p>The AWS shared responsibility model groups services into three categories based on the ownership of administrative tasks. These categories are fully managed, managed, and unmanaged.</p>
+<p>To learn more about how these categories relate to storage services, expand the following three categories.</p>
+<h4>Fully managed services</h4>
+<p>For fully managed storage services, AWS is responsible for everything from the hardware and infrastructure up through the entire storage stack. This includes data durability, availability, encryption at rest, and replication. Customers are only responsible for data management, access controls, and proper service configuration.</p>
+<h4>Managed services</h4>
+<p>For managed storage services, AWS manages the underlying storage infrastructure, hardware redundancy, and volume replication. Customers are responsible for data backup strategies, encryption configuration, volume performance optimization, and capacity planning.</p>
+<h4>Unmanaged services</h4>
+<p>For unmanaged storage services, customers takes full responsibility for data management, backup/recovery, encryption, performance optimization, and durability. AWS only maintains the underlying physical hardware and network infrastructure.</p>
+  
+  </main><script src="../narzedzia/tlumaczenia.js"></script><script src="dwujezyczny.js"></script></body></html>

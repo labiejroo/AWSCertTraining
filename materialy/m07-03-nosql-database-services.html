@@ -1,0 +1,47 @@
+<!doctype html>
+  <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>NoSQL Database Services</title><style>:root{--bg:#fbfaf7;--fg:#1d1d1b;--muted:#77736a;--line:#e6e1d6;--accent:#d97a00;--card:#fff;--soft:#f3efe6}
+  @media (prefers-color-scheme:dark){:root{--bg:#161614;--fg:#ecebe6;--muted:#9b978d;--line:#2f2e2a;--accent:#ffa733;--card:#1e1e1b;--soft:#24231f}}
+  *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:18px/1.7 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  main{max-width:760px;margin:0 auto;padding:28px 16px 80px}a{color:var(--accent)}
+  .crumbs{font-size:13px;color:var(--muted)}h1{font-size:32px;line-height:1.2;margin:.3em 0 .6em}
+  h2{font-size:25px;margin:1.6em 0 .4em}h3{font-size:21px;margin:1.4em 0 .3em}h4,h5{font-size:18px;margin:1em 0 .2em}
+  p{margin:.5em 0}ul,ol{padding-left:1.3em}li{margin:.2em 0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:6px 20px 14px;margin:18px 0}
+  .item+.item{border-top:1px dashed var(--line)}.item{padding-top:10px}
+  .tag{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:700}
+  .item h4{margin-top:2px}
+  details{margin:18px 0;background:var(--soft);border-radius:12px;padding:10px 20px}summary{cursor:pointer;font-weight:600}
+  details p{font-size:16px}
+  table{border-collapse:collapse;width:100%;font-size:16px}td,th{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+  .warn{background:var(--soft);border-left:3px solid var(--accent);padding:8px 12px;font-size:14px;border-radius:6px}
+  .qnote{margin-top:40px;font-size:14px;color:var(--muted)}</style>
+  <script type="application/json" id="lesson-meta">{"slug":"m07-03-nosql-database-services","module":"Module 7: Databases","module_no":7,"section":"AWS Database Services","lesson":"NoSQL Database Services","lesson_no":3,"questions":1,"captured":"2026-11-02T16:46:32.975Z","v":"5.4"}</script></head>
+  <body><main>
+  <div class="crumbs"><a href="index.html">← Spis lekcji</a> · Module 7: Databases › AWS Database Services</div>
+  <h1>NoSQL Database Services</h1>
+  <h4>In this lesson, you will learn how to do the following:</h4>
+<ul><li>Describe NoSQL databases.</li><li>Describe Amazon DynamoDB, including its benefits and use cases.</li></ul>
+<p>NoSQL databases use flexible data schemas for storing and retrieving many different types of information. In this lesson, you will explore the benefits and use cases of the NoSQL database service Amazon DynamoDB.</p>
+<details><summary>🎬 Video transcript</summary><p>Oh yeah it's Amazon DynamoDB time! DynamoDB is a fully managed serverless NoSQL database. NoSQL means data is stored in a non-relational fashion instead of a relational database management system. Relational databases, like a standard MySQL database, require you to have a well-defined schema, which is one or more tables that might relate to each other.</p><p>You then use SQL to query the data. This works well for a lot of use cases, and has been the standard type of database historically. However, these types of rigid SQL databases can have performance and scaling issues under specific circumstances. The rigid schema also means you can't always conveniently change that schema for any of the data you store in the table.</p><p>Therefore, it's not usually the best fit for evolving data sets that can have varying attributes. But that's fine, since DynamoDB is non-relational it gives you a flexible schema. You just create a table and start to store and query data. Data is stored as items, and items are a collection of attributes.</p><p>Each attribute has a name and a value. An attribute value can be simpler types like a number or more complex ones like a set or a document. You can also add or remove attributes at any time, and not every item in the table needs to have the same attributes. As for applications that need speed, DynamoDB offers single digit millisecond performance.</p><p>I mean, that's pretty fast! And you get no cold starts, no version upgrades, no maintenance windows, no patching, and no downtime maintenance. Nada. You can even use DynamoDB for globally distributed applications.</p><p>That particular feature is called DynamoDB Global Tables. An awesome example of this feature in use is Amazon Prime Day 2024. For those 48 hours, there were tens of trillions of calls to the DynamoDB API. It peaked at 146 million requests per second.</p><p>There was no underlying management needed, and it scaled seamlessly. Now that's cool! I mean, seriously. So consider DynamoDB for your applications if you need the speed, flexibility of changing schema, and offloading of management.</p></details>
+<h3>NoSQL databases</h3>
+<p>NoSQL databases are sometimes referred to as non-relational databases because their structures are different than relational databases like Amazon RDS. Instead of row and column relationships, NoSQL databases build a structure for the data that they contain using key-value pairs instead. With key-value pairs, data is organized into items identified by unique keys.</p>
+<p>Each key has one or more associated attributes, or values, that represent various characteristics of the data. You can think of a key as a word entry in a dictionary, and the value as its associated definition. Not every item in the table has to have the same attributes, and you can add or remove attributes at any time.</p>
+<p>The following table shows an example of how key-value paired data is stored in NoSQL databases.</p>
+<table><tr><td>Key</td><td>Value</td></tr><tr><td>1</td><td>Name: John DoeAddress: 123 Any StreetFavorite drink: Medium latte</td></tr><tr><td>2</td><td>Name: Mary MajorAddress: 100 Main StreetBirthday: July 5, 1994</td></tr></table>
+<h3>Amazon DynamoDB</h3>
+<p>DynamoDB is a fully managed NoSQL database service that provides fast and predictable performance for both document and key-value data structures. It's a powerful and incredibly fast database option for use cases that require a flexible schema, and is ideal for applications that require high performance and seamless scaling.</p>
+<p>DynamoDB seamlessly scales alongside your data without impacting performance, which means that you only pay for the resources that you use. It also includes built-in security features for enhanced protection, and automatically spreads your data across multiple servers to handle your workload.</p>
+<h3>Use cases</h3>
+<p>Some examples of practical use cases for DynamoDB are gaming platforms, financial service applications, and mobile applications with global user bases.</p>
+<h3>Benefits</h3>
+<h4>Scalability with provisioned capacity</h4>
+<p>DynamoDB automatically scales throughput up or down based on actual usage, which ensures consistent performance without manual intervention. You can specify target utilization levels, and DynamoDB automatically provisions capacity to maintain those targets. With no practical limits on table size or the amount of data stored, DynamoDB can seamlessly accommodate growing applications.</p>
+<h4>Consistent high performance</h4>
+<p>DynamoDB delivers single-digit millisecond response times at any scale, which makes it ideal for high-performance applications. It maintains consistent performance by automatically distributing data across multiple servers and SSDs.</p>
+<h4>High availability and durability</h4>
+<p>DynamoDB delivers 99.999% data availability by replicating data across three distinct facilities within each AWS Region. It also maintains multiple copies in separate AWS Regions, to provide built-in fault tolerance and data durability. This ensures continuous operation and protection against data loss even if individual facilities fail.</p>
+<h4>Data encryption</h4>
+<p>DynamoDB offers comprehensive encryption capabilities to protect information both at rest and in transit. All data is automatically encrypted behind the scenes before being written to the storage layer. DynamoDB includes the flexibility to choose between different kinds of encryption keys for customized security control.</p>
+  <p class="qnote">Pytania kontrolne (1): <code>pytania\m07-03-nosql-database-services.md</code> · <a href="../pytania/testownik.html">testownik</a></p>
+  </main><script src="../narzedzia/tlumaczenia.js"></script><script src="dwujezyczny.js"></script></body></html>

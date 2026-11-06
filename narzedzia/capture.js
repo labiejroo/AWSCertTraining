@@ -350,7 +350,7 @@
   h3{font-size:13px;text-transform:uppercase;letter-spacing:.07em;color:var(--accent);margin:22px 0 6px}
   a.lesson{display:block;padding:10px 14px;margin:6px 0;background:var(--card);border:1px solid var(--line);border-radius:10px;color:inherit;text-decoration:none}
   a.lesson:hover{border-color:var(--accent)}a.lesson small{display:block;color:var(--muted);font-size:13px}</style></head>
-  <body><main><h1>AWS Cloud Practitioner</h1><p><a href="../pytania/testownik.html">Otwórz testownik →</a></p>${html}</main><script src="../narzedzia/tlumaczenia.js"></script><script src="dwujezyczny.js"></script></body></html>`;
+  <body><main><h1>AWS Cloud Practitioner</h1><p><a href="../pytania/testownik.html">Otwórz testownik →</a> · <a href="sciaga.html">Ściąga przed egzaminem →</a></p>${html}</main><script src="../narzedzia/tlumaczenia.js"></script><script src="dwujezyczny.js"></script></body></html>`;
     };
     return { slug, lesson, meta, blocks, questions, warnings, lessonHtml, buildMd, buildIndex, nCarousels: carousels.length, rawHtml: doc.documentElement.outerHTML };
   }

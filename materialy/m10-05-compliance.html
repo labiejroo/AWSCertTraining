@@ -1,0 +1,50 @@
+<!doctype html>
+  <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Compliance</title><style>:root{--bg:#fbfaf7;--fg:#1d1d1b;--muted:#77736a;--line:#e6e1d6;--accent:#d97a00;--card:#fff;--soft:#f3efe6}
+  @media (prefers-color-scheme:dark){:root{--bg:#161614;--fg:#ecebe6;--muted:#9b978d;--line:#2f2e2a;--accent:#ffa733;--card:#1e1e1b;--soft:#24231f}}
+  *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:18px/1.7 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  main{max-width:760px;margin:0 auto;padding:28px 16px 80px}a{color:var(--accent)}
+  .crumbs{font-size:13px;color:var(--muted)}h1{font-size:32px;line-height:1.2;margin:.3em 0 .6em}
+  h2{font-size:25px;margin:1.6em 0 .4em}h3{font-size:21px;margin:1.4em 0 .3em}h4,h5{font-size:18px;margin:1em 0 .2em}
+  p{margin:.5em 0}ul,ol{padding-left:1.3em}li{margin:.2em 0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:6px 20px 14px;margin:18px 0}
+  .item+.item{border-top:1px dashed var(--line)}.item{padding-top:10px}
+  .tag{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:700}
+  .item h4{margin-top:2px}
+  details{margin:18px 0;background:var(--soft);border-radius:12px;padding:10px 20px}summary{cursor:pointer;font-weight:600}
+  details p{font-size:16px}
+  table{border-collapse:collapse;width:100%;font-size:16px}td,th{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+  .warn{background:var(--soft);border-left:3px solid var(--accent);padding:8px 12px;font-size:14px;border-radius:6px}
+  .qnote{margin-top:40px;font-size:14px;color:var(--muted)}</style>
+  <script type="application/json" id="lesson-meta">{"slug":"m10-05-compliance","module":"Module 10: Monitoring, Compliance, and Governance in the AWS Cloud","module_no":10,"section":"Monitoring and Compliance Services","lesson":"Compliance","lesson_no":5,"questions":1,"captured":"2026-11-06T14:48:48.504Z","v":"5.4"}</script></head>
+  <body><main>
+  <div class="crumbs"><a href="index.html">← Spis lekcji</a> · Module 10: Monitoring, Compliance, and Governance in the AWS Cloud › Monitoring and Compliance Services</div>
+  <h1>Compliance</h1>
+  <h4>In this lesson, you will learn how to do the following:</h4>
+<ul><li>Define compliance and the benefits of compliance with AWS.</li><li>Describe AWS Artifact, its benefits, and the two types.</li><li>Locate resources for AWS compliance.</li></ul>
+<p>In this lesson, you will explore AWS services that help with compliance and compliance program resources.</p>
+<details><summary>🎬 Video transcript</summary><p>For every industry, there are specific standards that need to be upheld, and you could be audited or inspected to ensure that you have met those standards. You rely on documentation, records, and inspections to pass audits and compliance checks as they come along. Depending on what types of solutions you host on AWS, you will need to ensure that you are up to compliance for whatever standards and regulations your business is specifically held to. If you run software that deals with consumer data in the European Union, you would need to make sure that you're in compliance with general data protection regulation or GDPR.</p><p>Or if you run healthcare applications in the US, you will need to design your architectures to meet Health Insurance Portability and Accountability Act of 1996, or HIPAA, compliance requirements. Whatever your compliance need is, you'll need some tools to be able to collect documents and records. You will also need to inspect your AWS environment to check if you meet the compliance regulations that you're under. The first thing to note is that AWS has already built out data center infrastructure and networking using industry best practices.</p><p>As an AWS customer, you inherit all the best practices of AWS policies, architecture, and operational processes. AWS complies with a long list of assurance programs that you can find online. This means that segments of your compliance have already been completed, and you can focus on meeting compliance within your own architectures that you build on top of AWS. The next thing to know in regard to compliance and AWS is that the AWS Region you choose to operate out of might help you meet compliance regulations.</p><p>If you can only legally store data in the country that the data is from, you can choose a Region that makes sense for you, and AWS will not automatically replicate data across Regions. You should also be very aware of the fact that you own your data in AWS. As shown in the AWS Shared Responsibility Model, you have complete control over the data that you store in AWS. You can employ multiple different encryption mechanisms to keep your data safe, and that varies from service to service.</p><p>You can either use the features that already exist in many services or build it yourself on top of AWS. For a lot of services though, enabling data protection is a configuration setting on the resource. AWS offers multiple whitepapers and documents that you can download and use for compliance reports. One place you can access these documents is through a service called AWS Artifact.</p><p>With AWS Artifact, you can gain access to compliance reports done by third parties who have validated a wide range of compliance standards.</p></details>
+<h3>Benefits of compliance with AWS</h3>
+<p>Compliance refers to your cloud resources and data adhering to relevant regulations, industry standards, and internal policies regarding security and data protection. AWS helps you meet compliance goals and requirements in the following ways:</p>
+<ul><li>Inheriting the latest security controls that AWS uses on its own infrastructure</li><li>Third-party validation for thousands of global requirements</li><li>Streamlining and automating compliance</li><li>On-demand compliance reports</li></ul>
+<h3>AWS Artifact</h3>
+<p>— AWS Artifact is a service that provides no-cost, on-demand access to AWS security and compliance reports and select online agreements.</p>
+<p>Benefits: AWS Artifact helps you manage at scale, save time with on-demand access to compliance reports, and deploy with more confidence.</p>
+<p>Use cases: It can be used to manage select online agreements and assess third-party security and compliance.</p>
+<p>AWS Artifact consists of two types:</p>
+<p>AWS Artifact agreements and AWS Artifact reports.</p>
+<p>To learn more about the two types, expand each of the following two categories.</p>
+<h4>AWS Artifact Agreements</h4>
+<p>Suppose that your company needs to sign an agreement with AWS regarding your use of certain types of information throughout AWS services. You can do this through AWS Artifact Agreements.</p>
+<p>In AWS Artifact Agreements, you can review, accept, and manage agreements for an individual account and for all your accounts in AWS Organizations. Different types of agreements are offered to address the needs of customers who are subject to specific regulations, such as the Health Insurance Portability and Accountability Act (HIPAA).</p>
+<h4>AWS Artifact Reports</h4>
+<p>Next, suppose that a member of your company’s development team is building an application and needs more information about their responsibility for complying with certain regulatory standards. You can advise them to access this information in AWS Artifact Reports.</p>
+<p>AWS Artifact Reports provide compliance reports from third-party auditors. These auditors have tested and verified that AWS is compliant with a variety of global, regional, and industry-specific security standards and regulations. AWS Artifact Reports remains up to date with the latest reports released. You can provide the AWS audit artifacts to your auditors or regulators as evidence of AWS security controls.</p>
+<p>To learn more about AWS compliance programs, visit AWS Compliance Programs.</p>
+<h3>AWS Compliance</h3>
+<p>The AWS Compliance portal contains resources to help you learn more about AWS compliance. You can read customer compliance stories to discover how companies in regulated industries have solved various compliance, governance, and audit challenges.</p>
+<p>You can also access compliance whitepapers and documentation on topics such as the following:</p>
+<ul><li>AWS answers to key compliance questions</li><li>An overview of AWS risk and compliance</li><li>An auditing security checklist</li></ul>
+<p>For essentials and best practices, guides, and workbooks, including training, visit Additional compliance resources.</p>
+  <p class="qnote">Pytania kontrolne (1): <code>pytania\m10-05-compliance.md</code> · <a href="../pytania/testownik.html">testownik</a></p>
+  </main><script src="../narzedzia/tlumaczenia.js"></script><script src="dwujezyczny.js"></script></body></html>

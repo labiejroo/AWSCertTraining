@@ -1,0 +1,41 @@
+<!doctype html>
+  <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AWS CloudTrail</title><style>:root{--bg:#fbfaf7;--fg:#1d1d1b;--muted:#77736a;--line:#e6e1d6;--accent:#d97a00;--card:#fff;--soft:#f3efe6}
+  @media (prefers-color-scheme:dark){:root{--bg:#161614;--fg:#ecebe6;--muted:#9b978d;--line:#2f2e2a;--accent:#ffa733;--card:#1e1e1b;--soft:#24231f}}
+  *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:18px/1.7 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  main{max-width:760px;margin:0 auto;padding:28px 16px 80px}a{color:var(--accent)}
+  .crumbs{font-size:13px;color:var(--muted)}h1{font-size:32px;line-height:1.2;margin:.3em 0 .6em}
+  h2{font-size:25px;margin:1.6em 0 .4em}h3{font-size:21px;margin:1.4em 0 .3em}h4,h5{font-size:18px;margin:1em 0 .2em}
+  p{margin:.5em 0}ul,ol{padding-left:1.3em}li{margin:.2em 0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:6px 20px 14px;margin:18px 0}
+  .item+.item{border-top:1px dashed var(--line)}.item{padding-top:10px}
+  .tag{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:700}
+  .item h4{margin-top:2px}
+  details{margin:18px 0;background:var(--soft);border-radius:12px;padding:10px 20px}summary{cursor:pointer;font-weight:600}
+  details p{font-size:16px}
+  table{border-collapse:collapse;width:100%;font-size:16px}td,th{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+  .warn{background:var(--soft);border-left:3px solid var(--accent);padding:8px 12px;font-size:14px;border-radius:6px}
+  .qnote{margin-top:40px;font-size:14px;color:var(--muted)}</style>
+  <script type="application/json" id="lesson-meta">{"slug":"m10-04-aws-cloudtrail","module":"Module 10: Monitoring, Compliance, and Governance in the AWS Cloud","module_no":10,"section":"Monitoring and Compliance Services","lesson":"AWS CloudTrail","lesson_no":4,"questions":1,"captured":"2026-11-06T14:48:27.052Z","v":"5.4"}</script></head>
+  <body><main>
+  <div class="crumbs"><a href="index.html">← Spis lekcji</a> · Module 10: Monitoring, Compliance, and Governance in the AWS Cloud › Monitoring and Compliance Services</div>
+  <h1>AWS CloudTrail</h1>
+  <h4>In this lesson, you will learn how to do the following:</h4>
+<ul><li>Describe why auditing is important.</li><li>Describe benefits and use cases of AWS CloudTrail.</li><li>Describe CloudTrail events, logs, and insights.</li></ul>
+<p>In this lesson, you will learn about the AWS CloudTrail service and how it can be used in auditing your resources.</p>
+<details><summary>🎬 Video transcript</summary><p>Being able to audit transactions of IT events is a critical ability. In a physical datacenter there are so many places where a human can, even by accident, make changes without any record of that change getting saved. In the AWS Cloud, that problem goes away because every action in AWS is an API call. They can be centrally logged and audited with AWS CloudTrail.</p><p>This service is straightforward. It logs every request made to AWS. It doesn't matter if it's to launch an Amazon Elastic Compute Cloud, or Amazon EC2 instance, or add a row to an Amazon DynamoDB table, or change a user's permissions. Every request gets logged in CloudTrail.</p><p>It records exactly who made the request, what operator, and when the API call was sent. Where were they? What was their IP address? And what was the response?</p><p>Did something change? And what is the new state? Or was the request denied? This is great for us, and this makes an auditor's job much easier which in turn makes our job easier!</p><p>CloudTrail is an audit log of the AWS API calls, so it is a history of configurations and changes in a deployment. CloudTrail even comes with features to validate log file integrity to show evidence of tampering. Furthermore, if we are concerned an actor with root level permissions could still tamper with the CloudTrail logs, we can ship the logs to another AWS account which by design has different permissions to further protect the log integrity.</p></details>
+<h3>Importance of auditing</h3>
+<p>Imagine a financial company with a hybrid cloud solution trying to figure out what happened when there are changes made to their resources in the cloud and on premises. They need this information for troubleshooting and to provide detailed records for compliance. That's where CloudTrail can help.</p>
+<h3>AWS CloudTrail</h3>
+<p>— CloudTrail tracks user activity and API usage in the AWS Cloud, on premises, and even with other cloud providers. CloudTrail provides a detailed history of API calls, so you can track changes and identify who made them and when. This helps you understand what actions were taken on your AWS resources.</p>
+<p>Benefits: CloudTrail provides auditing, security monitoring, and operational troubleshooting. It also helps you prove compliance and improve your security posture.</p>
+<p>Use cases: It can be used for compliance and auditing, identifying security incidents, troubleshooting operational issues.</p>
+<p>To learn more about CloudTrail features, expand each of the following three categories.</p>
+<h4>CloudTrail events</h4>
+<p>CloudTrail events capture details about actions performed within your AWS account, such as API calls, console actions, or other activities. Event history provides a viewable, searchable, downloadable, and immutable record of the past 90 days of management events in an AWS Region. There are no CloudTrail charges for viewing event history.</p>
+<h4>CloudTrail logs</h4>
+<p>CloudTrail monitors events and delivers those events as log files to your Amazon Simple Storage Service (Amazon S3) bucket. Because CloudTrail logs are securely stored, they can be used to prove compliance with regulations such as Payment Card Industry (PCI) and Healthcare Insurance Portability and Accountability Act (HIPAA).</p>
+<h4>CloudTrail Insights</h4>
+<p>CloudTrail Insights analyzes your normal patterns of API call volume and API error rates. CloudTrail Insights also generates Insights events when API call volumes and error rates deviate from these normal patterns. You can enable CloudTrail Insights in your trails or event data stores to detect anomalous behavior and unusual activity.</p>
+  <p class="qnote">Pytania kontrolne (1): <code>pytania\m10-04-aws-cloudtrail.md</code> · <a href="../pytania/testownik.html">testownik</a></p>
+  </main><script src="../narzedzia/tlumaczenia.js"></script><script src="dwujezyczny.js"></script></body></html>

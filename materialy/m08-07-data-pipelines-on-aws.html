@@ -1,0 +1,61 @@
+<!doctype html>
+  <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Data Pipelines on AWS</title><style>:root{--bg:#fbfaf7;--fg:#1d1d1b;--muted:#77736a;--line:#e6e1d6;--accent:#d97a00;--card:#fff;--soft:#f3efe6}
+  @media (prefers-color-scheme:dark){:root{--bg:#161614;--fg:#ecebe6;--muted:#9b978d;--line:#2f2e2a;--accent:#ffa733;--card:#1e1e1b;--soft:#24231f}}
+  *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:18px/1.7 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  main{max-width:760px;margin:0 auto;padding:28px 16px 80px}a{color:var(--accent)}
+  .crumbs{font-size:13px;color:var(--muted)}h1{font-size:32px;line-height:1.2;margin:.3em 0 .6em}
+  h2{font-size:25px;margin:1.6em 0 .4em}h3{font-size:21px;margin:1.4em 0 .3em}h4,h5{font-size:18px;margin:1em 0 .2em}
+  p{margin:.5em 0}ul,ol{padding-left:1.3em}li{margin:.2em 0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:6px 20px 14px;margin:18px 0}
+  .item+.item{border-top:1px dashed var(--line)}.item{padding-top:10px}
+  .tag{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:700}
+  .item h4{margin-top:2px}
+  details{margin:18px 0;background:var(--soft);border-radius:12px;padding:10px 20px}summary{cursor:pointer;font-weight:600}
+  details p{font-size:16px}
+  table{border-collapse:collapse;width:100%;font-size:16px}td,th{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+  .warn{background:var(--soft);border-left:3px solid var(--accent);padding:8px 12px;font-size:14px;border-radius:6px}
+  .qnote{margin-top:40px;font-size:14px;color:var(--muted)}</style>
+  <script type="application/json" id="lesson-meta">{"slug":"m08-07-data-pipelines-on-aws","module":"Module 8: AI/ML and Data Analytics","module_no":8,"section":"Data Analytics on AWS","lesson":"Data Pipelines on AWS","lesson_no":7,"questions":4,"captured":"2026-11-02T17:23:45.757Z","v":"5.4"}</script></head>
+  <body><main>
+  <div class="crumbs"><a href="index.html">← Spis lekcji</a> · Module 8: AI/ML and Data Analytics › Data Analytics on AWS</div>
+  <h1>Data Pipelines on AWS</h1>
+  <h4>In this lesson, you will learn how to do the following:</h4>
+<ul><li>Describe the AWS services used in each phase of a typical AWS data pipeline.</li></ul>
+<details><summary>🎬 Video transcript</summary><p>It's time to explore data pipelines on AWS. A data pipeline automates the process of ingesting, cataloging, transforming, and delivering data from source to destination. This streamlining helps reduce manual effort and minimize errors. But to understand these concepts better, let’s take a step back and review a generic data pipeline.</p><p>The first part of our pipeline is where we ingest and store our required data. Data can come from many different sources such as applications, databases, live sensors, and streams. To gain insights, we need to consolidate this data in a single location and transform it into a useful format. Two choices are data lakes and data warehouses.</p><p>Data lakes can store vast amounts of raw data and are more flexible. Data warehouses, however, are more structured because they are optimized for business intelligence. Amazon S3 is a popular choice for data lakes, and Amazon Redshift is commonly used for data warehouses. Let's move to ingestion.</p><p>This is the process of moving data from the source systems into our chosen storage solution. Some applications might require real-time ingestion, whilst others can tolerate some latency, which makes batch ingestion the more appropriate choice. Amazon Kinesis Data Streams is ideal for real-time data ingestion. This is vital for applications requiring low-latency processing.</p><p>Even better, multiple apps can consume data from the same stream simultaneously. A financial services company might use Kinesis Data Streams to ingest real-time stock market data so they can analyze it for immediate trading decisions. Another service to mention is Amazon Data Firehose, which is a fully managed near-real-time streaming ETL solution. Firehose collects data from a source and delivers it to a destination.</p><p>For example, a smart home device manufacturer might use Firehose to collect device data from all its devices for long-term storage and analysis. Once data is ingested and stored, the next step is to catalog that data using a centralized data repository. This provides an inventory of your organization's data. It's like when you take a selfie on your smartphone.</p><p>It contains metadata, like the time you took the picture, where you took it, and its format. Is it a GIF? GIF? GIF me a break!</p><p>AWS Glue is a managed service with a feature called the Data Catalog. You can use this centralized repository to store metadata about your organization's data sets. Next, we need to clean and transform our data so it’s ready to be analyzed. For this, you can use AWS Glue.</p><p>It’s a fully managed service that offers visual ETL job creation, built-in job scheduling, and support for various data sources and formats. It's ideal for organizations looking for a simplified approach, and it offers code-free script creation as well. For more complex data processing, there's Amazon EMR. It’s ideal for large-scale data processing using popular frameworks like Apache Spark, Apache Hadoop, and Apache Hive.</p><p>Amazon EMR is best suited for organizations with existing big data expertise and those requiring customized configurations. OK folks, so we've ingested, stored, cataloged, and processed our data. It’s finally ready to be used. Actually, I can see a bunch of consumers lined up ready to analyze the data.</p><p>But they're looking for the right query solution. Well, good news for them! They have lots of options, including Amazon Athena and Amazon Redshift, among others. Athena is a fully managed serverless service.</p><p>You can submit a SQL query to analyze data in relational, nonrelational, object, and custom data sources running on Amazon S3 or even hybrid environments. Oh yeah, it can analyze data outside of AWS, too. If you prefer a fully managed data warehouse solution, then Amazon Redshift is the ideal choice. It’s better suited for complex queries on large datasets and frequent, high-performance analytical workloads.</p><p>OK, after they have queried their data, analysts usually need to visualize everything. For this, analysts can use Amazon QuickSight and Amazon OpenSearch Service. QuickSight is ideal for unified business intelligence, or BI, at scale. Both technical and non-technical users can quickly create interactive dashboards and reports.</p><p>This means they can all meet their specific analytical needs without waiting on development teams. Also, with Amazon Q in QuickSight, they can use natural language to build, discover, and share meaningful insights. Let's flip to OpenSearch Service. It can be used for real-time search, monitoring, and analysis of business and operational data.</p><p>This is especially helpful for use cases like application monitoring, log analytics, observability, and website search. And with that, we’ve come to the end of this video. Remember that this is just the tip of the data pipeline iceberg.</p></details>
+<h3>AWS data pipeline services</h3>
+<p>Let's dive a bit deeper into the AWS services used in a typical AWS data pipeline.</p>
+<h4>Data ingestion services</h4>
+<p>Data ingestion involves moving data from source systems into your chosen storage solution. Use real-time ingestion when the data is needed immediately. Use batch ingestion when some latency is tolerable.</p>
+<p>Amazon Kinesis Data Streams</p>
+<p>— You can use Kinesis Data Streams for real-time ingestion of terabytes of data from applications, streams, and sensors. This serverless service even provides automatic provisioning and scaling in on-demand mode.</p>
+<p>Amazon Data Firehose</p>
+<p>— Firehose is an option for data ingestion in near real-time. This fully managed service provides automatic provisioning and scaling. It also delivers data within seconds to data lakes, warehouses, and analytics services.</p>
+<h4>Data storage services</h4>
+<p>Data can come from many different sources. To gain insights, data is commonly consolidated into a single location. There are two storage options for this. Flexible data lakes store vast amounts of raw data. Alternatively, the more structured data warehouses are optimized for business intelligence.</p>
+<p>Amazon S3</p>
+<p>— Amazon S3 is a popular choice for data lakes. This object storage service can securely house virtually any amount of structured or unstructured data. Amazon S3 is also fully elastic, automatically scaling as you add and remove data.</p>
+<p>Amazon Redshift</p>
+<p>— Amazon Redshift is a fully managed data warehouse service that can store petabytes of structured or semistructured data. With the scalability and pay-as-you-go pricing model, organizations can cost-effectively analyze large datasets.</p>
+<h4>Data cataloging services</h4>
+<p>Cataloging your data with metadata provides an inventory of your organization's data.</p>
+<p>AWS Glue Data Catalog</p>
+<p>— AWS Glue Data Catalog provides a centralized, scalable, and managed metadata repository that enhances data discovery. It improves the overall efficiency of data pipelines by delivering metadata to various data stores and analytics services.</p>
+<h4>Data processing services</h4>
+<p>Data processing services clean and transform your data so it's ready to be analyzed.</p>
+<p>AWS Glue</p>
+<p>— AWS Glue is a fully managed ETL service that makes data preparation simpler, faster, and cost effective. AWS Glue ETL jobs can use the AWS Glue Data Catalog to access metadata about data sources, which can help inform transformations defined in the ETL script.</p>
+<p>Amazon EMR</p>
+<p>— Amazon EMR is ideal for large-scale data processing and organizations with existing big data expertise. It automatically handles infrastructure provisioning, cluster management, and scaling. Amazon EMR supports popular big data frameworks like Apache Spark, Apache Hadoop, and Apache Hive.</p>
+<h4>Data analysis and visualization services</h4>
+<p>Queries and visualization tools help you to develop important insights about your data.</p>
+<p>Amazon Athena</p>
+<p>— With Athena, you can run SQL queries to analyze data in relational, nonrelational, object, and custom data sources. This fully managed serverless service can access data hosted on Amazon S3, on premises, or even in multi-cloud environments. It offers a cost-effective solution for data analysis because you only pay for the queries you run.</p>
+<p>Amazon Redshift</p>
+<p>— Amazon Redshift is a fully managed data warehouse solution. Its columnar storage and massively parallel processing architecture make it ideal for analyzing large datasets. You can use it to perform complex SQL queries on large datasets for frequent, high-performance analytical workloads.</p>
+<p>Amazon QuickSight</p>
+<p>— With QuickSight, both technical and non-technical users can quickly create modern interactive dashboards and reports from various data sources without managing infrastructure. Amazon Q in QuickSight provides natural language queries so business analysts and users can build, discover, and share meaningful insights in seconds.</p>
+<p>Amazon OpenSearch Service</p>
+<p>— With OpenSearch Service, you can search for relevant content through precise keyword matching or natural language queries. Unified dashboards provide real-time data visualization as you analyze and monitor logs, traces, and metrics for various applications.</p>
+  <p class="qnote">Pytania kontrolne (4): <code>pytania\m08-07-data-pipelines-on-aws.md</code> · <a href="../pytania/testownik.html">testownik</a></p>
+  </main><script src="../narzedzia/tlumaczenia.js"></script><script src="dwujezyczny.js"></script></body></html>

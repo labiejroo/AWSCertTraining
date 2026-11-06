@@ -1,0 +1,37 @@
+<!doctype html>
+  <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AWS Elastic Disaster Recovery</title><style>:root{--bg:#fbfaf7;--fg:#1d1d1b;--muted:#77736a;--line:#e6e1d6;--accent:#d97a00;--card:#fff;--soft:#f3efe6}
+  @media (prefers-color-scheme:dark){:root{--bg:#161614;--fg:#ecebe6;--muted:#9b978d;--line:#2f2e2a;--accent:#ffa733;--card:#1e1e1b;--soft:#24231f}}
+  *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:18px/1.7 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  main{max-width:760px;margin:0 auto;padding:28px 16px 80px}a{color:var(--accent)}
+  .crumbs{font-size:13px;color:var(--muted)}h1{font-size:32px;line-height:1.2;margin:.3em 0 .6em}
+  h2{font-size:25px;margin:1.6em 0 .4em}h3{font-size:21px;margin:1.4em 0 .3em}h4,h5{font-size:18px;margin:1em 0 .2em}
+  p{margin:.5em 0}ul,ol{padding-left:1.3em}li{margin:.2em 0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:6px 20px 14px;margin:18px 0}
+  .item+.item{border-top:1px dashed var(--line)}.item{padding-top:10px}
+  .tag{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:700}
+  .item h4{margin-top:2px}
+  details{margin:18px 0;background:var(--soft);border-radius:12px;padding:10px 20px}summary{cursor:pointer;font-weight:600}
+  details p{font-size:16px}
+  table{border-collapse:collapse;width:100%;font-size:16px}td,th{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+  .warn{background:var(--soft);border-left:3px solid var(--accent);padding:8px 12px;font-size:14px;border-radius:6px}
+  .qnote{margin-top:40px;font-size:14px;color:var(--muted)}</style>
+  <script type="application/json" id="lesson-meta">{"slug":"m06-10-aws-elastic-disaster-recovery","module":"Module 6: Storage","module_no":6,"section":"Additional Storage Solutions","lesson":"AWS Elastic Disaster Recovery","lesson_no":10,"questions":1,"captured":"2026-10-30T16:08:21.894Z","v":"5.4"}</script></head>
+  <body><main>
+  <div class="crumbs"><a href="index.html">← Spis lekcji</a> · Module 6: Storage › Additional Storage Solutions</div>
+  <h1>AWS Elastic Disaster Recovery</h1>
+  <h4>In this lesson, you will learn how to do the following:</h4>
+<ul><li>Describe Elastic Disaster Recovery, including its benefits and use cases.</li></ul>
+<p>Elastic Disaster Recovery replicates critical workloads to AWS with minimal downtime. Your servers' block-level data is continuously replicated to AWS, making it ideal for uses that require robust disaster recovery solutions. It supports both physical and virtual servers to enable rapid recovery during disruptions, which is particularly valuable for industries like healthcare where system availability is crucial.</p>
+<p>You can use Elastic Disaster Recovery to reduce downtimes and data loss while eliminating the costs associated with maintaining secondary data centers. It also offers non-disruptive disaster recovery testing, meaning it's capable of quickly launching recovery instances when needed.</p>
+<h3>Benefits</h3>
+<h4>Business resilience</h4>
+<p>Maintain business operations with continuous block-level data replication and the ability to recover workloads within minutes during disruptions.</p>
+<h4>Streamlined disaster recovery</h4>
+<p>Automate disaster recovery processes through an intuitive console, reducing complex manual configurations and minimizing the risk of human error.</p>
+<h4>Cost optimization</h4>
+<p>Eliminate expensive secondary data centers and pay only for what you use, with minimal upfront investment and no standby infrastructure costs.</p>
+<h3>Use cases</h3>
+<div class="card"><div class="item"><div class="tag">Slide 1/3</div><h4>Healthcare data protection</h4><p>Hospital systems could use Elastic Disaster Recovery to maintain compliance while protecting patient records by replicating on-premises servers to AWS. This ensures that critical medical data remains accessible during system outages. Regular disaster recovery testing helps validate their recovery procedures and meet strict healthcare regulations.</p></div><div class="item"><div class="tag">Slide 2/3</div><h4>Financial services continuity</h4><p>A regional bank could implement Elastic Disaster Recovery to protect their core banking applications by continuously replicating their transaction processing systems. This facilitates quick recovery if their primary data center fails and helps maintain customer trust and regulatory compliance.</p></div><div class="item"><div class="tag">Slide 3/3</div><h4>Manufacturing operations recovery</h4><p>A global manufacturer could employ Elastic Disaster Recovery to protect their production planning systems. By replicating factory management servers to AWS, they can ensure minimal disruption to supply chain operations during disasters. Regular failover testing validates the recovery strategy.</p></div></div>
+  <p class="qnote">Pytania kontrolne (1): <code>pytania\m06-10-aws-elastic-disaster-recovery.md</code> · <a href="../pytania/testownik.html">testownik</a></p>
+  </main><script src="../narzedzia/tlumaczenia.js"></script><script src="dwujezyczny.js"></script></body></html>

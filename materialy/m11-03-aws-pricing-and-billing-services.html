@@ -1,0 +1,55 @@
+<!doctype html>
+  <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AWS Pricing and Billing Services</title><style>:root{--bg:#fbfaf7;--fg:#1d1d1b;--muted:#77736a;--line:#e6e1d6;--accent:#d97a00;--card:#fff;--soft:#f3efe6}
+  @media (prefers-color-scheme:dark){:root{--bg:#161614;--fg:#ecebe6;--muted:#9b978d;--line:#2f2e2a;--accent:#ffa733;--card:#1e1e1b;--soft:#24231f}}
+  *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:18px/1.7 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  main{max-width:760px;margin:0 auto;padding:28px 16px 80px}a{color:var(--accent)}
+  .crumbs{font-size:13px;color:var(--muted)}h1{font-size:32px;line-height:1.2;margin:.3em 0 .6em}
+  h2{font-size:25px;margin:1.6em 0 .4em}h3{font-size:21px;margin:1.4em 0 .3em}h4,h5{font-size:18px;margin:1em 0 .2em}
+  p{margin:.5em 0}ul,ol{padding-left:1.3em}li{margin:.2em 0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:6px 20px 14px;margin:18px 0}
+  .item+.item{border-top:1px dashed var(--line)}.item{padding-top:10px}
+  .tag{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:700}
+  .item h4{margin-top:2px}
+  details{margin:18px 0;background:var(--soft);border-radius:12px;padding:10px 20px}summary{cursor:pointer;font-weight:600}
+  details p{font-size:16px}
+  table{border-collapse:collapse;width:100%;font-size:16px}td,th{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+  .warn{background:var(--soft);border-left:3px solid var(--accent);padding:8px 12px;font-size:14px;border-radius:6px}
+  .qnote{margin-top:40px;font-size:14px;color:var(--muted)}</style>
+  <script type="application/json" id="lesson-meta">{"slug":"m11-03-aws-pricing-and-billing-services","module":"Module 11: Pricing and Support","module_no":11,"section":"AWS Pricing","lesson":"AWS Pricing and Billing Services","lesson_no":3,"questions":1,"captured":"2026-11-06T15:02:56.596Z","v":"5.4"}</script></head>
+  <body><main>
+  <div class="crumbs"><a href="index.html">← Spis lekcji</a> · Module 11: Pricing and Support › AWS Pricing</div>
+  <h1>AWS Pricing and Billing Services</h1>
+  <h4>In this lesson, you will learn how to do the following:</h4>
+<ul><li>Identify the key benefits and use cases of AWS Organizations, AWS Billing Dashboard, AWS Budgets, and AWS Cost Explorer.</li><li>Identify the key benefits and use cases for the AWS Pricing Calculator.</li></ul>
+<p>In this lesson, you learn about specific AWS services that you can use to manage and optimize AWS costs. First, you will cover the concept of consolidated billing in AWS Organizations. Then, you will learn about some services that you can use to view, track, and forecast expenses.</p>
+<details><summary>🎬 Video transcript</summary><p>OK, now that pricing concepts are fresh in your mind, let’s talk about billing options for AWS accounts: single or consolidated. With a single account, it’s all encompassed in that one account. Use AWS services. Deploy workloads.</p><p>Receive a bill for what you use. Rinse and repeat every month. For consolidated account billing, it’s ever so slightly more complex. With this approach, you use multiple AWS accounts.</p><p>One is a primary and the others are subaccounts linked to the primary account. The subaccounts can be separated by department, project, team, or however you see fit. The important part is that when your AWS bill arrives, it is only sent to the primary account. All other account bills are consolidated into that primary account.</p><p>In addition to consolidated billing, the primary account owner gets a clear view of your entire organization’s AWS spend. And I use the word organization specifically because, yep, you guessed it: You can use AWS Organizations to set it all up. With Organizations and consolidated billing, you can take advantage of some great benefits, like centralized management, discounts, and improved security. OK, with that out the way, it’s demo time!</p><p>The first service that can help with billing is the AWS Billing Dashboard. It gives you an overview of your forecasted spend for the month, and a breakdown of your most-consumed services by cost. It's a great starting point for understanding your expenses. But what if you want to budget and plan things out ahead of time?</p><p>Well, check out AWS Budgets. You can create custom budgets to track your costs and usage. You can generate budgets for specific services, cost categories, or even by tags. Tags are metadata that you can add to your AWS resources.</p><p>They help you identify resources easily and group them together to find all related resources much quicker. For example, if we tag all our development resources with the &quot;dev&quot; tag, we can easily find all the related resources with one search instead of multiple. One final note on AWS Budgets is that you can set up alerts. These alerts can notify you when you're approaching or have exceeded budget limits that you have set.</p><p>Finally, let’s look at AWS Cost Explorer. It helps with reviewing costs and usage over time. You can break down costs by service, linked account, and again, even tags. For example, you might tag resources by project, department, or environment.</p><p>With tag-based cost allocation in Cost Explorer, you can use these tags to organize your cost and usage information. This is incredibly useful for understanding which projects or departments are driving your AWS costs. You know, all this talk of tags reminds me…just hold on. Let's get that there.</p><p>That’s better. Much better, honestly. I feel important like I could do anything. Thank you, Morgan and Alan.</p><p>I mean, a little tattered, but it’s more about what they mean and not how they look.</p></details>
+<h3>AWS pricing and billing services</h3>
+<p>You learned about various AWS pricing and billing services and tools. These services are purpose-built to help you forecast, track, manage, and view your AWS costs. When you are first starting out with the AWS Cloud, they can be hard to tell apart. To help you differentiate the services, let's review these services and their key uses cases.</p>
+<p>AWS Organizations</p>
+<p>— AWS Organizations provides centralized management and governance of your AWS environment. Using AWS Organizations, you can create, group, and manage accounts. You can also apply security policies at the account level and consolidate billing with multiple accounts using a single payment method.</p>
+<p>Use cases:</p>
+<ul><li>Consolidate multiple AWS accounts into one central organization.</li><li>Implement organization-wide policies.</li></ul>
+<p>To learn more about AWS Organizations, refer to the AWS Organizations User Guide.</p>
+<p>AWS Billing and Cost Management dashboard</p>
+<p>— The AWS Billing and Cost Management dashboard centralizes cost management, showing current charges, usage, forecasts, and detailed breakdowns. It also provides tools to manage payments, view invoices, set budgets, and consolidate billing.</p>
+<p>Use cases:</p>
+<ul><li>Use helpful visualizations and billing reports of monthly AWS spend.</li><li>Set up and manage payment methods.</li></ul>
+<p>To learn more about the AWS Billing and Cost Management dashboard, refer to the AWS Billing User Guide.</p>
+<p>AWS Budgets</p>
+<p>— AWS Budgets helps set custom budgets and sends alerts when costs, usage, or Savings Plans and Reserved Instances (RIs) utilization or coverage exceed defined thresholds.</p>
+<p>Use cases:</p>
+<ul><li>Set up alerts for when projected costs exceed predefined thresholds.</li><li>Forecast future expenses based on current usage trends.</li></ul>
+<p>To learn more, refer to Managing your costs with AWS Budgets.</p>
+<p>AWS Cost Explorer</p>
+<p>— AWS Cost Explorer helps visualize, analyze, and manage AWS costs and usage with interactive graphs, reports, and forecasts. It provides insights into spending patterns, trends, and Reserved Instance recommendations.</p>
+<p>Use cases:</p>
+<ul><li>Analyze historical spending trends to identify cost-saving opportunities.</li><li>Forecast future AWS costs based on current usage patterns to budget effectively.</li></ul>
+<p>To learn more, refer to Analyzing your costs and usage with AWS Cost Explorer.</p>
+<p>AWS Pricing Calculator</p>
+<p>— Another helpful tool is the AWS Pricing Calculator. The AWS Pricing Calculator is a web-based planning tool that you can use to create estimates. You input specific configurations such as instance types, storage options, and data transfer volumes. Then, based on your configurations, you receive a detailed cost breakdown to help you budget for your AWS resource allocation.</p>
+<p>Use cases:</p>
+<ul><li>Estimate potential costs before deployment.</li><li>Compare costs of different AWS services and configurations.</li></ul>
+<p>To learn more, refer to Generating estimates with AWS Pricing Calculator.</p>
+  <p class="qnote">Pytania kontrolne (1): <code>pytania\m11-03-aws-pricing-and-billing-services.md</code> · <a href="../pytania/testownik.html">testownik</a></p>
+  </main><script src="../narzedzia/tlumaczenia.js"></script><script src="dwujezyczny.js"></script></body></html>

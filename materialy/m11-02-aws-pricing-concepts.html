@@ -1,0 +1,57 @@
+<!doctype html>
+  <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AWS Pricing Concepts</title><style>:root{--bg:#fbfaf7;--fg:#1d1d1b;--muted:#77736a;--line:#e6e1d6;--accent:#d97a00;--card:#fff;--soft:#f3efe6}
+  @media (prefers-color-scheme:dark){:root{--bg:#161614;--fg:#ecebe6;--muted:#9b978d;--line:#2f2e2a;--accent:#ffa733;--card:#1e1e1b;--soft:#24231f}}
+  *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:18px/1.7 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  main{max-width:760px;margin:0 auto;padding:28px 16px 80px}a{color:var(--accent)}
+  .crumbs{font-size:13px;color:var(--muted)}h1{font-size:32px;line-height:1.2;margin:.3em 0 .6em}
+  h2{font-size:25px;margin:1.6em 0 .4em}h3{font-size:21px;margin:1.4em 0 .3em}h4,h5{font-size:18px;margin:1em 0 .2em}
+  p{margin:.5em 0}ul,ol{padding-left:1.3em}li{margin:.2em 0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:6px 20px 14px;margin:18px 0}
+  .item+.item{border-top:1px dashed var(--line)}.item{padding-top:10px}
+  .tag{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:700}
+  .item h4{margin-top:2px}
+  details{margin:18px 0;background:var(--soft);border-radius:12px;padding:10px 20px}summary{cursor:pointer;font-weight:600}
+  details p{font-size:16px}
+  table{border-collapse:collapse;width:100%;font-size:16px}td,th{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+  .warn{background:var(--soft);border-left:3px solid var(--accent);padding:8px 12px;font-size:14px;border-radius:6px}
+  .qnote{margin-top:40px;font-size:14px;color:var(--muted)}</style>
+  <script type="application/json" id="lesson-meta">{"slug":"m11-02-aws-pricing-concepts","module":"Module 11: Pricing and Support","module_no":11,"section":"AWS Pricing","lesson":"AWS Pricing Concepts","lesson_no":2,"questions":1,"captured":"2026-11-06T15:02:34.314Z","v":"5.4"}</script></head>
+  <body><main>
+  <div class="crumbs"><a href="index.html">← Spis lekcji</a> · Module 11: Pricing and Support › AWS Pricing</div>
+  <h1>AWS Pricing Concepts</h1>
+  <h4>In this lesson, you will learn how to do the following:</h4>
+<ul><li>Describe the key concepts of AWS pricing.</li><li>Identify the driving factors of cost.</li></ul>
+<p>AWS offers customers a pay-as-you-go approach for pricing for the vast majority of our cloud services. With AWS, customers pay only for the individual services they need, for as long as they use them, and without requiring long-term contracts or complex licensing. In this lesson, you learn more about the three key concepts of AWS pricing. You also learn about the primary elements that drive customer cost.</p>
+<details><summary>🎬 Video transcript</summary><p>You’ve heard a little bit about AWS pricing concepts here and there. Let's unpack AWS pricing a bit more as well as talk about the main drivers of cost. Let's start with the three fundamental principles of AWS pricing. First, a concept you’re familiar with: pay as you go.</p><p>With this model, you only pay for the resources you actually consume, without any upfront costs or long-term commitments. It's perfect for variable workloads or when you're unsure about your exact needs. The next key concept is that you save when you commit. By committing to a certain level of usage for a certain period of time, usually 1 or 3 years, you can receive pretty significant discounts.</p><p>This is ideal for steady-state workloads. The third concept is that you pay less by using more. I know, this one sounds kinda similar to save when you commit. Here’s what we mean—we are talking about volume-based discounts.</p><p>As your usage of AWS services increases, you can benefit from economies of scale, resulting in lower per-unit costs. OK, so now you have the fundamental concepts down. You know the how, so let’s discuss the what— what are the primary drivers of cost at AWS? Well, the technical answer is that it depends.</p><p>Every AWS service bills differently, so you’ll want to check the pricing page of each service to know the full details and associated costs. That said, there are pretty much three main drivers when it comes to AWS pricing: compute, storage, and outbound data transfer. Compute cost includes services like EC2, Lambda, and ECS, when you're charged based on the processing power and time used. Storage includes services like S3 and EBS, and pricing is based on the amount of data stored and for how long.</p><p>And then we have outbound data transfer. One example for this, is if we host a static website in S3, anytime someone accesses objects from that bucket that data is being transferred out of AWS and would incur charges. Now, there is nuance to this. Each service has different considerations, so ensure you are reading the documentation so that you fully understand how billing works.</p></details>
+<h3>Key concepts of AWS pricing</h3>
+<p>To review the three key concepts of how you pay for AWS services, choose each of the following cards.</p>
+<div class="card"><div class="item"><div class="tag">Card 1/3</div><h4>Pay as you go</h4><p>Pay as you go</p>
+<p>With pay as you go, you can adapt to changing business needs and reduce the risk of overprovisioning or missing capacity.</p></div><div class="item"><div class="tag">Card 2/3</div><h4>Save when you commit</h4><p>Save when you commit</p>
+<p>For certain services, such as Compute services on AWS, Savings Plans offer savings over On-Demand prices when you commit to a 1-year or 3-year plan.</p></div><div class="item"><div class="tag">Card 3/3</div><h4>Pay less by using more</h4><p>Pay less by using more</p>
+<p>With AWS, you can realize important savings as your usage increases. For some services, pricing is tiered, meaning the more you use, the less you pay.</p></div></div>
+<h3>Driving factors of cost</h3>
+<p>The pricing of AWS services varies based on several factors, such as service category or type, configuration, AWS Region, and which pricing model you choose. Refer to the pricing tab on a service's webpage for details on its specific pricing factors.</p>
+<p>There are three fundamental drivers of cost with AWS: compute, storage, and outbound data transfer. These driving factors impact AWS service categories in different ways. To learn how compute, storage, and outbound data transfer drive cost at AWS, expand each of the following factors.</p>
+<h4>Compute</h4>
+<p>For compute resources, you pay by a certain span of time, like by the hour or by the second. Unless you've made a reservation for which the cost is agreed upon beforehand, you pay from the time you launch a resource until the time you stop the instance.</p>
+<h4>Storage</h4>
+<p>You can choose from a broad portfolio of storage solutions with deep functionality for storing, accessing, protecting, and analyzing data. Pricing for storage largely depends on how much storage you have provisioned or how much you are using.</p>
+<p>For some storage options, such as Amazon Simple Storage Service (Amazon S3), storage cost is tiered. This means you can optimize storage costs based on how frequently and quickly you need to access data. With Amazon S3, consider the following six cost components when storing and managing customer data:</p>
+<ul><li>Storage pricing</li><li>Request and data retrieval pricing</li><li>Data transfer and transfer acceleration pricing</li><li>Data management and analytics pricing</li><li>Replication pricing</li><li>The price to process your data with Amazon S3 Object Lambda</li></ul>
+<p>To learn more about Amazon S3 pricing, choose the following link and navigate through the pricing tabs: Amazon S3 Pricing.</p>
+<h4>Data transfer</h4>
+<p>In most cases, there is no charge for inbound data transfer or for data transfer between AWS services within the same Region. There are some exceptions, so be sure to verify data transfer rates before beginning.</p>
+<p>Outbound data transfer is aggregated across services and then charged at the outbound data transfer rate. The more data you transfer, the less you pay per gigabyte. For data storage and transfer, you typically pay per gigabyte.</p>
+<h3>AWS pricing scenario</h3>
+<p>Let's apply these AWS pricing concepts and drivers of cost to a possible scenario. Use Amazon Elastic Compute Cloud (Amazon EC2), a service in the compute category, as an example.</p>
+<p>An AWS customer decides to provision an EC2 instance for their nonprofit organization. To learn how this customer's EC2 instance might be impacted by the driving cost factors of compute, storage, and data transfer, choose each of the numbered markers.</p>
+<div class="card"><div class="item"><div class="tag">Marker 1/3</div><p>1: Compute</p>
+<p>Example:</p>
+<p>The organization built their own application that processes and manages online donations. There are over 500 types of EC2 instances that they can choose from to run that application. Each type of EC2 instance has a different quantity of CPU and memory, both of which are compute factors of Amazon EC2. Based on their requirements, they chose to use t4g.nano instance, which provides the lowest price while still meeting their needs.</p></div><div class="item"><div class="tag">Marker 2/3</div><p>2: Storage</p>
+<p>The organization's donation processing application requires storage, so they configure their EC2 instance with Amazon Elastic Block Store (Amazone EBS). Price will be impacted by the amount of capacity configured.</p></div><div class="item"><div class="tag">Marker 3/3</div><p>3: Data transfer</p>
+<p>The organization's donation processing application will transfer data from their EC2 instance to another solution to run analytics. This transfer would be considered outbound data transfer. Price will be impacted by capacity and which internet source or AWS Region the data is being transferred to.</p>
+<p>For the chart associated with the cost of data transfer out, navigate to the following webpage and scroll to &quot;Data Transfer&quot;: Data transfer on Amazon EC2.</p></div></div>
+<p>As noted, these three factors impact each service category and AWS service differently. Please refer to the pricing tab of a service's webpage to learn how these factors impact price.</p>
+  <p class="qnote">Pytania kontrolne (1): <code>pytania\m11-02-aws-pricing-concepts.md</code> · <a href="../pytania/testownik.html">testownik</a></p>
+  </main><script src="../narzedzia/tlumaczenia.js"></script><script src="dwujezyczny.js"></script></body></html>

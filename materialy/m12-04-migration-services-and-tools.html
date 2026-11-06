@@ -1,0 +1,53 @@
+<!doctype html>
+  <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Migration Services and Tools</title><style>:root{--bg:#fbfaf7;--fg:#1d1d1b;--muted:#77736a;--line:#e6e1d6;--accent:#d97a00;--card:#fff;--soft:#f3efe6}
+  @media (prefers-color-scheme:dark){:root{--bg:#161614;--fg:#ecebe6;--muted:#9b978d;--line:#2f2e2a;--accent:#ffa733;--card:#1e1e1b;--soft:#24231f}}
+  *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:18px/1.7 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  main{max-width:760px;margin:0 auto;padding:28px 16px 80px}a{color:var(--accent)}
+  .crumbs{font-size:13px;color:var(--muted)}h1{font-size:32px;line-height:1.2;margin:.3em 0 .6em}
+  h2{font-size:25px;margin:1.6em 0 .4em}h3{font-size:21px;margin:1.4em 0 .3em}h4,h5{font-size:18px;margin:1em 0 .2em}
+  p{margin:.5em 0}ul,ol{padding-left:1.3em}li{margin:.2em 0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:6px 20px 14px;margin:18px 0}
+  .item+.item{border-top:1px dashed var(--line)}.item{padding-top:10px}
+  .tag{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:700}
+  .item h4{margin-top:2px}
+  details{margin:18px 0;background:var(--soft);border-radius:12px;padding:10px 20px}summary{cursor:pointer;font-weight:600}
+  details p{font-size:16px}
+  table{border-collapse:collapse;width:100%;font-size:16px}td,th{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+  .warn{background:var(--soft);border-left:3px solid var(--accent);padding:8px 12px;font-size:14px;border-radius:6px}
+  .qnote{margin-top:40px;font-size:14px;color:var(--muted)}</style>
+  <script type="application/json" id="lesson-meta">{"slug":"m12-04-migration-services-and-tools","module":"Module 12: Migrating to the AWS Cloud","module_no":12,"section":"Migration Services and Tools","lesson":"Migration Services and Tools","lesson_no":4,"questions":2,"captured":"2026-11-06T15:17:57.792Z","v":"5.4"}</script></head>
+  <body><main>
+  <div class="crumbs"><a href="index.html">← Spis lekcji</a> · Module 12: Migrating to the AWS Cloud › Migration Services and Tools</div>
+  <h1>Migration Services and Tools</h1>
+  <h4>In this lesson, you will learn how to do the following:</h4>
+<ul><li>Identify AWS migration tools and resources.</li><li>Describe Migration Evaluator and when to use it.</li><li>Describe AWS Application Discovery Service and when to use it.</li><li>Describe AWS Migration Hub and when to use it.</li><li>Locate AWS Migration and Modernization Competency Partners</li></ul>
+<p>No matter where you are in the migration process, you have many AWS services and resources you can use to support your migration journey. In this lesson, you will identify four migration services and locate additional resources to help support you after this training.</p>
+<details><summary>🎬 Video transcript</summary><p>Let's explore four services that help businesses move their applications and data to the cloud. The first service is the AWS Application Discovery Service. Think of this as your migration detective. It explores your current IT setup, taking notes on what programs you use, how they work together, and what resources they need.</p><p>This helps you plan your move to AWS more effectively by performing the automatic discovery of applications and providing detailed reports on your IT landscape. You can use this to make informed decisions about what you want to move and how to do it, saving time and reducing risks during migration. Next is the AWS Application Migration Service. This is like having a team of expert movers.</p><p>It helps you pack up your applications and smoothly transport them to AWS. It can even make small adjustments to ensure everything works in its new cloud home. Benefits include automated migration and minimal downtime during the move. You can use this to quickly transfer their applications to the cloud without disrupting business operations.</p><p>Then there is the Migration Evaluator. Imagine a moving consultant who helps you estimate the cost of your relocation. This tool analyzes your current IT setup and provides detailed cost estimates for moving to AWS. It helps you understand potential savings and plan your budget.</p><p>Businesses can use this to make data-driven decisions about their cloud migration strategy and justify the investment to stakeholders. Finally, there is the AWS Migration Hub. This is your command center for the entire moving process. It gives you a unified view of all tasks and progress tracking.</p><p>You can use this to keep your migration efforts organized and ensure nothing falls through the cracks. Working together, these AWS migration tools provide several benefits: streamlined migration process, reduced risk of errors or downtime, cost savings through efficient planning, and faster time to value in the cloud. By using these tools, businesses can make their journey to AWS smoother, faster, and more cost-effective. And that in turn, helps businesses start enjoying the benefits of the cloud sooner.</p></details>
+<h3>Assess phase</h3>
+<p>In the Assess phase, it is important to have the right tools to build the business case for your migration. That's where Migration Evaluator can help.</p>
+<p>Migration Evaluator</p>
+<p>— The Migration Evaluator is a migration assessment service that helps you create a business case for AWS Cloud planning and migration. It does this with a data driven approach, analyzing your current state, target state, and developing a migration readiness plan with projected cloud costs.</p>
+<p>Benefits: The benefits include removing the guesswork when migrating. It provides visibility into multiple cost-effective cloud migration scenarios. It also gives insights on reusing existing software licensing, which can further reduce costs.</p>
+<p>Use cases: You can use Migration Evaluator to conduct broad-based discovery, take a snapshot of your current on-premises footprint to fine-tune licensing, view server dependencies, and gain visibility into multiple migration scenarios. You can also use it to estimate and reduce your cloud costs.</p>
+<h3>Mobilize phase</h3>
+<p>Let's look at two services that you might use in the Mobilize phase for discovery and planning.</p>
+<p>Application Discovery Service</p>
+<p>— The Application Discovery Service discovers on-premises server inventory and connections. It gathers configuration, performance, and connection details for both servers and databases to create a detailed migration plan.</p>
+<p>Benefits: With Application Discovery Service, you get a comprehensive snapshot of your on-premises inventory. You also can integrate discovery data with other services like Migration Hub and protect the data Application Discovery Service collects.</p>
+<p>Use cases: You can use the AWS Application Discovery Service to conduct discovery and inventory, map the connections and dependencies, and generate a migration plan.</p>
+<p>Migration Hub</p>
+<p>— The Migration Hub is a centralized hub to take you from discovery, assessment, planning, and execution of your migration. It provides tools, guidance, and automated recommendations to collaborate with your team and track your migration.</p>
+<p>Benefits: With the Migration Hub, you have one location to go for your migration and, expert guidance in the form of prescriptive journey templates. Another benefit is cost savings because there is no charge to use Migration Hub.</p>
+<p>Use cases: You can use Migration Hub for migration assessment and planning and migration completion and collaboration with teams. You can also use it for modernization efforts like fast-tracking application refactoring.</p>
+<h3>Migrate and modernize phase</h3>
+<p>As you start moving resources to the cloud, you might continue to use Migration Hub to track your progress. You can also use Migration Hub during migration to modernize your applications. In following lessons, you will explore database and data migrations. But first, let's look at another service that focuses on your application migration, Application Migration Service.</p>
+<p>Application Migration Service</p>
+<p>— Application Migration Service is a tool to move and improve your on-premises and cloud-based applications. It helps customers streamline, expedite, and reduce the cost of migrating and modernizing applications.</p>
+<p>Benefits: The benefits include support to migrate from any source infrastructure that runs a supported operating system (OS). It makes it possible to modernize your applications during migration. You can maintain normal business operations during the application replication process and also reduce costs by using one tool for a wide range of applications.</p>
+<p>Use cases: You can use the Application Migration Service for on-premises applications running on physical servers or infrastructure, cloud-based applications, or moving between AWS Regions. You can also use it to modernize applications.</p>
+<h3>Migration resources</h3>
+<h4>AWS Migration and Modernization Competency Partners</h4>
+<p>When migrating to the AWS Cloud, if you need help and expertise, you don't have to go it alone. You can work with the AWS Competency Partner Program. You can search for AWS Migration and Modernization Service Partners who specialize in specific phases of the migration or the type of help you need. To learn more, refer to AWS Migration and Modernization Competency Partners.</p>
+  <p class="qnote">Pytania kontrolne (2): <code>pytania\m12-04-migration-services-and-tools.md</code> · <a href="../pytania/testownik.html">testownik</a></p>
+  </main><script src="../narzedzia/tlumaczenia.js"></script><script src="dwujezyczny.js"></script></body></html>

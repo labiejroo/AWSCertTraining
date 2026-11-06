@@ -1,0 +1,37 @@
+<!doctype html>
+  <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Auditing AWS Resources for Compliance</title><style>:root{--bg:#fbfaf7;--fg:#1d1d1b;--muted:#77736a;--line:#e6e1d6;--accent:#d97a00;--card:#fff;--soft:#f3efe6}
+  @media (prefers-color-scheme:dark){:root{--bg:#161614;--fg:#ecebe6;--muted:#9b978d;--line:#2f2e2a;--accent:#ffa733;--card:#1e1e1b;--soft:#24231f}}
+  *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:18px/1.7 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  main{max-width:760px;margin:0 auto;padding:28px 16px 80px}a{color:var(--accent)}
+  .crumbs{font-size:13px;color:var(--muted)}h1{font-size:32px;line-height:1.2;margin:.3em 0 .6em}
+  h2{font-size:25px;margin:1.6em 0 .4em}h3{font-size:21px;margin:1.4em 0 .3em}h4,h5{font-size:18px;margin:1em 0 .2em}
+  p{margin:.5em 0}ul,ol{padding-left:1.3em}li{margin:.2em 0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:6px 20px 14px;margin:18px 0}
+  .item+.item{border-top:1px dashed var(--line)}.item{padding-top:10px}
+  .tag{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:700}
+  .item h4{margin-top:2px}
+  details{margin:18px 0;background:var(--soft);border-radius:12px;padding:10px 20px}summary{cursor:pointer;font-weight:600}
+  details p{font-size:16px}
+  table{border-collapse:collapse;width:100%;font-size:16px}td,th{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+  .warn{background:var(--soft);border-left:3px solid var(--accent);padding:8px 12px;font-size:14px;border-radius:6px}
+  .qnote{margin-top:40px;font-size:14px;color:var(--muted)}</style>
+  <script type="application/json" id="lesson-meta">{"slug":"m10-06-auditing-aws-resources-for-compliance","module":"Module 10: Monitoring, Compliance, and Governance in the AWS Cloud","module_no":10,"section":"Monitoring and Compliance Services","lesson":"Auditing AWS Resources for Compliance","lesson_no":6,"questions":1,"captured":"2026-11-06T14:49:28.883Z","v":"5.4"}</script></head>
+  <body><main>
+  <div class="crumbs"><a href="index.html">← Spis lekcji</a> · Module 10: Monitoring, Compliance, and Governance in the AWS Cloud › Monitoring and Compliance Services</div>
+  <h1>Auditing AWS Resources for Compliance</h1>
+  <h4>In this lesson, you will learn how to do the following:</h4>
+<ul><li>Describe the benefits and use cases of AWS Config.</li><li>Describe the benefits and use cases of AWS Audit Manager.</li></ul>
+<p>In the previous lesson, you learned about compliance with AWS and the industry compliance programs. In this lesson, you will explore several AWS services that you can use to help ensure that your resources comply with your company's standards or requirements.</p>
+<details><summary>🎬 Video transcript</summary><p>You might be wondering how you know if the resources and architectures you create are in compliance with your own company standards. Your organization will likely have rules you want your architectures to adhere to including specific configuration guidelines for different AWS resources. You're going to want a way to assess and audit the resources you create on AWS to ensure that they meet these rules. That's where AWS Config comes in.</p><p>AWS Config is a service that monitors and records AWS resource configurations and evaluates them against the configurations you want to implement. It helps you assess, audit, and evaluate your resources so your solutions can be in compliance with internal policies and regulations. Config continuously tracks changes to your AWS resources. You can create rules that define your compliance standards, and then Config will automatically evaluate if your resources meet those standards.</p><p>You can receive notifications when Config identifies any noncompliant resources, and you can even set up automated remediation actions to get your resources back into compliance. You can also generate reports showing which resources are compliant and which ones are not. After all, compliance isn't something you do once and you're done. It's an ongoing thing.</p><p>With Config, you can monitor your configurations to ensure that they don't change over time. Sounds like you'd be all set, right? Well, not so fast. If you’re in an industry that requires high levels of compliance, it's not enough to be compliant.</p><p>You must be able to provide evidence that you meet the standards and regulations. So, for example, a healthcare company might need to provide evidence that patient data is kept private and secure. Or, a financial firm might need to provide evidence to regulators that it’s handling money safely and correctly. That's where you can use AWS Audit Manager, a fully managed service that automates evidence collection to reduce the manual effort of several cross-functional teams that audit activities often require.</p><p>You can assess if your policies, procedures, and activities, also called controls, are operating effectively. And it helps you manage stakeholder reviews of your controls as well as provides information for building audit-ready reports with less manual effort. As you can see, Audit Manager has pre-built frameworks that cover a range of compliance standards and maps your AWS resources to the requirements for industry standards and regulations.</p></details>
+<p>Most companies will want you to follow specific configuration guidelines for your different AWS resources. This means that you will want a way to assess and audit the resources that you create on AWS to help ensure that they meet those rules. That's where AWS Config can help.</p>
+<h3>AWS Config</h3>
+<p>— AWS Config is a service that you can use to assess, audit, and evaluate the configurations of your AWS resources.</p>
+<p>Benefits: AWS Config helps evaluate configurations against a desired state, manage resource configuration changes, and simplify troubleshooting and remediation.</p>
+<p>Use cases: It can be used to continually audit security monitoring and analysis and to streamline operational troubleshooting and change management.</p>
+<h3>AWS Audit Manager</h3>
+<p>— Audit Manager is a service that continually audits your AWS usage to simplify risk and compliance assessment. It helps collect evidence and manage audit data.</p>
+<p>Benefits: Audit Manager saves time with automated evidence collection, streamlines collaboration across teams, and helps ensure integrity of audits with read-only permissions.</p>
+<p>Use case: It can be used to automate evidence collection, continually audit to assess compliance, and deploy internal risk assessments.</p>
+  <p class="qnote">Pytania kontrolne (1): <code>pytania\m10-06-auditing-aws-resources-for-compliance.md</code> · <a href="../pytania/testownik.html">testownik</a></p>
+  </main><script src="../narzedzia/tlumaczenia.js"></script><script src="dwujezyczny.js"></script></body></html>

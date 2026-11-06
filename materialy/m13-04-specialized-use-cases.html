@@ -1,0 +1,48 @@
+<!doctype html>
+  <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Specialized Use Cases</title><style>:root{--bg:#fbfaf7;--fg:#1d1d1b;--muted:#77736a;--line:#e6e1d6;--accent:#d97a00;--card:#fff;--soft:#f3efe6}
+  @media (prefers-color-scheme:dark){:root{--bg:#161614;--fg:#ecebe6;--muted:#9b978d;--line:#2f2e2a;--accent:#ffa733;--card:#1e1e1b;--soft:#24231f}}
+  *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:18px/1.7 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  main{max-width:760px;margin:0 auto;padding:28px 16px 80px}a{color:var(--accent)}
+  .crumbs{font-size:13px;color:var(--muted)}h1{font-size:32px;line-height:1.2;margin:.3em 0 .6em}
+  h2{font-size:25px;margin:1.6em 0 .4em}h3{font-size:21px;margin:1.4em 0 .3em}h4,h5{font-size:18px;margin:1em 0 .2em}
+  p{margin:.5em 0}ul,ol{padding-left:1.3em}li{margin:.2em 0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:6px 20px 14px;margin:18px 0}
+  .item+.item{border-top:1px dashed var(--line)}.item{padding-top:10px}
+  .tag{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:700}
+  .item h4{margin-top:2px}
+  details{margin:18px 0;background:var(--soft);border-radius:12px;padding:10px 20px}summary{cursor:pointer;font-weight:600}
+  details p{font-size:16px}
+  table{border-collapse:collapse;width:100%;font-size:16px}td,th{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+  .warn{background:var(--soft);border-left:3px solid var(--accent);padding:8px 12px;font-size:14px;border-radius:6px}
+  .qnote{margin-top:40px;font-size:14px;color:var(--muted)}</style>
+  <script type="application/json" id="lesson-meta">{"slug":"m13-04-specialized-use-cases","module":"Module 13: Well-Architected Solutions","module_no":13,"section":"Cloud in Real Life","lesson":"Specialized Use Cases","lesson_no":4,"questions":0,"captured":"2026-11-06T15:25:17.648Z","v":"5.4"}</script></head>
+  <body><main>
+  <div class="crumbs"><a href="index.html">← Spis lekcji</a> · Module 13: Well-Architected Solutions › Cloud in Real Life</div>
+  <h1>Specialized Use Cases</h1>
+  <h4>In this lesson, you will learn how to do the following:</h4>
+<ul><li>Explain how real-life companies combine specialized AWS services to meet specific business needs.</li></ul>
+<details><summary>🎬 Video transcript</summary><p>Alan: Welcome back to Cloud in Real Life. Let's take a look at some really interesting serverless architectures. Who wants to kick us off? Morgan: I do!</p><p>Okay, I'm gonna start. I love talking about serverless. What if we begin by thinking about a typical serverless web backend setup. I’m thinking something like Amazon API Gateway, AWS Lambda, Amazon DynamoDB, and AWS X-Ray for tracing.</p><p>As someone with a developer background, like myself, this is basically the dream team of AWS services for me. Rudy: This setup makes it possible for you to host your backend services and make them consumable for frontends using API Gateway. Data is stored in DynamoDB, and X-Ray helps with troubleshooting. Morgan, can you explain how consumers typically interact with these services?</p><p>Morgan: Yes. So, customers invoke the APIs exposed by API Gateway by using HTTP. API Gateway receives and validates the request then invokes the Lambda function and then returns that response to the user. Alan: I really like how this is entirely serverless.</p><p>X-Ray is really cool here because with an architecture like this it's not just a single component like a traditional web server. X-Ray is made to work well in these distributed environments, because X-Ray traces the request through API Gateway, to Lambda, to DynamoDB, all the way back to the client. So, if anything goes wrong, you can use it to determine where the problem is coming from. Rudy: Ah, sticking with the serverless theme, check this one out.</p><p>A static website hosted directly on Amazon S3. Drag. Choose Enable. And voila.</p><p>Static website time. Even better, we have a Contact Us form over here. Before you think we are going to need a server—no, no, no. When the form is submitted, it sends a request to API Gateway.</p><p>That invokes a Lambda function which, in turn, sends an email using Amazon SES. Hey, what do you say to that, Morgan? Morgan: Well, so, this is very similar to the architecture that we just talked about. It's a serverless architecture hosting a web backend using Lambda and API Gateway.</p><p>But, instead of storing data, this makes an API call to send emails. This is a great example to show how two architectures we covered are similar in the services used but totally different in use case. That's because the code running in a Lambda function is just that--code. It can be whatever you need it to be.</p><p>Alan: I have another one. Have you seen this architecture using Amazon Connect? It's a bit different from the last use case. But, this is an architecture showing how to use Amazon Connect to provide an alternate channel and callback option for customer support.</p><p>Because if there are long wait times for people calling, customers can have the option to transition from voice to chat or even email. Rudy: Hey, look, as someone who has been on hold with customer support long enough to memorize the song that's playing... [MUSIC PLAYING] I'm extremely excited for this solution. It's a great example of how AWS services can be connected to create complex, intelligent systems. In this case, Amazon Connect, Lambda, and Amazon CloudFront.</p><p>Connect them together, and you have a smart customer service solution. Customers can select callback and then hang up. Sign me up, please. Morgan: Yeah, I really couldn't agree more.</p><p>Okay, well, this has been a great chat. From serverless websites to smart customer support, we've seen how with just a few managed services, you can tackle a range of complex challenges.</p></details>
+<h3>Specialized use cases architecture diagrams</h3>
+<p>Delivering customer solutions by combining specialized AWS services</p>
+<p>Let's review the solutions discussed in the video. The following architecture diagrams demonstrate how you can combine AWS services together in different ways to solve for specific business problems.</p>
+<h3>Serverless web backend monitored by X-Ray</h3>
+<p>This is a typical serverless web backend with X-Ray monitoring the environment. To review the components of this solution, choose each of the three numbered markers.</p>
+<div class="card"><div class="item"><div class="tag">Marker 1/3</div><p>1: Receive traffic</p>
+<p>An Amazon API Gateway receives and validates HTTP requests.</p></div><div class="item"><div class="tag">Marker 2/3</div><p>2: Trigger Lambda function</p>
+<p>The API Gateway triggers a Lambda function that sends requests to Amazon DynamoDB.</p></div><div class="item"><div class="tag">Marker 3/3</div><p>3: Monitor traffic</p>
+<p>X-Ray traces requests through API Gateway, Lambda, DynamoDB and back to the client. This helps developers troubleshoot any problems.</p></div></div>
+<h3>Serverless static website with contact form</h3>
+<p>This serverless setup demonstrates a static website with a contact form hosted on Amazon S3. To review the components of this solution, choose each of the three numbered markers.</p>
+<div class="card"><div class="item"><div class="tag">Marker 1/3</div><p>1: Accept customer input</p>
+<p>Customers submit questions using a contact form housed on a static Amazon S3 website.</p></div><div class="item"><div class="tag">Marker 2/3</div><p>2: Receive request</p>
+<p>An API Gateway receives and validates the contact form request.</p></div><div class="item"><div class="tag">Marker 3/3</div><p>3: Send email</p>
+<p>The API Gateway then invokes a Lambda function that sends an email to the business owner using Amazon SES.</p></div></div>
+<h3>Customer support with callback option</h3>
+<p>This customer support solution provides an alternate channel and callback option so customers can avoid long wait times. To review the components of this solution, choose each of the three numbered markers.</p>
+<div class="card"><div class="item"><div class="tag">Marker 1/3</div><p>1: Initiate contact</p>
+<p>A customer calls or texts a customer support center. Calls are placed into the Amazon Connect interactive voice response (IVR) system. Text messages are routed to Amazon Connect from CloudFront.</p></div><div class="item"><div class="tag">Marker 2/3</div><p>2: Connect to agent</p>
+<p>Amazon Connect tries to connect the customer with a live agent.</p></div><div class="item"><div class="tag">Marker 3/3</div><p>3: Provide options</p>
+<p>For calls with long wait lines, customers can choose to receive an agent callback or they can switch to text through a Lambda function.</p></div></div>
+  
+  </main><script src="../narzedzia/tlumaczenia.js"></script><script src="dwujezyczny.js"></script></body></html>

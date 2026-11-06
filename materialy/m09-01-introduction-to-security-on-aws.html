@@ -1,0 +1,42 @@
+<!doctype html>
+  <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Introduction to Security on AWS</title><style>:root{--bg:#fbfaf7;--fg:#1d1d1b;--muted:#77736a;--line:#e6e1d6;--accent:#d97a00;--card:#fff;--soft:#f3efe6}
+  @media (prefers-color-scheme:dark){:root{--bg:#161614;--fg:#ecebe6;--muted:#9b978d;--line:#2f2e2a;--accent:#ffa733;--card:#1e1e1b;--soft:#24231f}}
+  *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:18px/1.7 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  main{max-width:760px;margin:0 auto;padding:28px 16px 80px}a{color:var(--accent)}
+  .crumbs{font-size:13px;color:var(--muted)}h1{font-size:32px;line-height:1.2;margin:.3em 0 .6em}
+  h2{font-size:25px;margin:1.6em 0 .4em}h3{font-size:21px;margin:1.4em 0 .3em}h4,h5{font-size:18px;margin:1em 0 .2em}
+  p{margin:.5em 0}ul,ol{padding-left:1.3em}li{margin:.2em 0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:6px 20px 14px;margin:18px 0}
+  .item+.item{border-top:1px dashed var(--line)}.item{padding-top:10px}
+  .tag{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:700}
+  .item h4{margin-top:2px}
+  details{margin:18px 0;background:var(--soft);border-radius:12px;padding:10px 20px}summary{cursor:pointer;font-weight:600}
+  details p{font-size:16px}
+  table{border-collapse:collapse;width:100%;font-size:16px}td,th{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+  .warn{background:var(--soft);border-left:3px solid var(--accent);padding:8px 12px;font-size:14px;border-radius:6px}
+  .qnote{margin-top:40px;font-size:14px;color:var(--muted)}</style>
+  <script type="application/json" id="lesson-meta">{"slug":"m09-01-introduction-to-security-on-aws","module":"Module 9: Security","module_no":9,"section":"Module 9 Introduction","lesson":"Introduction to Security on AWS","lesson_no":1,"questions":2,"captured":"2026-11-06T14:22:36.197Z","v":"5.4"}</script></head>
+  <body><main>
+  <div class="crumbs"><a href="index.html">← Spis lekcji</a> · Module 9: Security › Module 9 Introduction</div>
+  <h1>Introduction to Security on AWS</h1>
+  <p>Building and maintaining a secure environment in the cloud is an important responsibility. AWS shares this responsibility with its customers. In the following lessons, you will learn about important security concepts, mechanisms, and services that help protect your cloud resources on AWS.</p>
+<h4>In this lesson, you will learn how to do the following:</h4>
+<ul><li>Describe how authentication and authorization help secure enterprise data.</li><li>Identify customer and AWS security responsibilities in the cloud.</li><li>Identify different types of AWS security controls.</li></ul>
+<p>Securing your AWS account starts with a solid understanding of two fundamental concepts: authentication and authorization.</p>
+<details><summary>🎬 Video transcript</summary><p>[ALARM SOUNDING AS RUDY CHECKS BRIEFCASE] Ah-ha! The secret ingredient is still here! Phew! [RUDY DE-ACTIVATES ALARM AND CLOSES BRIEFCASE] Look, last night, someone tried to break into the coffee shop. Thankfully, nothing was stolen because we have a top-notch security system in place.</p><p>And just like security of our coffee shop, security of your AWS account is pretty important. [RUDY THROWS THE BRIEFCASE OFF CAMERA] In fact, every one of us has a role to play in security. To help you on your way of becoming a security guru, two crucial security components you should know about are authentication and authorization. Authentication is the process of verifying the identity of a user or entity through credentials like a username and password combination. Authorization, on the other hand, determines which actions users are permitted to perform in a system or application.</p><p>This is usually done by granting a user certain access rights and permissions. For instance, authentication permits me to log in to our employee portal. But authorization limits me to just the areas that I'm allowed to access, such as my own employee records. Authentication and authorization play a vital role in data privacy and protection.</p><p>Organizations must, therefore, safeguard all their users' personal information. This protection helps to maintain customer trust and prevent identity theft and financial fraud. In essence, organizations must prevent unauthorized access and misuse as much as possible. In this spirit, AWS offers multiple security mechanisms like the Shared Responsibility Model, and a few other examples like: - Preventing security incidents through proper permission and access management - Proactively addressing security issues through thorough network, application, and data protection - And quickly detecting and responding to security incidents as they occur And with that, let’s get things started and take a look at the different security services, mechanisms, and features that AWS has to offer.</p></details>
+<h3>Key concepts</h3>
+<p>Authentication and authorization are two mechanisms that play a big role in data privacy and system protection. Let's review these concepts and dive a little deeper into how security works in the AWS shared responsibility model.</p>
+<div class="card"><div class="item"><div class="tag">Slide 1/3</div><h4>Authentication and authorization</h4><p>Authentication is the process of verifying the identity of a user or entity through credentials like a username and password combination.</p>
+<ul><li>Use case: An employee logs in to an employee portal.</li></ul>
+<p>Authorization grants users certain access rights and permissions that determine which actions they can perform in a system or application.</p>
+<ul><li>Use case: An employee can only access their own employee records inside the employee portal.</li></ul></div><div class="item"><div class="tag">Slide 2/3</div><h4>AWS shared responsibility model</h4><p>Cloud security is a shared responsibility between customers and AWS. Let's examine this relationship using the AWS shared responsibility model.</p>
+<p>Customers: Security in the cloud</p>
+<p>When using AWS services, customers maintain complete control over their content. As a result, customers are responsible for securing everything they create and manage in the AWS Cloud. This includes the following:</p>
+<ul><li>Managing the security of data, systems, and applications</li><li>Deciding what data and workloads to store or run in AWS</li><li>Determining which AWS services to use</li><li>Controlling who has access to environments and resources</li></ul>
+<p>AWS: Security of the cloud</p>
+<p>AWS is responsible for security of the cloud. AWS operates, manages, and controls the components at all layers of the infrastructure. This includes securing the following:</p>
+<ul><li>The foundational software that powers AWS services</li><li>The virtualization layer</li><li>The hardware and global infrastructure that supports the data centers from which services operate. This includes protection for AWS Regions, Availability Zones, and edge locations.</li></ul></div><div class="item"><div class="tag">Slide 3/3</div><h4>AWS security controls</h4><p>AWS offers multiple security mechanisms to protect your cloud resources. These controls can help you do the following:</p>
+<ul><li>Prevent security incidents through proper permission and access management.</li><li>Protect networks, applications, and data.</li><li>Detect and respond to security incidents as they occur.</li></ul></div></div>
+  <p class="qnote">Pytania kontrolne (2): <code>pytania\m09-01-introduction-to-security-on-aws.md</code> · <a href="../pytania/testownik.html">testownik</a></p>
+  </main><script src="../narzedzia/tlumaczenia.js"></script><script src="dwujezyczny.js"></script></body></html>

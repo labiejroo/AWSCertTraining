@@ -1,0 +1,55 @@
+<!doctype html>
+  <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Amazon Elastic Block Store (Amazon EBS) Data Lifecycle</title><style>:root{--bg:#fbfaf7;--fg:#1d1d1b;--muted:#77736a;--line:#e6e1d6;--accent:#d97a00;--card:#fff;--soft:#f3efe6}
+  @media (prefers-color-scheme:dark){:root{--bg:#161614;--fg:#ecebe6;--muted:#9b978d;--line:#2f2e2a;--accent:#ffa733;--card:#1e1e1b;--soft:#24231f}}
+  *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:18px/1.7 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  main{max-width:760px;margin:0 auto;padding:28px 16px 80px}a{color:var(--accent)}
+  .crumbs{font-size:13px;color:var(--muted)}h1{font-size:32px;line-height:1.2;margin:.3em 0 .6em}
+  h2{font-size:25px;margin:1.6em 0 .4em}h3{font-size:21px;margin:1.4em 0 .3em}h4,h5{font-size:18px;margin:1em 0 .2em}
+  p{margin:.5em 0}ul,ol{padding-left:1.3em}li{margin:.2em 0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:6px 20px 14px;margin:18px 0}
+  .item+.item{border-top:1px dashed var(--line)}.item{padding-top:10px}
+  .tag{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:700}
+  .item h4{margin-top:2px}
+  details{margin:18px 0;background:var(--soft);border-radius:12px;padding:10px 20px}summary{cursor:pointer;font-weight:600}
+  details p{font-size:16px}
+  table{border-collapse:collapse;width:100%;font-size:16px}td,th{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+  .warn{background:var(--soft);border-left:3px solid var(--accent);padding:8px 12px;font-size:14px;border-radius:6px}
+  .qnote{margin-top:40px;font-size:14px;color:var(--muted)}</style>
+  <script type="application/json" id="lesson-meta">{"slug":"m06-03-amazon-elastic-block-store-amazon-ebs-data-lifecycle","module":"Module 6: Storage","module_no":6,"section":"Block Storage","lesson":"Amazon Elastic Block Store (Amazon EBS) Data Lifecycle","lesson_no":3,"questions":2,"captured":"2026-10-29T18:37:10.136Z","v":"5.4"}</script></head>
+  <body><main>
+  <div class="crumbs"><a href="index.html">← Spis lekcji</a> · Module 6: Storage › Block Storage</div>
+  <h1>Amazon Elastic Block Store (Amazon EBS) Data Lifecycle</h1>
+  <h4>In this lesson, you will learn how to do the following:</h4>
+<ul><li>Describe Amazon EBS snapshots and their use cases for data management.</li><li>Describe the Amazon EBS data lifecycle and how it integrates with AWS services.</li><li>Identify the customer responsibility in relation to EBS snapshots and Amazon Data Lifecycle Manager</li></ul>
+<p>Amazon EBS data lifecycle management involves creating, backing up, and deleting volumes and snapshots. This process optimizes storage costs and helps to ensure data protection. In this lesson, you will learn the basics of implementing an effective Amazon EBS backup and snapshot strategy.</p>
+<details><summary>🎬 Video transcript</summary><p>Let's dive a little deeper into the data lifecycle for Amazon Elastic Block Store. If you recall from the shared responsibility model, you are responsible for managing your own data. This means you need to manage your EBS volumes lifecycle, which includes provisioning, moving, de-provisioning, and backups. But don't fret!</p><p>This is where Amazon EBS snapshots come in. These are point in time copies of your EBS volumes. Point in time means that the backup is done at a specific moment in time. This can be daily, weekly, or even monthly depending on your organization's needs.</p><p>Even better, this means you can make incremental backups and restore them as needed. But what does incremental backup mean? Well, let's say you take the first snapshot of your data on Monday. All of your data is copied in its entirety.</p><p>Then on Tuesday, you take another snapshot, but this time it only copies what has changed since the previous snapshot was taken. That's the incremental part. This approach makes subsequent snapshots faster and more storage efficient, which translates to a significant reduction in cost compared to running a full backup every time. But that only solves half of the problem.</p><p>You're taking these snapshots, but how do you manage them? The last thing you want is to log into the AWS management console every week and create a snapshot. It's time consuming and prone to human error. Imagine if you needed to do this for thousands of volumes.</p><p>You'd be spending an hour just selecting all those buttons. You want more automation? Use a fully managed service like Amazon Data Lifecycle Manager. With Amazon Data Lifecycle Manager, you can define policies to help automate snapshot lifecycle management.</p><p>You can schedule snapshot creation, set retention policies, manage life cycles, and apply consistent backup policies. across your organization. This means nobody needs to log into the console every Monday and click all those buttons.</p></details>
+<h3>EBS Snapshots</h3>
+<p>EBS snapshots are point-in-time backups of EBS volume. They can be used for disaster recovery, data migration, volume resizing, and for creating consistent backups of production workloads. EBS snapshots are incremental, so they only save the blocks on the volume that have changed after your most recent snapshot.</p>
+<p>EBS snapshots can be used to create multiple new volumes, and new volumes created from a snapshot are an exact copy of the original volume at the time the snapshot was taken. Snapshots of EBS volumes are stored redundantly in multiple Availability Zones using Amazon S3.</p>
+<h3>Working with EBS snapshots</h3>
+<p>In keeping with the AWS shared responsibility model, as the customer, you are responsible for scheduling and managing regular EBS snapshots as part of your backup strategy. This includes monitoring snapshot costs and deleting unnecessary snapshots to avoid excessive charges. You also need to make sure sensitive data within snapshots is encrypted, verify snapshot integrity, and test restoration procedures regularly.</p>
+<p>The following illustration shows how EBS snapshots are created from an EBS volume over time. To learn more about how EBS snapshots interact with EBS volumes, choose each of the following three markers.</p>
+<div class="card"><div class="item"><div class="tag">Marker 1/3</div><p>1: Initial snapshot</p>
+<p>When you create the first snapshot of an EBS volume, a full copy of all the data on the volume at that point in time is included.</p>
+<p>This initial snapshot serves as the baseline and contains all the data blocks that were in use on the volume.</p></div><div class="item"><div class="tag">Marker 2/3</div><p>2: Subsequent incremental snapshots</p>
+<p>For all snapshots after the initial one, only the blocks that have changed since the last snapshot are captured and stored.</p>
+<p>These are called incremental snapshots. They're much smaller and faster to create than full snapshots.</p>
+<p>Each incremental snapshot contains references to the previous snapshots, creating a chain that allows for point-in-time recovery.</p></div><div class="item"><div class="tag">Marker 3/3</div><p>3: Snapshot consolidation and management</p>
+<p>Despite being incremental, each snapshot appears as a full point-in-time copy of your volume.</p>
+<p>The relationship between multiple snapshots of the same volume are managed automatically.</p>
+<p>When you delete a snapshot, only the data unique to that snapshot is removed. Data referenced by other snapshots is preserved.</p></div></div>
+<h3>Benefits</h3>
+<p>Review the main benefits of EBS Snapshots and how it improves your data protection strategy in Amazon EBS.</p>
+<h4>Data protection and recovery</h4>
+<p>Snapshots enable fast data recovery from corruption, accidental deletion, or system failures using point-in-time backups.</p>
+<h4>Operational flexibility</h4>
+<p>Snapshots enable operations like cross-Region data migration, volume resizing, volume cloning, and sharing data across AWS accounts.</p>
+<h4>Cost effective</h4>
+<p>Snapshots use incremental backup technology, storing only changed blocks after the initial backup, reducing storage costs and backup time.</p>
+<h3>Amazon Data Lifecycle Manager</h3>
+<p>You can automate the creation, retention, and deletion of EBS snapshots using Amazon Data Lifecycle Manager. Amazon Data Lifecycle Manager can schedule snapshots during off-peak hours to minimize performance impact and automatically delete outdated backups to control storage costs. It's particularly valuable for large-scale deployments where manual snapshot management would be time-consuming and error-prone.</p>
+<p>To learn how you can use Data Lifecycle Manager to create custom EBS Snapshots policies, choose the arrow buttons to display each of the following steps.</p>
+<div class="card"><div class="item"><div class="tag">Slide 1/6</div><h4>Amazon Data Lifecycle Manager Workflow</h4><p>By reducing manual effort and establishing consistent backup policies, Amazon Data Lifecycle Manager helps maintain compliance requirements by scheduling regular backups and enforcing retention rules.</p></div><div class="item"><div class="tag">Slide 2/6</div><h4>Create an EBS snapshots policy</h4><p>Create an EBS snapshots policy using the Amazon EC2 console, API calls, AWS Command Line Interface (AWS CLI), SDKs, or AWS CloudFormation.</p></div><div class="item"><div class="tag">Slide 3/6</div><h4>Select target resource type</h4><p>Choose either an EBS volume or an EC2 instance as the target for the snapshot.</p></div><div class="item"><div class="tag">Slide 4/6</div><h4>Exclude volumes</h4><p>Narrow down the data to be included in the snapshot by choosing options to exclude either the root volume or data volumes.</p></div><div class="item"><div class="tag">Slide 5/6</div><h4>Set custom schedules</h4><p>Automate the creation, retention, and deletion of EBS snapshots by setting up custom schedules.</p></div><div class="item"><div class="tag">Slide 6/6</div><h4>Apply additional actions</h4><p>Before finalizing the policy, you can apply additional actions. These include configuring elements of the snapshots like tags, snapshot archiving, Amazon EBS fast snapshot restore, cross-Region copying, and cross-account sharing.</p></div></div>
+  <p class="qnote">Pytania kontrolne (2): <code>pytania\m06-03-amazon-elastic-block-store-amazon-ebs-data-lifecycle.md</code> · <a href="../pytania/testownik.html">testownik</a></p>
+  </main><script src="../narzedzia/tlumaczenia.js"></script><script src="dwujezyczny.js"></script></body></html>

@@ -1,0 +1,80 @@
+<!doctype html>
+  <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AWS AI/ML Solutions</title><style>:root{--bg:#fbfaf7;--fg:#1d1d1b;--muted:#77736a;--line:#e6e1d6;--accent:#d97a00;--card:#fff;--soft:#f3efe6}
+  @media (prefers-color-scheme:dark){:root{--bg:#161614;--fg:#ecebe6;--muted:#9b978d;--line:#2f2e2a;--accent:#ffa733;--card:#1e1e1b;--soft:#24231f}}
+  *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:18px/1.7 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  main{max-width:760px;margin:0 auto;padding:28px 16px 80px}a{color:var(--accent)}
+  .crumbs{font-size:13px;color:var(--muted)}h1{font-size:32px;line-height:1.2;margin:.3em 0 .6em}
+  h2{font-size:25px;margin:1.6em 0 .4em}h3{font-size:21px;margin:1.4em 0 .3em}h4,h5{font-size:18px;margin:1em 0 .2em}
+  p{margin:.5em 0}ul,ol{padding-left:1.3em}li{margin:.2em 0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:6px 20px 14px;margin:18px 0}
+  .item+.item{border-top:1px dashed var(--line)}.item{padding-top:10px}
+  .tag{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:700}
+  .item h4{margin-top:2px}
+  details{margin:18px 0;background:var(--soft);border-radius:12px;padding:10px 20px}summary{cursor:pointer;font-weight:600}
+  details p{font-size:16px}
+  table{border-collapse:collapse;width:100%;font-size:16px}td,th{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+  .warn{background:var(--soft);border-left:3px solid var(--accent);padding:8px 12px;font-size:14px;border-radius:6px}
+  .qnote{margin-top:40px;font-size:14px;color:var(--muted)}</style>
+  <script type="application/json" id="lesson-meta">{"slug":"m08-03-aws-ai-ml-solutions","module":"Module 8: AI/ML and Data Analytics","module_no":8,"section":"AI/ML on AWS","lesson":"AWS AI/ML Solutions","lesson_no":3,"questions":5,"captured":"2026-11-02T17:09:30.224Z","v":"5.4"}</script></head>
+  <body><main>
+  <div class="crumbs"><a href="index.html">← Spis lekcji</a> · Module 8: AI/ML and Data Analytics › AI/ML on AWS</div>
+  <h1>AWS AI/ML Solutions</h1>
+  <h4>In this lesson, you will learn how to do the following:</h4>
+<ul><li>Describe the benefits and purpose of the services contained in each tier of the AWS AI/ML stack.</li></ul>
+<p>Let's examine the three tiers of the AWS AI/ML stack in more detail. You can think of the tiers as a progression from pre-built, easily deployable managed solutions to highly customized solutions that require more skill to implement.</p>
+<h3>Tier 1: Pre-built AWS AI services</h3>
+<p>The AWS AI services tier is made up of pre-built models that are already trained to perform specific functions. These ready-to-use, managed services can help you quickly solve for a variety of business use cases. In the next section, you will learn about the following three groups of AWS AI services:</p>
+<ul><li>Language services</li><li>Computer vision and search services</li><li>Conversational AI and personalization services</li></ul>
+<h4>Language services</h4>
+<p>AWS AI language services are great for when you need to interpret text or speech and transform it into something meaningful. Let's examine how these services solve for some common use cases.</p>
+<p>Amazon Comprehend</p>
+<p>— Amazon Comprehend uses natural language processing to extract key insights from documents. It develops these insights by recognizing key phrases, language, sentiment, and other common elements in documents.</p>
+<p>Use cases: Content classification, customer sentiment analysis, and compliance monitoring</p>
+<p>Amazon Polly</p>
+<p>— Amazon Polly converts text into lifelike speech. It supports multiple languages, different genders, and a variety of accents.</p>
+<p>Use cases: Virtual assistants, e-learning applications, and accessibility enhancements for visually impaired users</p>
+<p>Amazon Transcribe</p>
+<p>— Amazon Transcribe converts speech into text. It supports multiple languages and offers features such as speaker identification, custom vocabulary, and real-time transcription.</p>
+<p>Use Cases: Customer call transcription, automated subtitling, and metadata generation for media content.</p>
+<p>Amazon Translate</p>
+<p>— Amazon Translate is a text translation service. This service is ideal for global communication because it supports real-time and batch text translation across multiple languages.</p>
+<p>Use cases: Document translation and multi-language application integrations</p>
+<h3>Computer vision and search services</h3>
+<p>These services are ideal for answering questions and gathering insights from various types of content sources such as documents, images, videos, and more. Let's look at some examples.</p>
+<p>Amazon Kendra</p>
+<p>— Amazon Kendra uses natural language processing to search for answers within large amounts of enterprise content. Because it understands the context of a query, it can return more precise and relevant answers than just a list of documents with matching keywords.</p>
+<p>Use cases: Intelligent search, chatbots, and application search integration</p>
+<p>Amazon Rekognition</p>
+<p>— Amazon Rekognition is a video analysis service. It can identify objects, people, text, scenes, and activities within images and videos stored in Amazon Simple Storage Service (Amazon S3).</p>
+<p>Use cases: Content moderation, identity verification, media analysis, and home automation experiences</p>
+<p>Amazon Textract</p>
+<p>— Amazon Textract detects and extracts typed and handwritten text found in documents, forms, and even tables within documents.</p>
+<p>Use cases: Financial, healthcare, and government form text extraction for quick processing</p>
+<h3>Conversational AI and personalization services</h3>
+<p>With these services, users can interact with your apps through text and voice conversations. You can also present your customers with product recommendations personalized just for them. Let's explore these services.</p>
+<p>Amazon Lex</p>
+<p>— With Amazon Lex, you can add voice and text conversational interfaces to your applications. This service uses both natural language understanding (NLU) and automatic speech recognition (ASR) to create lifelike conversations.</p>
+<p>Use cases: Virtual assistants, natural language search for FAQs, and automated application bots</p>
+<p>Amazon Personalize</p>
+<p>— With Amazon Personalize, you can use historical data to build intelligent applications with personalized recommendations for your customers.</p>
+<p>Use cases: Personalized streaming, product, and trending recommendations</p>
+<h3>Tier 2: ML services</h3>
+<p>The ML services tier provides a more customized approach for customers who want a bit more control over their ML solutions without having to manage infrastructure. SageMaker AI is a key offering in this tier.</p>
+<h3>Amazon SageMaker AI</h3>
+<p>With this fully managed service, you can build, train, and deploy your own ML models without worrying about infrastructure. The SageMaker AI integrated development environment (IDE) provides simplified access control and transparency over your ML projects. You can track model training experiments, visualize data, and debug and monitor your workflows all within one environment. SageMaker AI even offers access to hundreds of pre-trained models that you can deploy in a few quick steps.</p>
+<h3>Key benefits of SageMaker AI</h3>
+<p>To learn more about key SageMaker AI benefits, choose each of the following flashcards.</p>
+<div class="card"><div class="item"><div class="tag">Card 1/3</div><h4>Choice of ML tools</h4><p>Choice of ML tools</p>
+<p>Increase innovation with different tool choices. Data scientists can use the IDE, and business analysts can use the no-code interface.</p></div><div class="item"><div class="tag">Card 2/3</div><h4>Fully managed infrastructure</h4><p>Fully managed infrastructure</p>
+<p>Focus on ML model development while SageMaker AI provides you with high-performance, cost-effective infrastructure.</p></div><div class="item"><div class="tag">Card 3/3</div><h4>Repeatable ML workflows</h4><p>Repeatable ML workflows</p>
+<p>Automate and standardize your MLOps practices and governance across your enterprise to support transparency and auditability.</p></div></div>
+<h3>Tier 3: ML frameworks and infrastructure</h3>
+<p>Some organizations have highly specialized needs that require complete control over the ML training process. They can use in-house expertise, ML frameworks, and AWS infrastructure to develop their own ML solutions.</p>
+<h3>Core components</h3>
+<p>ML frameworks</p>
+<p>— An ML framework is a software library or tool that provides experienced ML practitioners with pre-built, optimized components for building machine learning models. AWS supports ML frameworks like PyTorch, Apache M-X Net, and TensorFlow.</p>
+<p>AWS ML infrastructure</p>
+<p>— AWS ML infrastructure, such as ML-optimized Amazon Elastic Compute Cloud (Amazon EC2) instances, Amazon EMR, and Amazon Elastic Container Service (Amazon ECS), can support these custom solutions. These services provide high performance and flexibility for advanced ML workloads.</p>
+  <p class="qnote">Pytania kontrolne (5): <code>pytania\m08-03-aws-ai-ml-solutions.md</code> · <a href="../pytania/testownik.html">testownik</a></p>
+  </main><script src="../narzedzia/tlumaczenia.js"></script><script src="dwujezyczny.js"></script></body></html>
