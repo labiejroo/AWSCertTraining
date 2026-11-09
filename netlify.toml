@@ -1,0 +1,20 @@
+# Netlify buduje stronę przy każdym pushu na gałąź produkcyjną (main).
+# Na stronę trafiają tylko pliki potrzebne do czytania: lekcje, ściąga, testownik i tłumaczenia.
+# Folder surowe/, pliki *.md z pytaniami i capture.js zostają tylko w repozytorium.
+
+[build]
+  publish = "dist"
+  command = """
+    rm -rf dist && \
+    mkdir -p dist/materialy dist/pytania dist/narzedzia && \
+    cp materialy/*.html materialy/*.js dist/materialy/ && \
+    cp pytania/*.html pytania/*.js dist/pytania/ && \
+    cp narzedzia/tlumaczenia.js dist/narzedzia/ && \
+    echo "Zbudowano: $(find dist -type f | wc -l) plikow"
+  """
+
+# Strona główna = spis lekcji
+[[redirects]]
+  from = "/"
+  to = "/materialy/"
+  status = 301

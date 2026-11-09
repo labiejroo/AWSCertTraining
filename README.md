@@ -21,6 +21,10 @@ Materiały z kursu AWS Skill Builder (Cloud Practitioner) w wersji dwujęzycznej
    - za błędną odpowiedź pytanie wraca więcej razy,
    - klawisze: 1–4 to wybór odpowiedzi, Enter lub spacja to „Dalej”.
 
+## Strona na Netlify
+
+Każdy push na `main` buduje stronę według `netlify.toml`: lekcje, ściąga, testownik i tłumaczenia trafiają do `dist/`, a `/` przekierowuje na spis lekcji (`/materialy/`). Folder `surowe/`, pliki `pytania/*.md` i `capture.js` nie są publikowane.
+
 ## Wysyłanie zmian na GitHub
 
 Dwuklik na `wyslij-na-github.bat`. Skrypt robi commit wszystkich zmian i push do `git@github.com:labiejroo/AWSCertTraining.git`.

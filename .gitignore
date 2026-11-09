@@ -2,3 +2,5 @@ desktop.ini
 Thumbs.db
 *.tmp
 .DS_Store
+dist/
+.netlify/
